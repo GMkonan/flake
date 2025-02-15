@@ -33,6 +33,7 @@
 	pkgs.bat
 	pkgs.fzf
 	pkgs.fd
+	pkgs.ripgrep
 	pkgs.nodejs
 	pkgs.bun
 
