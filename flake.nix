@@ -32,6 +32,7 @@
 	pkgs.lsd
 	pkgs.bat
 	pkgs.fzf
+	pkgs.fd
 	pkgs.nodejs
 	pkgs.bun
 
