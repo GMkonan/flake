@@ -37,6 +37,8 @@
 	pkgs.nodejs
 	pkgs.bun
 
+	pkgs.silicon
+
 	# mac only
 	pkgs.karabiner-elements
 	pkgs.raycast
@@ -46,6 +48,8 @@
       	enable = true;
 	brews = [
 	"graphite"
+	"sketchybar"
+	"borders"
 	];
 	casks = [
 	"ghostty"
@@ -57,6 +61,7 @@
 	taps = [
         "nikitabobko/tap"
 	"withgraphite/tap"
+	"FelixKratz/formulae"
         ];
 	onActivation.cleanup = "zap";
 	onActivation.autoUpdate = true;
