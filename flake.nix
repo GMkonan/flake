@@ -84,6 +84,7 @@
 	dock.show-recents = false;
 	NSGlobalDomain.AppleICUForce24HourTime = true;
 	NSGlobalDomain.AppleInterfaceStyle = "Dark";
+	NSGlobalDomain._HIHideMenuBar = true;
 	NSGlobalDomain.KeyRepeat = 2;
       };
 
