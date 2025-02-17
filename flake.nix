@@ -60,6 +60,7 @@
 	
 	# font
 	"font-sf-pro"
+        "font-sketchybar-app-font"
 	];
 	taps = [
         "nikitabobko/tap"
