@@ -56,6 +56,7 @@
 	"1password"
 	"docker"
 	"ticktick"
+	"aerospace"
 	
 	# font
 	"font-sf-pro"
