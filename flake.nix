@@ -57,6 +57,9 @@
 	"docker"
 	"ticktick"
 	"aerospace"
+	
+	# font
+	"font-sf-pro"
 	];
 	taps = [
         "nikitabobko/tap"
@@ -69,6 +72,7 @@
       };
 	
 	fonts.packages = [
+		pkgs.nerd-fonts.jetbrains-mono
 		pkgs.nerd-fonts.jetbrains-mono
 	];
       
