@@ -91,6 +91,7 @@
 	NSGlobalDomain.AppleInterfaceStyle = "Dark";
 	NSGlobalDomain._HIHideMenuBar = true;
 	NSGlobalDomain.KeyRepeat = 2;
+	NSGlobalDomain.ApplePressAndHoldEnabled = false;
       };
 
 
