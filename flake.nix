@@ -18,27 +18,6 @@
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
         [ 
-	pkgs.neovim
-	pkgs.tmux
-	pkgs.obsidian
-	pkgs.brave
-	pkgs.slack
-	pkgs.discord
-	pkgs.zed-editor
-	pkgs.vscode
-	
-	pkgs.oh-my-posh
-	pkgs.zoxide
-	pkgs.lsd
-	pkgs.bat
-	pkgs.fzf
-	pkgs.fd
-	pkgs.ripgrep
-	pkgs.nodejs
-	pkgs.bun
-
-	pkgs.silicon
-
 	# mac only
 	pkgs.karabiner-elements
 	pkgs.raycast
@@ -72,10 +51,10 @@
 	onActivation.upgrade = true;
       };
 	
-	fonts.packages = [
-		pkgs.nerd-fonts.jetbrains-mono
-		pkgs.nerd-fonts.jetbrains-mono
-	];
+	# fonts.packages = [
+	# 	pkgs.nerd-fonts.jetbrains-mono
+	# 	pkgs.nerd-fonts.jetbrains-mono
+	# ];
       
       system.defaults = {
         dock.autohide = true;
@@ -118,6 +97,7 @@
     darwinConfigurations."mini" = nix-darwin.lib.darwinSystem {
       modules = [ 
       configuration 
+      ./modules/packages.nix
       nix-homebrew.darwinModules.nix-homebrew
       {
       	nix-homebrew = {
