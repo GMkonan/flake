@@ -10,6 +10,33 @@
 	pkgs.raycast
         ];
 	
+homebrew = {
+      	enable = true;
+	brews = [
+	"graphite"
+	"sketchybar"
+	"borders"
+	];
+	casks = [
+	"ghostty"
+	"1password"
+	"docker"
+	"ticktick"
+	"aerospace"
+	
+	# font
+	"font-sf-pro"
+        "font-sketchybar-app-font"
+	];
+	taps = [
+        "nikitabobko/tap"
+	"withgraphite/tap"
+	"FelixKratz/formulae"
+        ];
+	onActivation.cleanup = "zap";
+	onActivation.autoUpdate = true;
+	onActivation.upgrade = true;
+      };
 
 system.defaults = {
         dock.autohide = true;
