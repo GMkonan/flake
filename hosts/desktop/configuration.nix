@@ -81,7 +81,7 @@
   users.users.konan = {
     isNormalUser = true;
     description = "konan";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker"];
     packages = with pkgs; [
     #  thunderbird
     ];
