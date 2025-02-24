@@ -10,6 +10,21 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew }:
     {
+nixosConfigurations = 
+	let 
+	    system = "x86_64-linux";
+  in
+  {
+    desktop = nixpkgs.lib.nixosSystem {
+      inherit system;
+
+      modules = [ 
+      ./hosts/desktop/configuration.nix
+      ./modules/packages.nix
+      ];
+    };
+  };
+
     darwinConfigurations = 
 	let 
 	    system = "aarch64-darwin";
