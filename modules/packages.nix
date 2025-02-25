@@ -23,6 +23,8 @@
 	fzf
 	fd
 	ripgrep
+	gh
+	lazydocker
 	nodejs
 	bun
 
