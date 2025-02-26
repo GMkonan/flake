@@ -21,6 +21,7 @@ nixosConfigurations =
       modules = [ 
       ./hosts/desktop/configuration.nix
       ./modules/packages.nix
+      ./modules/nixos-shared.nix
       ./modules/nvidia.nix
       ];
     };

@@ -7,32 +7,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-	neovim
-	tmux
-	obsidian
-	brave
-	slack
-	discord
-	zed-editor
-	vscode
-	ticktick
-	
-	oh-my-posh
-	zoxide
-	lsd
-	bat
-	fzf
-	fd
-	ripgrep
-	graphite-cli
-	gh
-	lazydocker
-	nodejs
-	bun
-	go
-	rustup
-
-	silicon
+	wofi
   ];
 
    fonts.packages = with pkgs; [
