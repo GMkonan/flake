@@ -15,6 +15,7 @@
 	discord
 	zed-editor
 	vscode
+	wofi
 	
 	oh-my-posh
 	zoxide
@@ -23,10 +24,13 @@
 	fzf
 	fd
 	ripgrep
+	graphite-cli
 	gh
 	lazydocker
 	nodejs
 	bun
+	go
+	rustup
 
 	silicon
   ];
