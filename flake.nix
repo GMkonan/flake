@@ -22,6 +22,7 @@ nixosConfigurations =
       ./hosts/desktop/configuration.nix
       ./modules/packages.nix
       ./modules/nixos-shared.nix
+      ./modules/1password.nix
       ./modules/nvidia.nix
       ];
     };
