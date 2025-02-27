@@ -4,7 +4,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     _1password-gui
-    _1password
+    _1password-cli
   ];
 
    programs._1password.enable = true;
