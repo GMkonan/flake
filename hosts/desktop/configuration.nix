@@ -10,27 +10,6 @@
       ./hardware-configuration.nix
     ];
 
-  # Bootloader.
-  # boot.loader.systemd-boot.enable = true;
-  # boot.loader.efi.canTouchEfiVariables = true;
-  # boot.loader.systemd-boot.enable = false;
-  # boot.loader.efi.efiSysMountPoint = "/boot";
-  # boot.loader.grub.enable = true;
-  # boot.loader.grub.useOSProber = true;
-  # boot.loader.grub.efiSupport = true;
-  # boot.loader.grub.device = "nodev";
-  # boot.loader.grub.efiInstallAsRemovable = true;
-  # boot.loader.grub.extraEntriesBeforeNixOS = true;
-  # boot.loader.grub.extraEntries = ''
-  #       menuentry "Reboot" {
-  #         reboot
-  #       }
-  #       menuentry "Poweroff" {
-  #         halt
-  #       }
-  #     '';
-  # boot.loader.grub.theme
-
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -94,23 +73,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  programs.zsh.enable = true;
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users = {
-    defaultUserShell = pkgs.zsh;
-
-    users.konan = {
-      isNormalUser = true;
-      description = "konan";
-      extraGroups = [ "networkmanager" "wheel" "docker"];
-      shell = pkgs.zsh;
-      packages = with pkgs; [];
-    };
-  };
-
-  # Install firefox.
-  programs.firefox.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -128,8 +90,6 @@ gcc
 docker
 wl-clipboard
 ];
-
-virtualisation.docker.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

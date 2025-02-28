@@ -24,6 +24,8 @@ nixosConfigurations =
       ./modules/nixos-shared.nix
       ./modules/1password.nix
       ./modules/bootloader.nix
+      ./modules/user.nix
+      ./modules/default.nix
       # ./modules/nvidia.nix
       ];
     };
