@@ -8,6 +8,13 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
 	wofi
+vim
+git
+ghostty
+zsh
+gcc
+docker
+wl-clipboard
   ];
 
    fonts.packages = with pkgs; [
