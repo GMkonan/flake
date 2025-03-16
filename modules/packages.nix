@@ -15,7 +15,6 @@
 	discord
 	zed-editor
 	vscode
-	ticktick
 	bruno
 	
 	oh-my-posh

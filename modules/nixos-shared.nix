@@ -15,6 +15,7 @@ zsh
 gcc
 docker
 wl-clipboard
+	ticktick
   ];
 
    fonts.packages = with pkgs; [
