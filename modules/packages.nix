@@ -29,6 +29,8 @@
 	lazydocker
 	nodejs
 	bun
+	pnpm
+	flyctl
 	go
 	rustup
 
