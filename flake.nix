@@ -24,6 +24,7 @@ nixosConfigurations =
       ./modules/packages.nix
       ./modules/nixos-shared.nix
       ./modules/1password.nix
+      ./modules/tailscale.nix
       ./modules/bootloader.nix
       ./modules/user.nix
       ./modules/default.nix
@@ -39,6 +40,7 @@ thinkpad = nixpkgs.lib.nixosSystem {
       ./modules/packages.nix
       ./modules/nixos-shared.nix
       ./modules/1password.nix
+      ./modules/tailscale.nix
       ./modules/bootloader.nix
       ./modules/user.nix
       ./modules/default.nix
@@ -57,6 +59,7 @@ thinkpad = nixpkgs.lib.nixosSystem {
       modules = [ 
       ./hosts/mac/configuration.nix
       ./modules/packages.nix
+      ./modules/tailscale.nix
       nix-homebrew.darwinModules.nix-homebrew
       {
       	nix-homebrew = {

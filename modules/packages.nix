@@ -16,7 +16,6 @@
 	zed-editor
 	vscode
 	bruno
-	tailscale
 	
 	oh-my-posh
 	zoxide
