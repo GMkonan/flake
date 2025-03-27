@@ -23,6 +23,7 @@ homebrew = {
 	"docker"
 	"ticktick"
 	"aerospace"
+	"zen-browser"
 	
 	# font
 	"font-sf-pro"
