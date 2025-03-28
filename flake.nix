@@ -7,9 +7,10 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     # nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew/main";
+    zen.url = "github:youwen5/zen-browser-flake";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, zen }:
     {
 nixosConfigurations = 
 	let 
@@ -18,6 +19,10 @@ nixosConfigurations =
   {
     desktop = nixpkgs.lib.nixosSystem {
       inherit system;
+
+      specialArgs = {
+	inherit zen;
+      };
 
       modules = [ 
       ./hosts/desktop/configuration.nix
@@ -34,6 +39,10 @@ nixosConfigurations =
 
 thinkpad = nixpkgs.lib.nixosSystem {
       inherit system;
+
+      specialArgs = {
+	inherit zen;
+      };
 
       modules = [ 
       ./hosts/thinkpad/configuration.nix

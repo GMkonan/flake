@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, zen, ... }: {
   nixpkgs.config = {
     allowUnfree = true;
 
@@ -16,6 +16,7 @@ gcc
 docker
 wl-clipboard
 	ticktick
+zen.packages.${pkgs.system}.default
   ];
 
    fonts.packages = with pkgs; [
