@@ -16,6 +16,7 @@
 	zed-editor
 	vscode
 	bruno
+	helix
 	
 	oh-my-posh
 	zoxide
