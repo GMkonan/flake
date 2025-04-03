@@ -17,6 +17,7 @@
 	vscode
 	bruno
 	helix
+	google-chrome
 	
 	oh-my-posh
 	zoxide
