@@ -24,6 +24,7 @@ homebrew = {
 	"ticktick"
 	"aerospace"
 	"zen-browser"
+	"beekeeper-studio"
 	
 	# font
 	"font-sf-pro"
