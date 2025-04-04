@@ -12,9 +12,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs"; 
     };
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, zen, home-manager }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, zen, home-manager, hyprland }:
     {
 nixosConfigurations = 
 	let 
@@ -57,6 +58,7 @@ thinkpad = nixpkgs.lib.nixosSystem {
       ./modules/bootloader.nix
       ./modules/user.nix
       ./modules/default.nix
+      ./modules/hyprland.nix
 
       # Add Home Manager as a NixOS module
         home-manager.nixosModules.home-manager
