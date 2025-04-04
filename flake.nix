@@ -8,9 +8,13 @@
     # nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew/main";
     zen.url = "github:youwen5/zen-browser-flake";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs"; 
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, zen }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, zen, home-manager }:
     {
 nixosConfigurations = 
 	let 
@@ -53,6 +57,16 @@ thinkpad = nixpkgs.lib.nixosSystem {
       ./modules/bootloader.nix
       ./modules/user.nix
       ./modules/default.nix
+
+      # Add Home Manager as a NixOS module
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+
+          # Configure your user's Home Manager settings
+          home-manager.users.konan = import ./home.nix;
+        } 
       ];
     };
   };
