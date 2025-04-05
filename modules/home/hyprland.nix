@@ -5,7 +5,10 @@
     enable = true;
     settings = {
       monitor = [
-        ",preferred,auto,1"
+        # ",preferred,auto,1
+        "DP-1,preferred,0x0,2"     # DisplayPort monitor as primary, at position 0,0
+        "eDP-1,preferred,auto,1"  # Position laptop screen to the right or below
+
       ];
       
       general = {
@@ -52,7 +55,11 @@
         "ALT SHIFT, 8, movetoworkspace, 8"
         "ALT SHIFT, 9, movetoworkspace, 9"
         "ALT SHIFT, 0, movetoworkspace, 10"
+        
+         "ALT, period, focusmonitor, +1"
+        "ALT, comma, focusmonitor, -1"
       ];
+
     };
   };
 
