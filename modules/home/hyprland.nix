@@ -22,7 +22,7 @@
       exec-once = ["waybar"];
       
       bind = [
-        # "ALT, Return, exec, ${pkgs.alacritty}/bin/alacritty"
+        "ALT, Return, exec, ${pkgs.ghostty}/bin/ghostty"
         "ALT, Q, killactive,"
         "ALT SHIFT, E, exit,"
         "ALT, R, exec, ${pkgs.wofi}/bin/wofi --show drun"
