@@ -9,7 +9,7 @@
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.device = "nodev";
   boot.loader.grub.efiInstallAsRemovable = true;
-  boot.loader.grub.extraEntriesBeforeNixOS = true;
+  boot.loader.grub.extraEntriesBeforeNixOS = false;
   boot.loader.grub.extraEntries = ''
         menuentry "Reboot" {
           reboot
