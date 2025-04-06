@@ -57,7 +57,9 @@
         "ALT SHIFT, 0, movetoworkspace, 10"
         
          "ALT, period, focusmonitor, +1"
-        "ALT, comma, focusmonitor, -1"
+         "ALT, comma, focusmonitor, -1"
+
+         
       ];
 
     };

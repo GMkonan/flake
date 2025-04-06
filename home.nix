@@ -7,6 +7,8 @@
   home.stateVersion = "23.11";
 
   programs.home-manager.enable = true;
+
+  fonts.fontconfig.enable = true;
   
   imports = [
     ./modules/home/hyprpaper.nix
