@@ -1,9 +1,17 @@
 ### Flake nix
 
-Nix stuff for both my darwin (mac) and linux pc's
+Nix stuff for both my darwin (mac) and linux pcs
 
 ## Darwin
 darwin-rebuild switch --flake ~/flake#mini
 
 #### Todo
-- [ ] divide in hosts correctly (currently I just mashed the linux repo here lol)
+- hyprland
+    - [ ] dark theme for applications
+    - [ ] resize panels
+    - [ ] solve electron issue
+    - [ ] change color borders
+- wofi
+    - [ ] use catppuccin theme
+- test vscode
+- use vscode tunnels
