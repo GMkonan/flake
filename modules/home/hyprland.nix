@@ -76,5 +76,6 @@
 
   home.packages = with pkgs; [
     wofi
+    hyprshot
   ];
 }
