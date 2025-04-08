@@ -36,6 +36,7 @@
 	go
 	rustup
 
+	ngrok
 	silicon
   ];
 
