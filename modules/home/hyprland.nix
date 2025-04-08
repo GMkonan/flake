@@ -66,8 +66,8 @@
          "ALT, period, focusmonitor, +1"
          "ALT, comma, focusmonitor, -1"
 
-         "ALT SHIFT, period, movecurrentworkspacemonitor, +1"
-         "ALT SHIFT, comma, movecurrentworkspacemonitor, -1"
+         "ALT SHIFT, period, movecurrentworkspacetomonitor, +1"
+         "ALT SHIFT, comma, movecurrentworkspacetomonitor, -1"
          
       ];
 
