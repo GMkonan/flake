@@ -17,6 +17,8 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   # Enable networking
   networking.networkmanager.enable = true;
 
