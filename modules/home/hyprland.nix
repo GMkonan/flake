@@ -7,7 +7,7 @@
       monitor = [
         # ",preferred,auto,1
         "DP-1,preferred,0x0,2"     # DisplayPort monitor as primary, at position 0,0
-        "eDP-1,preferred,auto,1"  # Position laptop screen to the right or below
+        "eDP-1,preferred,auto,1"  # Position laptop screen to the right
 
       ];
       
@@ -16,11 +16,14 @@
         gaps_out = 10;
         border_size = 2;
         layout = "dwindle";
+        "col.active_border" = "rgba(7287fdff)";
+        "col.inactive_border" = "rgba(595959aa)";
       };
-      
+     
       input = {
         kb_layout = "us";
         follow_mouse = 1;
+        sensitivity = -0.5;
       };
       exec-once = ["waybar"];
       
@@ -33,6 +36,10 @@
         "ALT, right, movefocus, r"
         "ALT, up, movefocus, u"
         "ALT, down, movefocus, d"
+        "ALT, h, movefocus, l"
+        "ALT, l, movefocus, r"
+        "ALT, k, movefocus, u"
+        "ALT, j, movefocus, d"
         "ALT, 1, workspace, 1"
         "ALT, 2, workspace, 2"
         "ALT, 3, workspace, 3"
@@ -59,6 +66,8 @@
          "ALT, period, focusmonitor, +1"
          "ALT, comma, focusmonitor, -1"
 
+         "ALT SHIFT, period, movecurrentworkspacemonitor, +1"
+         "ALT SHIFT, comma, movecurrentworkspacemonitor, -1"
          
       ];
 
