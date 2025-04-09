@@ -70,6 +70,7 @@
          "ALT SHIFT, period, movecurrentworkspacetomonitor, +1"
          "ALT SHIFT, comma, movecurrentworkspacetomonitor, -1"
          
+         "ALT, P, exec, hyprshot -m region --clipboard-only"
       ];
 
     };
