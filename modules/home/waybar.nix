@@ -8,13 +8,63 @@
       mainBar = {
         layer = "top";
         position = "top";
-        height = 30;
+        height = 25;
         spacing = 4;
 
-        modules-left = ["hyprland/workspaces"];
+        modules-left = ["custom/power-button" "hyprland/workspaces"];
         modules-center = ["hyprland/window"];
-        modules-right = ["network" "clock" "battery"];
+        modules-right = ["group/system" "clock" "battery" "custom/notification"];
 
+        "custom/power-button" = {
+          format = "";
+          on-click = "wlogout";
+          tooltip = false;
+        };
+
+   "group/system" = {
+     modules = [
+       "network"
+       "group/volume"
+     ];
+     orientation = "horizontal";
+   };
+
+"group/volume" = {
+    drawer = {
+      children-class = "volume";
+      transition-duration = 500;
+      transition-left-to-right = true;
+    };
+    modules = [
+      "pulseaudio"
+      "pulseaudio/slider"
+    ];
+    orientation = "horizontal";
+  };
+
+  pulseaudio = {
+    format = "{icon}";
+    format-bluetooth = "{icon}";
+    format-icons = {
+      default = [
+        "󰕿"
+        ""
+        "󰕾"
+      ];
+    };
+    format-muted = "󰖁";
+    on-click = "pavucontrol";
+    on-click-right = "pactl set-sink-mute 0 toggle";
+    scroll-step = 1;
+    tooltip-format = "{desc}\t{icon}{volume}%";
+  };
+  
+  "pulseaudio/slider" = {
+    max = 100;
+    min = 0;
+    orientation = "horizontal";
+  };
+  
         battery = {
             interval = 30;
             states = {
@@ -54,19 +104,31 @@
             # on-click = "kitty nmtui";
         };
 
-    # clock = {
-    #     # timezone = "American/Dubai";
-    #     tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-    #     format-alt = " {:%d/%m/%Y}";
-    #     format = " {:%H:%M}";
-    # };
-
-        # clock = {
-        #   format = "{:%H:%M}";
-        #   tooltip-format = "{:%Y-%m-%d | %H:%M}";
-        # };
-      };
+"custom/notification" = {
+  tooltip = false;
+  format = "{icon}";
+  format-icons = {
+      dnd-inhibited-none = "󰂚<sup></sup>";
+      dnd-inhibited-notification = "󰂚<span foreground='#f38ba8'><sup></sup></span>";
+      dnd-none = "󰂛";
+      dnd-notification = "󰂛<span foreground='#f38ba8'><sup></sup></span>";
+      inhibited-none = "󰂚<sup>󰜺</sup>";
+      inhibited-notification = "󰵙<span foreground='#f38ba8'><sup></sup></span>";
+      none = "󰂚<span color='#6c7086'><sup></sup></span>";
+      notification = "󰂚<span foreground='#f38ba8'><sup></sup></span>";
+    # notification = "<span foreground='#f9e2af'></span>";
+    # none = "<span foreground='#cdd6f4'></span>";
+  };
+  return-type = "json";
+  exec-if = "which swaync-client";
+  exec = "swaync-client -swb";
+  on-click = "swaync-client -t -sw";
+  on-click-right = "swaync-client -d -sw";
+  escape = true;
     };
+
+  };
+};
 
     style = ''
 
@@ -106,51 +168,63 @@
       }
       
       #waybar {
-        background: @base;
+        background: @crust;
         color: @text;
         margin: 5px 5px;
       }
 
-#network,
+/* Space first and last modules evenly */
+.modules-right:last-child { margin-right: 5px; }
+.modules-left:first-child { margin-left: 5px; }
+
+#custom-notification,
 #clock,
+#system,
+#custom-power-button,
 #battery {
-  background-color: @surface0;
-  padding: 0.5rem 1rem;
-  margin: 5px 0;
+  background-color: @mantle;
+  border-radius: 4px;
+  margin: 10px 10px;
+  padding: 5px 10px;
+  font-size: 18px;
+}
+
+#custom-power-button {
+    padding-right: 17px;
+    padding-left: 12px;
+    background-color: alpha(@red, 0.1);
+    color: @red;
 }
 
 #network {
-  color: @maroon;
-  border-radius: 0px 1rem 1rem 0px;
-  margin-right: 1rem;
+margin-right: 15px;
 }
 
 #clock {
-  color: @blue;
-  border-radius: 0px 1rem 1rem 0px;
   margin-right: 1rem;
 }
 
  #workspaces {
   border-radius: 1rem;
   margin: 5px;
-  background-color: @surface0;
   margin-left: 1rem;
 }
 
 #workspaces button {
-  color: @lavender;
-  border-radius: 1rem;
-  padding: 0.4rem;
+    padding: 0px 15px; 
+    font-weight: 900;
+    font-size: 20px;
+    border-radius: 0px;
+    background-color: @mantle;
 }
 
 #workspaces button.active {
-  color: @sky;
-  border-radius: 1rem;
+  color: @blue;
+  background: alpha(@blue, 0.1);
 }
 
 #workspaces button:hover {
-  color: @sapphire;
+  background-color: @sapphire;
   border-radius: 1rem;
 }      
 
@@ -166,12 +240,52 @@
         color: @red;
       }
 
+#custom-notification.dnd-notification, 
+#custom-notification.dnd-none {
+  color: @red;
+}
+
+#pulseaudio {
+  margin-left: 15px;
+}
+
+#pulseaudio-slider {
+    border: none;
+}
+
+#pulseaudio-slider {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#pulseaudio-slider slider {
+    margin-left: -10px;
+    min-width: 10px;
+    min-height: 10px;
+    background: transparent;
+    box-shadow: none;
+    padding: 0px;
+}
+
+#pulseaudio-slider trough {
+    min-width: 80px;
+    border-radius: 5px;
+    background-color: @surface0;
+}
+
+#pulseaudio-slider highlight {
+    border-radius: 5px;
+    min-height: 8px;
+    color: @lavender;
+}
+
     '';
   };
 
   home.packages = with pkgs; [
     waybar
     font-awesome
+    swaynotificationcenter
     nerd-fonts.code-new-roman
   ];
 }
