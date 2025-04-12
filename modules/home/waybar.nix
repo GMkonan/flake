@@ -8,7 +8,7 @@
       mainBar = {
         layer = "top";
         position = "top";
-        height = 25;
+        height = 20;
         spacing = 4;
 
         modules-left = ["custom/power-button" "hyprland/workspaces"];
@@ -25,9 +25,24 @@
      modules = [
        "network"
        "group/volume"
+       "bluetooth"
      ];
      orientation = "horizontal";
    };
+
+  bluetooth = {
+    format = "";
+    format-connected = "󰂱";
+    format-disabled = "󰂲";
+    format-off = "󰂲";
+    format-on = "";
+    on-click = "blueberry";
+    on-click-right = "rfkill toggle bluetooth";
+    tooltip-format = "{controller_alias}\t{controller_address}\n\n{num_connections} connected";
+    tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
+    tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
+    tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_address}\t󰥉{device_battery_percentage}%";
+  };
 
 "group/volume" = {
     drawer = {
@@ -95,13 +110,29 @@
         };
 
         network = {
-            format-wifi = "";
-            format-ethernet = "";
-            format-disconnected = "";
-            tooltip-format-disconnected = "Error";
-            tooltip-format-wifi = "{essid} ({signalStrength}%) ";
-            tooltip-format-ethernet = "{ifname} 🖧 ";
-            # on-click = "kitty nmtui";
+            # format-wifi = "";
+            # format-ethernet = "";
+            # format-disconnected = "";
+            # tooltip-format-disconnected = "Error";
+            # tooltip-format-wifi = "{essid} ({signalStrength}%) ";
+            # tooltip-format-ethernet = "{ifname} 🖧 ";
+    format = "{icon}";
+    format-disconnected = "󰖪";
+    format-ethernet = "󰈀/{cidr}";
+    format-icons = [
+      "󰤯"
+      "󰤟"
+      "󰤢"
+      "󰤥"
+      "󰤨"
+    ];
+    format-linked = "󰖩";
+    format-wifi = "{icon}";
+    on-click = "nm-connection-editor";
+    on-click-right = "rfkill toggle wifi";
+    tooltip = true;
+    tooltip-format = "interface:\t{ifname}\n\nconnected to {essid} at {signalStrength}% strength";
+    tooltip-format-disconnected = "interface: {ifname}\nconnected to {essid}\nat {signalStrength}% strength";
         };
 
 "custom/notification" = {
@@ -186,7 +217,7 @@
   border-radius: 4px;
   margin: 10px 10px;
   padding: 5px 10px;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 #custom-power-button {
@@ -196,26 +227,24 @@
     color: @red;
 }
 
-#network {
-margin-right: 15px;
+#pulseaudio {
+    font-size: 18px;
 }
 
 #clock {
   margin-right: 1rem;
 }
 
- #workspaces {
-  border-radius: 1rem;
-  margin: 5px;
-  margin-left: 1rem;
+#workspaces {
+    background-color: @mantle;
+    margin: 10px 5px;
+    border-radius: 4px;
 }
-
-#workspaces button {
+#workspaces > button { 
     padding: 0px 15px; 
     font-weight: 900;
     font-size: 20px;
     border-radius: 0px;
-    background-color: @mantle;
 }
 
 #workspaces button.active {
@@ -246,7 +275,7 @@ margin-right: 15px;
 }
 
 #pulseaudio {
-  margin-left: 15px;
+  margin-right: 15px;
 }
 
 #pulseaudio-slider {
@@ -276,7 +305,7 @@ margin-right: 15px;
 #pulseaudio-slider highlight {
     border-radius: 5px;
     min-height: 8px;
-    color: @lavender;
+    background-color: @lavender;
 }
 
     '';
@@ -286,6 +315,7 @@ margin-right: 15px;
     waybar
     font-awesome
     swaynotificationcenter
+    wlogout
     nerd-fonts.code-new-roman
   ];
 }
