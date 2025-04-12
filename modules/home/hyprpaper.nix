@@ -3,32 +3,15 @@
   lib,
   ...
 }:
-with lib;
-with builtins; let
+with lib; let
   theme = {
-    name = "catppuccin-mocha"; 
+    # https://github.com/hyprwm/hyprpaper/issues/108#issuecomment-2119611893
+    # Maybe add lutgen later
+    name = "catppuccin-mocha";
     wallpapers = ../../wallpapers;
   };
-  themedWallpaper = wallpaper:
-    pkgs.stdenv.mkDerivation rec {
-      name = "${theme.name}-${baseNameOf wallpaper}";
-      nativeBuildInputs = [pkgs.lutgen];
-      phases = ["buildPhase" "installPhase"];
-      buildPhase = ''
-        cp ${wallpaper} ./${name}
-        lutgen apply -p ${theme.name} ${name} -o themed
-      '';
-      installPhase = ''
-        cp themed/${name} $out
-      '';
-    };
   wallpapers = filesystem.listFilesRecursive theme.wallpapers;
-  themedWallpapers = listToAttrs (map (wallpaper: {
-      name = "${baseNameOf wallpaper}";
-      value = themedWallpaper wallpaper;
-    })
-    wallpapers);
-  wallpaperBashArray = "(\"${strings.concatStrings (strings.intersperse "\" \"" (map (wallpaper: "${wallpaper}") (attrValues themedWallpapers)))}\")";
+  wallpaperBashArray = "(\"${strings.concatStrings (strings.intersperse "\" \"" (map (wallpaper: "${wallpaper}") wallpapers))}\")";
   wallpaperRandomizer = pkgs.writeShellScriptBin "wallpaperRandomizer" ''
     wallpapers=${wallpaperBashArray}
     rand=$[$RANDOM % ''${#wallpapers[@]}]
@@ -41,13 +24,12 @@ with builtins; let
     done
   '';
 in {
-  # Add lutgen and hyprpaper explicitly to home.packages
+  # Explicitly add hyprpaper to home.packages
   home.packages = with pkgs; [
     wallpaperRandomizer
-    lutgen
     hyprpaper
   ];
-
+  
   services.hyprpaper = {
     enable = true;
     settings = {
@@ -56,7 +38,7 @@ in {
       splash_offset = 2.0;
     };
   };
-
+  
   systemd.user = {
     services.wallpaperRandomizer = {
       Install = {WantedBy = ["graphical-session.target"];};
