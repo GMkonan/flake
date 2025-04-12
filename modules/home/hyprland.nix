@@ -26,7 +26,7 @@
         follow_mouse = 1;
         sensitivity = -0.5;
       };
-      exec-once = ["waybar"];
+      exec-once = ["waybar" "swaync"];
       
       bind = [
         "ALT, Return, exec, ${pkgs.ghostty}/bin/ghostty"
