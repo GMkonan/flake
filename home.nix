@@ -9,6 +9,10 @@
   programs.home-manager.enable = true;
 
   fonts.fontconfig.enable = true;
+
+
+  catppuccin.flavor = "mocha";
+  catppuccin.enable = true;
   
   imports = [
     ./modules/home/hyprpaper.nix
