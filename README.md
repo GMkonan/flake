@@ -15,6 +15,7 @@ darwin-rebuild switch --flake ~/flake#mini
 sudo nixos-rebuild switch --flake ~/flake#thinkpad (or other host)
 
 #### Todo
+- [ ] check if the catppuccin nix thing is actually working
 - hyprland
     - [ ] dark theme for applications
     - [ ] resize panels

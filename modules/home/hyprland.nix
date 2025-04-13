@@ -1,16 +1,17 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
       monitor = [
         # ",preferred,auto,1
-        "DP-1,preferred,0x0,2"     # DisplayPort monitor as primary, at position 0,0
-        "eDP-1,preferred,auto,1"  # Position laptop screen to the right
-
+        "DP-1,preferred,0x0,2" # DisplayPort monitor as primary, at position 0,0
+        "eDP-1,preferred,auto,1" # Position laptop screen to the right
       ];
-      
+
       general = {
         gaps_in = 5;
         gaps_out = 10;
@@ -19,7 +20,7 @@
         "col.active_border" = "rgba(7287fdff)";
         "col.inactive_border" = "rgba(595959aa)";
       };
-     
+
       input = {
         kb_layout = "us";
         kb_variant = "intl";
@@ -27,7 +28,7 @@
         sensitivity = -0.5;
       };
       exec-once = ["waybar" "swaync"];
-      
+
       bind = [
         "ALT, Return, exec, ${pkgs.ghostty}/bin/ghostty"
         "ALT, Q, killactive,"
@@ -51,7 +52,7 @@
         "ALT, 8, workspace, 8"
         "ALT, 9, workspace, 9"
         "ALT, 0, workspace, 10"
-        
+
         # Move active window to workspace using Alt + Shift + [0-9]
         "ALT SHIFT, 1, movetoworkspace, 1"
         "ALT SHIFT, 2, movetoworkspace, 2"
@@ -63,16 +64,15 @@
         "ALT SHIFT, 8, movetoworkspace, 8"
         "ALT SHIFT, 9, movetoworkspace, 9"
         "ALT SHIFT, 0, movetoworkspace, 10"
-        
-         "ALT, period, focusmonitor, +1"
-         "ALT, comma, focusmonitor, -1"
 
-         "ALT SHIFT, period, movecurrentworkspacetomonitor, +1"
-         "ALT SHIFT, comma, movecurrentworkspacetomonitor, -1"
-         
-         "ALT, P, exec, hyprshot -m region --clipboard-only"
+        "ALT, period, focusmonitor, +1"
+        "ALT, comma, focusmonitor, -1"
+
+        "ALT SHIFT, period, movecurrentworkspacetomonitor, +1"
+        "ALT SHIFT, comma, movecurrentworkspacetomonitor, -1"
+
+        "ALT, P, exec, hyprshot -m region --clipboard-only"
       ];
-
     };
   };
 
