@@ -26,3 +26,6 @@ sudo nixos-rebuild switch --flake ~/flake#thinkpad (or other host)
     - [ ] use catppuccin theme
 - waybar
     - [ ] Add pomodoro
+
+- server
+    - [ ] Manage secrets with sops-nix (for now I'm just not commiting secrets)
