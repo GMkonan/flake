@@ -13,9 +13,10 @@
       inputs.nixpkgs.follows = "nixpkgs"; 
     };
     hyprland.url = "github:hyprwm/Hyprland";
+    catppuccin.url = "github:catppuccin/nix";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, zen, home-manager, hyprland }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, zen, home-manager, hyprland, catppuccin }:
     {
 nixosConfigurations = 
 	let 
@@ -59,7 +60,7 @@ thinkpad = nixpkgs.lib.nixosSystem {
       ./modules/user.nix
       ./modules/default.nix
       ./modules/hyprland.nix
-
+      catppuccin.nixosModules.catppuccin
       # Add Home Manager as a NixOS module
         home-manager.nixosModules.home-manager
         {
@@ -67,7 +68,12 @@ thinkpad = nixpkgs.lib.nixosSystem {
           home-manager.useUserPackages = true;
 
           # Configure your user's Home Manager settings
-          home-manager.users.konan = import ./home.nix;
+          home-manager.users.konan = {
+		  imports = [
+		  ./home.nix 
+		  catppuccin.homeManagerModules.catppuccin
+		];
+	      };
         } 
       ];
     };
