@@ -3,11 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-
-let
-  # importing via this lazy way for now, might consider sops-nix at a later point
-  secrets = import (~/flake/hosts/server/secrets.nix);
-in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -23,10 +18,10 @@ in
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.interfaces.enp27s0.ipv4.addresses = [ {
-	address = secrets.serverIP;
+	address = "";
 	prefixLength = 24;
 	} ];
-  networking.defaultGateway = secrets.serverGateway;
+  networking.defaultGateway = "";
   networking.nameservers = [ "8.8.8.8" ];
 
   # Configure network proxy if necessary
