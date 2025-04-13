@@ -17,7 +17,6 @@
     bruno
     helix
     google-chrome
-    biome
 
     oh-my-posh
     zoxide

@@ -60,6 +60,7 @@ thinkpad = nixpkgs.lib.nixosSystem {
       ./modules/user.nix
       ./modules/default.nix
       ./modules/hyprland.nix
+      ./nvim/default.nix
       catppuccin.nixosModules.catppuccin
       # Add Home Manager as a NixOS module
         home-manager.nixosModules.home-manager
