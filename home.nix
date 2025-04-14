@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.username = "konan";
   home.homeDirectory = "/home/konan";
 
@@ -38,6 +34,10 @@
   # User environment packages
   home.packages = with pkgs; [
     # Add more user packages here
-    hyprpaper
+    bat
   ];
+
+  programs = {
+    bat.enable = true;
+  };
 }

@@ -5,6 +5,7 @@
 }: {
   wayland.windowManager.hyprland = {
     enable = true;
+
     settings = {
       monitor = [
         # ",preferred,auto,1

@@ -21,7 +21,6 @@
     oh-my-posh
     zoxide
     lsd
-    bat
     fzf
     fd
     ripgrep
