@@ -104,6 +104,7 @@
           ./hosts/mac/configuration.nix
           ./modules/packages.nix
           ./modules/tailscale.nix
+          ./nvim/default.nix
           nix-homebrew.darwinModules.nix-homebrew
           {
             nix-homebrew = {
