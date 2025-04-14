@@ -1,26 +1,27 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   home.username = "konan";
   home.homeDirectory = "/home/konan";
-  
+
   home.stateVersion = "23.11";
 
   programs.home-manager.enable = true;
 
   fonts.fontconfig.enable = true;
 
-
-  catppuccin.flavor = "mocha";
   catppuccin.enable = true;
-  
+  catppuccin.flavor = "mocha";
+
   imports = [
     ./modules/home/hyprpaper.nix
     ./modules/home/waybar.nix
     ./modules/home/hyprland.nix
   ];
 
-    # You can specify packages for your user environment
+  # You can specify packages for your user environment
   # home.packages = with pkgs; [
   #   firefox
   #   btop
