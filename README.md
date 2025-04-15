@@ -15,14 +15,14 @@ darwin-rebuild switch --flake ~/flake#mini
 sudo nixos-rebuild switch --flake ~/flake#thinkpad (or other host)
 
 #### Todo
-- [ ] check if the catppuccin nix thing is actually working
+- [x] check if the catppuccin nix thing is actually working
 - hyprland
     - [ ] dark theme for applications
     - [ ] resize panels
     - [ ] solve electron issue
-    - [ ] change color borders
+    - [x] change color borders
     - [ ] widgets for hyprland
-    - [ ] wallpaper change (change some configs)
+    - [x] wallpaper change (change some configs)
 - wofi
     - [ ] use catppuccin theme
 - waybar
@@ -30,3 +30,11 @@ sudo nixos-rebuild switch --flake ~/flake#thinkpad (or other host)
 
 - server
     - [ ] Manage secrets with sops-nix (for now I'm just not commiting secrets)
+
+#### Some Refs:
+- https://github.com/Zakar98k/hyprland-catppuccin-dotz
+- https://github.com/elkowar/eww/
+- ags
+- https://github.com/hyprwm/hyprpaper/issues/108#issuecomment-2119611893
+- https://github.com/catppuccin/nix?tab=readme-ov-file
+- https://www.reddit.com/r/archlinux/comments/136eaiw/hyprland_with_waybar_config_reloading/

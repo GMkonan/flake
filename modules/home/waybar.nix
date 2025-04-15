@@ -1,11 +1,9 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.waybar = {
     enable = true;
 
+    catppuccin.enable = true;
+    catppuccin.flavor = "mocha";
     settings = {
       mainBar = {
         layer = "top";
