@@ -1,12 +1,10 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   wayland.windowManager.hyprland = {
     enable = true;
 
     settings = {
+      "$mod" = "ALT";
+
       monitor = [
         # ",preferred,auto,1
         "DP-1,preferred,0x0,2" # DisplayPort monitor as primary, at position 0,0
@@ -20,6 +18,7 @@
         layout = "dwindle";
         "col.active_border" = "rgba(7287fdff)";
         "col.inactive_border" = "rgba(595959aa)";
+        resize_on_border = true;
       };
 
       input = {
@@ -28,7 +27,17 @@
         follow_mouse = 1;
         sensitivity = -0.5;
       };
+
+      device = {
+        name = "tpps/2-ibm-trackpoint";
+        sensitivity = 0;
+      };
+
       exec-once = ["waybar" "swaync"];
+
+      decoration = {
+        rounding = 16;
+      };
 
       bind = [
         "ALT, Return, exec, ${pkgs.ghostty}/bin/ghostty"
@@ -73,43 +82,8 @@
         "ALT SHIFT, comma, movecurrentworkspacetomonitor, -1"
 
         "ALT, P, exec, hyprshot -m region --clipboard-only"
-
-        # modes
-        "SUPER, R, submap, resize" # Enter resize mode
       ];
-
-      submap = {
-        resize = {
-          bind = [
-            # Arrow keys
-            ", left, resizeactive, -20 0"
-            ", right, resizeactive, 20 0"
-            ", up, resizeactive, 0 -20"
-            ", down, resizeactive, 0 20"
-
-            # vim-style keys
-            ", h, resizeactive, -20 0"
-            ", l, resizeactive, 20 0"
-            ", k, resizeactive, 0 -20"
-            ", j, resizeactive, 0 20"
-
-            # Return to default mode
-            ", escape, submap, reset"
-            ", Return, submap, reset"
-          ];
-        };
-      };
     };
-
-    extraConfig = ''
-      # You can also define a script for restarting Waybar
-      bind = SUPER SHIFT + r, exec, ${pkgs.writeShellScript "restart-waybar" ''
-        #!/bin/sh
-        pkill waybar
-        sleep 0.5  # Small delay to ensure clean shutdown
-        hyprctl dispatch exec waybar
-      ''}
-    '';
   };
 
   home.packages = with pkgs; [
