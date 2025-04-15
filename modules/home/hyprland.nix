@@ -73,8 +73,43 @@
         "ALT SHIFT, comma, movecurrentworkspacetomonitor, -1"
 
         "ALT, P, exec, hyprshot -m region --clipboard-only"
+
+        # modes
+        "SUPER, R, submap, resize" # Enter resize mode
       ];
+
+      submap = {
+        resize = {
+          bind = [
+            # Arrow keys
+            ", left, resizeactive, -20 0"
+            ", right, resizeactive, 20 0"
+            ", up, resizeactive, 0 -20"
+            ", down, resizeactive, 0 20"
+
+            # vim-style keys
+            ", h, resizeactive, -20 0"
+            ", l, resizeactive, 20 0"
+            ", k, resizeactive, 0 -20"
+            ", j, resizeactive, 0 20"
+
+            # Return to default mode
+            ", escape, submap, reset"
+            ", Return, submap, reset"
+          ];
+        };
+      };
     };
+
+    extraConfig = ''
+      # You can also define a script for restarting Waybar
+      bind = SUPER SHIFT + r, exec, ${pkgs.writeShellScript "restart-waybar" ''
+        #!/bin/sh
+        pkill waybar
+        sleep 0.5  # Small delay to ensure clean shutdown
+        hyprctl dispatch exec waybar
+      ''}
+    '';
   };
 
   home.packages = with pkgs; [

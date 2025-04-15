@@ -16,6 +16,7 @@ sudo nixos-rebuild switch --flake ~/flake#thinkpad (or other host)
 
 #### Todo
 - [x] check if the catppuccin nix thing is actually working
+- change the config of catppuccin to the beeter way you thought of
 - hyprland
     - [ ] dark theme for applications
     - [ ] resize panels
