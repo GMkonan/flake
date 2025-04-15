@@ -25,7 +25,7 @@ sudo nixos-rebuild switch --flake ~/flake#thinkpad (or other host)
     - [ ] widgets for hyprland
     - [x] wallpaper change (change some configs)
 - wofi
-    - [ ] use catppuccin theme
+    - [x] use catppuccin theme
 - waybar
     - [ ] Add pomodoro
 

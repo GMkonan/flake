@@ -29,7 +29,7 @@ in {
     wallpaperRandomizer
     hyprpaper
   ];
-  
+
   services.hyprpaper = {
     enable = true;
     settings = {
@@ -38,7 +38,7 @@ in {
       splash_offset = 2.0;
     };
   };
-  
+
   systemd.user = {
     services.wallpaperRandomizer = {
       Install = {WantedBy = ["graphical-session.target"];};
