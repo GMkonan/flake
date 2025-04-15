@@ -16,6 +16,7 @@
     ./modules/home/waybar.nix
     ./modules/home/hyprland.nix
     ./modules/home/wofi.nix
+    ./modules/home/gtk.nix
   ];
 
   # You can specify packages for your user environment
