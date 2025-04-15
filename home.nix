@@ -15,6 +15,7 @@
     ./modules/home/hyprpaper.nix
     ./modules/home/waybar.nix
     ./modules/home/hyprland.nix
+    ./modules/home/wofi.nix
   ];
 
   # You can specify packages for your user environment
@@ -35,6 +36,7 @@
   home.packages = with pkgs; [
     # Add more user packages here
     bat
+    wofi
   ];
 
   programs = {
