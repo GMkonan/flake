@@ -8,7 +8,7 @@
       mainBar = {
         layer = "top";
         position = "top";
-        height = 20;
+        height = 15;
         spacing = 4;
 
         modules-left = ["custom/power-button" "hyprland/workspaces"];
@@ -193,14 +193,16 @@
               border: none;
               border-radius: 0;
               font-family: "Font Awesome 5 Free", "Noto Sans", "Roboto", "Arial", sans-serif;
-              font-size: 13px;
+              font-size: 12px;
               min-height: 0;
+              margin: 0;
+              padding: 0;
             }
 
             #waybar {
               background: @crust;
               color: @text;
-              margin: 5px 5px;
+              margin: 2px 5px;
             }
 
       /* Space first and last modules evenly */
@@ -214,9 +216,9 @@
       #battery {
         background-color: @mantle;
         border-radius: 4px;
-        margin: 10px 10px;
-        padding: 5px 10px;
-        font-size: 15px;
+        margin: 2px 5px;
+        padding: 3px 5px;
+        font-size: 14px;
       }
 
       #custom-power-button {
@@ -227,7 +229,7 @@
       }
 
       #pulseaudio {
-          font-size: 18px;
+          font-size: 16px;
       }
 
       #clock {
@@ -236,13 +238,12 @@
 
       #workspaces {
           background-color: @mantle;
-          margin: 10px 5px;
           border-radius: 4px;
       }
       #workspaces > button {
           padding: 0px 15px;
           font-weight: 900;
-          font-size: 20px;
+          font-size: 18px;
           border-radius: 0px;
       }
 
@@ -253,7 +254,6 @@
 
       #workspaces button:hover {
         background-color: @sapphire;
-        border-radius: 1rem;
       }
 
       #battery {
