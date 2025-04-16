@@ -139,22 +139,47 @@
           tooltip = false;
           format = "{icon}";
           format-icons = {
-            dnd-inhibited-none = "󰂚<sup></sup>";
-            dnd-inhibited-notification = "󰂚<span foreground='#f38ba8'><sup></sup></span>";
-            dnd-none = "󰂛";
-            dnd-notification = "󰂛<span foreground='#f38ba8'><sup></sup></span>";
-            inhibited-none = "󰂚<sup>󰜺</sup>";
-            inhibited-notification = "󰵙<span foreground='#f38ba8'><sup></sup></span>";
-            none = "󰂚<span color='#6c7086'><sup></sup></span>";
-            notification = "󰂚<span foreground='#f38ba8'><sup></sup></span>";
-            # notification = "<span foreground='#f9e2af'></span>";
-            # none = "<span foreground='#cdd6f4'></span>";
+            # Basic states
+            "none" = "󰂚<span color='#6c7086'><sup></sup></span>";
+            "notification" = "󰂚<span foreground='#f38ba8'><sup></sup></span>";
+            # DND states
+            "dnd-none" = "󰂛";
+            "dnd-notification" = "󰂛<span foreground='#f38ba8'><sup></sup></span>";
+            # Inhibited states (when screen is shared/recorded)
+            "inhibited-none" = "󰂚<sup>󰜺</sup>";
+            "inhibited-notification" = "󰵙<span foreground='#f38ba8'><sup></sup></span>";
+            # Combined DND and inhibited states
+            "dnd-inhibited-none" = "󰂚<sup></sup>";
+            "dnd-inhibited-notification" = "󰂚<span foreground='#f38ba8'><sup></sup></span>";
           };
-          return-type = "json";
-          exec-if = "which swaync-client";
-          exec = "swaync-client -swb";
-          on-click = "swaync-client -t -sw";
-          on-click-right = "swaync-client -d -sw";
+          # Script to determine the current state
+          exec = ''
+            bash -c '
+              state="";
+
+              # Check if dunst is paused (DND)
+              ${pkgs.dunst}/bin/dunstctl is-paused >/dev/null && state="dnd-";
+
+              # Check if screen is being shared/recorded (requires xdg-desktop-portal)
+              if [ -f "$XDG_RUNTIME_DIR/inhibit-notification" ]; then
+                if [ -n "$state" ]; then
+                  state="dnd-inhibited-"
+                else
+                  state="inhibited-"
+                fi
+              fi
+
+              # Check notification count
+              ${pkgs.dunst}/bin/dunstctl count > 0 && state="''${state}notification" || state="''${state}none";
+
+              # Output JSON
+              echo "{\"icon\": \"$state\"}"
+            '
+          '';
+          interval = 1;
+          # Actions
+          on-click = "${pkgs.dunst}/bin/dunstctl close-all"; # Close all notifications
+          on-click-right = "${pkgs.dunst}/bin/dunstctl set-paused toggle"; # Toggle DND
           escape = true;
         };
       };
@@ -317,8 +342,9 @@
   home.packages = with pkgs; [
     waybar
     font-awesome
-    swaynotificationcenter
     wlogout
+    xdg-desktop-portal
+    xdg-desktop-portal-wlr
     nerd-fonts.code-new-roman
   ];
 }

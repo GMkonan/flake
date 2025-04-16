@@ -38,6 +38,7 @@
     # Add more user packages here
     bat
     wofi
+    dunst
   ];
 
   programs = {
