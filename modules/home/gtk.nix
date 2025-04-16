@@ -2,8 +2,6 @@
   # GTK theming with Catppuccin
   gtk = {
     enable = true;
-    catppuccin.enable = true;
-    catppuccin.flavor = "mocha";
 
     # Additional GTK settings
     gtk3.extraConfig = {
