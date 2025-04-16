@@ -44,6 +44,7 @@
         "ALT, Q, killactive,"
         "ALT SHIFT, E, exit,"
         "ALT, R, exec, ${pkgs.wofi}/bin/wofi --show drun"
+        "ALT, Z, exec, zen"
         "ALT, left, movefocus, l"
         "ALT, right, movefocus, r"
         "ALT, up, movefocus, u"
@@ -82,6 +83,8 @@
         "ALT SHIFT, comma, movecurrentworkspacetomonitor, -1"
 
         "ALT, P, exec, hyprshot -m region --clipboard-only"
+
+        "ALT SHIFT, P, exec, pkill waybar && hyprctl dispatch exec waybar"
       ];
     };
   };
