@@ -16,21 +16,30 @@ sudo nixos-rebuild switch --flake ~/flake#thinkpad (or other host)
 
 #### Todo
 - [x] check if the catppuccin nix thing is actually working
-- change the config of catppuccin to the beeter way you thought of
+- [ ] make catppuccin config be enable for everything in home manager
+- [ ] check catppuccin gtk being not supported, and see what you can do
 - hyprland
-    - [ ] dark theme for applications
-    - [ ] resize panels
+    - [x] resize panels
     - [ ] solve electron issue
+    - [ ] widgets for hyprland (ags?)
     - [x] change color borders
-    - [ ] widgets for hyprland
     - [x] wallpaper change (change some configs)
 - wofi
     - [x] use catppuccin theme
 - waybar
     - [ ] Add pomodoro
+- home manager
+    - [ ] pass some of the packages to install via home manager (more config options through it)
+    - [ ] add home manager to other of my hosts 
+        - and divide home packages better to make it work for other hosts
 
 - server
     - [ ] Manage secrets with sops-nix (for now I'm just not commiting secrets)
+    - [ ] Add tailscale (to access server services on other pcs/networks)
+
+- Nix
+    - [ ] Delete useless stuff from configuration.nix from hosts and etc, module it better
+    - [ ] Add gc 30 days to other hosts to cleanup generations
 
 #### Some Refs:
 - https://github.com/Zakar98k/hyprland-catppuccin-dotz
