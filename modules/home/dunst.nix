@@ -3,16 +3,36 @@
     enable = true;
     settings = {
       global = {
-        # Adjust these settings to your liking
+        # Basic settings
+        follow = "keyboard";
+        width = 300;
+        height = 300;
+        origin = "top";
+        offset = "10x10";
+        notification_limit = 0;
+
+        # Appearance
+        transparency = 0;
+        padding = 8;
+        horizontal_padding = 8;
+        frame_width = 1;
+        separator_height = 1;
+
+        # Text
         font = "monospace 10";
-        geometry = "x400+0-0"; # Adjust position and size as needed
-        ignore = ["summary:Network connection lost"];
+        line_height = 0;
+        markup = "full";
+        format = "<b>%s</b>\n%b";
+
+        # Icons
+        icon_position = "left";
+        min_icon_size = 32;
+        max_icon_size = 128;
+
+        # History
+        sticky_history = "yes";
+        history_length = 20;
       };
-      # Example rule to change urgency based on app name
-      # urgency_low = {
-      #   appname = "discord";
-      #   icon = "discord";
-      # };
     };
   };
 }

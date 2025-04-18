@@ -4,9 +4,10 @@
     package = pkgs.wofi;
     settings = {
       # Basic settings as above
-      width = 500;
+      width = 700;
       height = 300;
       mode = "drun";
+      allow_images = true;
       filter_rate = 100;
       allow_markup = true;
       no_actions = true;
@@ -56,7 +57,7 @@
       window {
         margin: 0px;
         padding: 10px;
-        border: 3px solid @mauve;
+        border: 1px solid @lavender;
         border-radius: 15px;
         background-color: @base;
         animation: slideIn 0.2s ease-in-out both;
@@ -64,7 +65,7 @@
 
       #inner-box {
         margin: 5px;
-        padding: 10px;
+        padding: 3px;
         border: none;
         background-color: @base;
         border-radius: 15px;
@@ -72,7 +73,7 @@
 
       #outer-box {
         margin: 5px;
-        padding: 10px;
+        padding: 3px;
         border: none;
         background-color: @base;
         border-radius: 15px;
@@ -86,7 +87,7 @@
 
       #input {
         margin: 5px;
-        padding: 10px;
+        padding: 3px;
         border: none;
         color: @text;
         background-color: @surface0;
@@ -95,14 +96,14 @@
 
       #text {
         margin: 5px;
-        padding: 10px;
+        padding: 3px;
         border: none;
         color: @text;
       }
 
       #entry {
         margin: 5px;
-        padding: 10px;
+        padding: 3px;
         border-radius: 10px;
         background-color: transparent;
       }

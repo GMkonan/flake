@@ -17,6 +17,7 @@
     ./modules/home/hyprland.nix
     ./modules/home/wofi.nix
     ./modules/home/gtk.nix
+    ./modules/home/dunst.nix
   ];
 
   # You can specify packages for your user environment

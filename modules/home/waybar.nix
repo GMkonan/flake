@@ -2,8 +2,6 @@
   programs.waybar = {
     enable = true;
 
-    catppuccin.enable = true;
-    catppuccin.flavor = "mocha";
     settings = {
       mainBar = {
         layer = "top";
@@ -136,205 +134,199 @@
         };
 
         "custom/notification" = {
-          tooltip = false;
-          format = "{icon}";
+          tooltip = true;
+          format = "{icon} {}";
           format-icons = {
-            # Basic states
-            "none" = "󰂚<span color='#6c7086'><sup></sup></span>";
-            "notification" = "󰂚<span foreground='#f38ba8'><sup></sup></span>";
-            # DND states
-            "dnd-none" = "󰂛";
-            "dnd-notification" = "󰂛<span foreground='#f38ba8'><sup></sup></span>";
-            # Inhibited states (when screen is shared/recorded)
-            "inhibited-none" = "󰂚<sup>󰜺</sup>";
-            "inhibited-notification" = "󰵙<span foreground='#f38ba8'><sup></sup></span>";
-            # Combined DND and inhibited states
-            "dnd-inhibited-none" = "󰂚<sup></sup>";
-            "dnd-inhibited-notification" = "󰂚<span foreground='#f38ba8'><sup></sup></span>";
+            "default" = ""; # Bell icon
+            "none" = ""; # Bell icon
+            "dnd" = ""; # Bell-off icon
+            "notification" = "<span foreground='#f38ba8'>󰂚</span>"; # Bell icon in red
+            "dnd-notification" = "<span foreground='#f38ba8'>󰂚</span>"; # Bell-off icon in red
           };
-          # Script to determine the current state
           exec = ''
-            bash -c '
-              state="";
+            ${pkgs.bash}/bin/bash -c 'while true; do
+              count=$(${pkgs.dunst}/bin/dunstctl count)
+              paused=$(${pkgs.dunst}/bin/dunstctl is-paused)
+              latest=$(${pkgs.dunst}/bin/dunstctl history | ${pkgs.jq}/bin/jq -r ".data[0][0].summary" 2>/dev/null)
 
-              # Check if dunst is paused (DND)
-              ${pkgs.dunst}/bin/dunstctl is-paused >/dev/null && state="dnd-";
-
-              # Check if screen is being shared/recorded (requires xdg-desktop-portal)
-              if [ -f "$XDG_RUNTIME_DIR/inhibit-notification" ]; then
-                if [ -n "$state" ]; then
-                  state="dnd-inhibited-"
+              if [ "$paused" = "true" ]; then
+                if [ "$count" -gt 0 ]; then
+                  echo "{\"icon\":\"dnd-notification\", \"text\":\"$latest ($count)\", \"tooltip\":\"$latest\"}"
                 else
-                  state="inhibited-"
+                  echo "{\"icon\":\"dnd\", \"text\":\"\", \"tooltip\":\"Do Not Disturb\"}"
+                fi
+              else
+                if [ "$count" -gt 0 ]; then
+                  echo "{\"icon\":\"notification\", \"text\":\"$latest ($count)\", \"tooltip\":\"$latest\"}"
+                else
+                  echo "{\"icon\":\"none\", \"text\":\"\", \"tooltip\":\"No notifications\"}"
                 fi
               fi
 
-              # Check notification count
-              ${pkgs.dunst}/bin/dunstctl count > 0 && state="''${state}notification" || state="''${state}none";
-
-              # Output JSON
-              echo "{\"icon\": \"$state\"}"
-            '
+              sleep 1
+            done'
           '';
-          interval = 1;
-          # Actions
-          on-click = "${pkgs.dunst}/bin/dunstctl close-all"; # Close all notifications
-          on-click-right = "${pkgs.dunst}/bin/dunstctl set-paused toggle"; # Toggle DND
-          escape = true;
+          on-click = "${pkgs.dunst}/bin/dunstctl close-all";
+          on-click-right = "${pkgs.dunst}/bin/dunstctl set-paused toggle";
+          on-click-middle = "${pkgs.dunst}/bin/dunstctl history-pop";
         };
       };
     };
 
     style = ''
 
-            @define-color rosewater #f5e0dc;
-            @define-color flamingo #f2cdcd;
-            @define-color pink #f5c2e7;
-            @define-color mauve #cba6f7;
-            @define-color red #f38ba8;
-            @define-color maroon #eba0ac;
-            @define-color peach #fab387;
-            @define-color yellow #f9e2af;
-            @define-color green #a6e3a1;
-            @define-color teal #94e2d5;
-            @define-color sky #89dceb;
-            @define-color sapphire #74c7ec;
-            @define-color blue #89b4fa;
-            @define-color lavender #b4befe;
-            @define-color text #cdd6f4;
-            @define-color subtext1 #bac2de;
-            @define-color subtext0 #a6adc8;
-            @define-color overlay2 #9399b2;
-            @define-color overlay1 #7f849c;
-            @define-color overlay0 #6c7086;
-            @define-color surface2 #585b70;
-            @define-color surface1 #45475a;
-            @define-color surface0 #313244;
-            @define-color base #1e1e2e;
-            @define-color mantle #181825;
-            @define-color crust #11111b;
+                  @define-color rosewater #f5e0dc;
+                  @define-color flamingo #f2cdcd;
+                  @define-color pink #f5c2e7;
+                  @define-color mauve #cba6f7;
+                  @define-color red #f38ba8;
+                  @define-color maroon #eba0ac;
+                  @define-color peach #fab387;
+                  @define-color yellow #f9e2af;
+                  @define-color green #a6e3a1;
+                  @define-color teal #94e2d5;
+                  @define-color sky #89dceb;
+                  @define-color sapphire #74c7ec;
+                  @define-color blue #89b4fa;
+                  @define-color lavender #b4befe;
+                  @define-color text #cdd6f4;
+                  @define-color subtext1 #bac2de;
+                  @define-color subtext0 #a6adc8;
+                  @define-color overlay2 #9399b2;
+                  @define-color overlay1 #7f849c;
+                  @define-color overlay0 #6c7086;
+                  @define-color surface2 #585b70;
+                  @define-color surface1 #45475a;
+                  @define-color surface0 #313244;
+                  @define-color base #1e1e2e;
+                  @define-color mantle #181825;
+                  @define-color crust #11111b;
 
-            * {
-              border: none;
-              border-radius: 0;
-              font-family: "Font Awesome 5 Free", "Noto Sans", "Roboto", "Arial", sans-serif;
-              font-size: 12px;
-              min-height: 0;
-              margin: 0;
-              padding: 0;
-            }
+                  * {
+                    border: none;
+                    border-radius: 0;
+                    font-family: "Font Awesome 5 Free", "Noto Sans", "Roboto", "Arial", sans-serif;
+                    font-size: 12px;
+                    min-height: 0;
+                    margin: 0;
+                    padding: 0;
+                  }
 
-            #waybar {
-              background: @crust;
-              color: @text;
+                  #waybar {
+                    background: @crust;
+                    color: @text;
+                    margin: 2px 5px;
+                  }
+
+            /* Space first and last modules evenly */
+            .modules-right:last-child { margin-right: 5px; }
+            .modules-left:first-child { margin-left: 5px; }
+
+            #clock,
+            #system,
+            #custom-power-button,
+            #battery {
+              background-color: @mantle;
+              border-radius: 4px;
               margin: 2px 5px;
+              padding: 3px 5px;
+              font-size: 14px;
             }
 
-      /* Space first and last modules evenly */
-      .modules-right:last-child { margin-right: 5px; }
-      .modules-left:first-child { margin-left: 5px; }
-
-      #custom-notification,
-      #clock,
-      #system,
-      #custom-power-button,
-      #battery {
-        background-color: @mantle;
-        border-radius: 4px;
-        margin: 2px 5px;
-        padding: 3px 5px;
-        font-size: 14px;
-      }
-
-      #custom-power-button {
-          padding-right: 17px;
-          padding-left: 12px;
-          background-color: alpha(@red, 0.1);
-          color: @red;
-      }
-
-      #pulseaudio {
-          font-size: 16px;
-      }
-
-      #clock {
-        margin-right: 1rem;
-      }
-
-      #workspaces {
-          background-color: @mantle;
-          border-radius: 4px;
-      }
-      #workspaces > button {
-          padding: 0px 15px;
-          font-weight: 900;
-          font-size: 18px;
-          border-radius: 0px;
-      }
-
-      #workspaces button.active {
-        color: @blue;
-        background: alpha(@blue, 0.1);
-      }
-
-      #workspaces button:hover {
-        background-color: @sapphire;
-      }
-
-      #battery {
-              color: @green;
+            #custom-power-button {
+                padding-right: 17px;
+                padding-left: 12px;
+                background-color: alpha(@red, 0.1);
+                color: @red;
             }
 
-            #battery.charging {
-              color: @green;
+            #pulseaudio {
+                font-size: 16px;
             }
 
-            #battery.warning:not(.charging) {
-              color: @red;
+            #clock {
+              margin-right: 1rem;
             }
 
-      #custom-notification.dnd-notification,
-      #custom-notification.dnd-none {
-        color: @red;
+            #workspaces {
+                background-color: @mantle;
+                border-radius: 4px;
+            }
+            #workspaces > button {
+                padding: 0px 15px;
+                font-weight: 900;
+                font-size: 18px;
+                border-radius: 0px;
+            }
+
+            #workspaces button.active {
+              color: @crust;
+              background: @lavender
+            }
+
+            #workspaces button:hover {
+              background-color: @sapphire;
+            }
+
+            #battery {
+                    color: @green;
+                  }
+
+                  #battery.charging {
+                    color: @green;
+                  }
+
+                  #battery.warning:not(.charging) {
+                    color: @red;
+                  }
+
+      #custom-notification {
+        padding: 0 10px;
+        margin: 0 4px;
       }
 
-      #network {
-        margin-right: 15px;
+      #custom-notification.notification {
+        background-color: rgba(243, 139, 168, 0.2);
+        border-bottom: 2px solid #f38ba8;
       }
 
-      #pulseaudio {
-        margin-right: 15px;
-      }
+            #network {
+              margin-right: 15px;
+            }
 
-      #pulseaudio-slider {
-          border: none;
-      }
+            #pulseaudio {
+              margin-right: 15px;
+            }
 
-      #pulseaudio-slider {
-        margin-left: 5px;
-        margin-right: 5px;
-      }
+            #pulseaudio-slider {
+                border: none;
+            }
 
-      #pulseaudio-slider slider {
-          margin-left: -10px;
-          min-width: 10px;
-          min-height: 10px;
-          background: transparent;
-          box-shadow: none;
-          padding: 0px;
-      }
+            #pulseaudio-slider {
+              margin-left: 5px;
+              margin-right: 5px;
+            }
 
-      #pulseaudio-slider trough {
-          min-width: 80px;
-          border-radius: 5px;
-          background-color: @surface0;
-      }
+            #pulseaudio-slider slider {
+                margin-left: -10px;
+                min-width: 10px;
+                min-height: 10px;
+                background: transparent;
+                box-shadow: none;
+                padding: 0px;
+            }
 
-      #pulseaudio-slider highlight {
-          border-radius: 5px;
-          min-height: 8px;
-          background-color: @lavender;
-      }
+            #pulseaudio-slider trough {
+                min-width: 80px;
+                border-radius: 5px;
+                background-color: @surface0;
+            }
+
+            #pulseaudio-slider highlight {
+                border-radius: 5px;
+                min-height: 8px;
+                background-color: @lavender;
+            }
 
     '';
   };
@@ -343,6 +335,7 @@
     waybar
     font-awesome
     wlogout
+    jq
     xdg-desktop-portal
     xdg-desktop-portal-wlr
     nerd-fonts.code-new-roman

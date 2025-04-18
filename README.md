@@ -16,7 +16,7 @@ sudo nixos-rebuild switch --flake ~/flake#thinkpad (or other host)
 
 #### Todo
 - [x] check if the catppuccin nix thing is actually working
-- [ ] make catppuccin config be enable for everything in home manager
+- [x] make catppuccin config be enable for everything in home manager
 - [ ] check catppuccin gtk being not supported, and see what you can do
 - hyprland
     - [x] resize panels
@@ -28,6 +28,9 @@ sudo nixos-rebuild switch --flake ~/flake#thinkpad (or other host)
     - [x] use catppuccin theme
 - waybar
     - [ ] Add pomodoro
+    - [ ] Add notification via dunst on waybar? Search dunst customization
+        - also search how to test dunst notifications
+
 - home manager
     - [ ] pass some of the packages to install via home manager (more config options through it)
     - [ ] add home manager to other of my hosts 
