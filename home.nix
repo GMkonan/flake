@@ -19,6 +19,7 @@
     ./modules/home/gtk.nix
     ./modules/home/dunst.nix
     ./modules/home/hyprlock.nix
+    ./modules/home/wlogout.nix
   ];
 
   # You can specify packages for your user environment
