@@ -39,10 +39,6 @@
   # User environment packages
   home.packages = with pkgs; [
     # Add more user packages here
-    bat
-    wofi
-    dunst
-    hyprlock
   ];
 
   programs = {

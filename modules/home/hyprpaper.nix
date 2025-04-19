@@ -24,10 +24,8 @@ with lib; let
     done
   '';
 in {
-  # Explicitly add hyprpaper to home.packages
   home.packages = with pkgs; [
     wallpaperRandomizer
-    hyprpaper
   ];
 
   services.hyprpaper = {

@@ -108,12 +108,6 @@
         };
 
         network = {
-          # format-wifi = "";
-          # format-ethernet = "";
-          # format-disconnected = "";
-          # tooltip-format-disconnected = "Error";
-          # tooltip-format-wifi = "{essid} ({signalStrength}%) ";
-          # tooltip-format-ethernet = "{ifname} 🖧 ";
           format = "{icon}";
           format-disconnected = "󰖪";
           format-ethernet = "󰈀/{cidr}";
@@ -132,207 +126,158 @@
           tooltip-format = "interface:\t{ifname}\n\nconnected to {essid} at {signalStrength}% strength";
           tooltip-format-disconnected = "interface: {ifname}\nconnected to {essid}\nat {signalStrength}% strength";
         };
-
-        "custom/notification" = {
-          tooltip = true;
-          format = "{icon} {}";
-          format-icons = {
-            "default" = ""; # Bell icon
-            "none" = ""; # Bell icon
-            "dnd" = ""; # Bell-off icon
-            "notification" = "<span foreground='#f38ba8'>󰂚</span>"; # Bell icon in red
-            "dnd-notification" = "<span foreground='#f38ba8'>󰂚</span>"; # Bell-off icon in red
-          };
-          exec = ''
-            ${pkgs.bash}/bin/bash -c 'while true; do
-              count=$(${pkgs.dunst}/bin/dunstctl count)
-              paused=$(${pkgs.dunst}/bin/dunstctl is-paused)
-              latest=$(${pkgs.dunst}/bin/dunstctl history | ${pkgs.jq}/bin/jq -r ".data[0][0].summary" 2>/dev/null)
-
-              if [ "$paused" = "true" ]; then
-                if [ "$count" -gt 0 ]; then
-                  echo "{\"icon\":\"dnd-notification\", \"text\":\"$latest ($count)\", \"tooltip\":\"$latest\"}"
-                else
-                  echo "{\"icon\":\"dnd\", \"text\":\"\", \"tooltip\":\"Do Not Disturb\"}"
-                fi
-              else
-                if [ "$count" -gt 0 ]; then
-                  echo "{\"icon\":\"notification\", \"text\":\"$latest ($count)\", \"tooltip\":\"$latest\"}"
-                else
-                  echo "{\"icon\":\"none\", \"text\":\"\", \"tooltip\":\"No notifications\"}"
-                fi
-              fi
-
-              sleep 1
-            done'
-          '';
-          on-click = "${pkgs.dunst}/bin/dunstctl close-all";
-          on-click-right = "${pkgs.dunst}/bin/dunstctl set-paused toggle";
-          on-click-middle = "${pkgs.dunst}/bin/dunstctl history-pop";
-        };
       };
     };
 
     style = ''
+      @define-color rosewater #f5e0dc;
+      @define-color flamingo #f2cdcd;
+      @define-color pink #f5c2e7;
+      @define-color mauve #cba6f7;
+      @define-color red #f38ba8;
+      @define-color maroon #eba0ac;
+      @define-color peach #fab387;
+      @define-color yellow #f9e2af;
+      @define-color green #a6e3a1;
+      @define-color teal #94e2d5;
+      @define-color sky #89dceb;
+      @define-color sapphire #74c7ec;
+      @define-color blue #89b4fa;
+      @define-color lavender #b4befe;
+      @define-color text #cdd6f4;
+      @define-color subtext1 #bac2de;
+      @define-color subtext0 #a6adc8;
+      @define-color overlay2 #9399b2;
+      @define-color overlay1 #7f849c;
+      @define-color overlay0 #6c7086;
+      @define-color surface2 #585b70;
+      @define-color surface1 #45475a;
+      @define-color surface0 #313244;
+      @define-color base #1e1e2e;
+      @define-color mantle #181825;
+      @define-color crust #11111b;
 
-                  @define-color rosewater #f5e0dc;
-                  @define-color flamingo #f2cdcd;
-                  @define-color pink #f5c2e7;
-                  @define-color mauve #cba6f7;
-                  @define-color red #f38ba8;
-                  @define-color maroon #eba0ac;
-                  @define-color peach #fab387;
-                  @define-color yellow #f9e2af;
-                  @define-color green #a6e3a1;
-                  @define-color teal #94e2d5;
-                  @define-color sky #89dceb;
-                  @define-color sapphire #74c7ec;
-                  @define-color blue #89b4fa;
-                  @define-color lavender #b4befe;
-                  @define-color text #cdd6f4;
-                  @define-color subtext1 #bac2de;
-                  @define-color subtext0 #a6adc8;
-                  @define-color overlay2 #9399b2;
-                  @define-color overlay1 #7f849c;
-                  @define-color overlay0 #6c7086;
-                  @define-color surface2 #585b70;
-                  @define-color surface1 #45475a;
-                  @define-color surface0 #313244;
-                  @define-color base #1e1e2e;
-                  @define-color mantle #181825;
-                  @define-color crust #11111b;
-
-                  * {
-                    border: none;
-                    border-radius: 0;
-                    font-family: "Font Awesome 5 Free", "Noto Sans", "Roboto", "Arial", sans-serif;
-                    font-size: 12px;
-                    min-height: 0;
-                    margin: 0;
-                    padding: 0;
-                  }
-
-                  #waybar {
-                    background: @crust;
-                    color: @text;
-                    margin: 2px 5px;
-                  }
-
-            /* Space first and last modules evenly */
-            .modules-right:last-child { margin-right: 5px; }
-            .modules-left:first-child { margin-left: 5px; }
-
-            #clock,
-            #system,
-            #custom-power-button,
-            #battery {
-              background-color: @mantle;
-              border-radius: 4px;
-              margin: 2px 5px;
-              padding: 3px 5px;
-              font-size: 14px;
-            }
-
-            #custom-power-button {
-                padding-right: 17px;
-                padding-left: 12px;
-                background-color: alpha(@red, 0.1);
-                color: @red;
-            }
-
-            #pulseaudio {
-                font-size: 16px;
-            }
-
-            #clock {
-              margin-right: 1rem;
-            }
-
-            #workspaces {
-                background-color: @mantle;
-                border-radius: 4px;
-            }
-            #workspaces > button {
-                padding: 0px 15px;
-                font-weight: 900;
-                font-size: 18px;
-                border-radius: 0px;
-            }
-
-            #workspaces button.active {
-              color: @crust;
-              background: @lavender
-            }
-
-            #workspaces button:hover {
-              background-color: @sapphire;
-            }
-
-            #battery {
-                    color: @green;
-                  }
-
-                  #battery.charging {
-                    color: @green;
-                  }
-
-                  #battery.warning:not(.charging) {
-                    color: @red;
-                  }
-
-      #custom-notification {
-        padding: 0 10px;
-        margin: 0 4px;
+      * {
+        border: none;
+        border-radius: 0;
+        font-family: "Font Awesome 5 Free", "Noto Sans", "Roboto", "Arial", sans-serif;
+        font-size: 12px;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
       }
 
-      #custom-notification.notification {
-        background-color: rgba(243, 139, 168, 0.2);
-        border-bottom: 2px solid #f38ba8;
+      #waybar {
+        background: @crust;
+        color: @text;
+        margin: 2px 5px;
       }
 
-            #network {
-              margin-right: 15px;
-            }
+      /* Space first and last modules evenly */
+      .modules-right:last-child { margin-right: 5px; }
+      .modules-left:first-child { margin-left: 5px; }
 
-            #pulseaudio {
-              margin-right: 15px;
-            }
+      #clock,
+      #system,
+      #custom-power-button,
+      #battery {
+        background-color: @mantle;
+        border-radius: 4px;
+        margin: 2px 5px;
+        padding: 3px 5px;
+        font-size: 14px;
+      }
 
-            #pulseaudio-slider {
-                border: none;
-            }
+      #custom-power-button {
+        padding-right: 17px;
+        padding-left: 12px;
+        background-color: alpha(@red, 0.1);
+        color: @red;
+      }
 
-            #pulseaudio-slider {
-              margin-left: 5px;
-              margin-right: 5px;
-            }
+      #pulseaudio {
+        font-size: 16px;
+      }
 
-            #pulseaudio-slider slider {
-                margin-left: -10px;
-                min-width: 10px;
-                min-height: 10px;
-                background: transparent;
-                box-shadow: none;
-                padding: 0px;
-            }
+      #clock {
+        margin-right: 1rem;
+      }
 
-            #pulseaudio-slider trough {
-                min-width: 80px;
-                border-radius: 5px;
-                background-color: @surface0;
-            }
+      #workspaces {
+        background-color: @mantle;
+        border-radius: 4px;
+      }
 
-            #pulseaudio-slider highlight {
-                border-radius: 5px;
-                min-height: 8px;
-                background-color: @lavender;
-            }
+      #workspaces > button {
+        padding: 0px 15px;
+        font-weight: 900;
+        font-size: 18px;
+        border-radius: 0px;
+      }
+
+      #workspaces button.active {
+        color: @crust;
+        background: @lavender
+      }
+
+      #workspaces button:hover {
+        background-color: @sapphire;
+      }
+
+      #battery {
+        color: @green;
+      }
+
+      #battery.charging {
+        color: @green;
+      }
+
+      #battery.warning:not(.charging) {
+        color: @red;
+      }
+
+      #network {
+        margin-right: 15px;
+      }
+
+      #pulseaudio {
+        margin-right: 15px;
+      }
+
+      #pulseaudio-slider {
+        border: none;
+      }
+
+      #pulseaudio-slider {
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+
+      #pulseaudio-slider slider {
+        margin-left: -10px;
+        min-width: 10px;
+        min-height: 10px;
+        background: transparent;
+        box-shadow: none;
+        padding: 0px;
+      }
+
+      #pulseaudio-slider trough {
+        min-width: 80px;
+        border-radius: 5px;
+        background-color: @surface0;
+      }
+
+      #pulseaudio-slider highlight {
+        border-radius: 5px;
+        min-height: 8px;
+        background-color: @lavender;
+      }
 
     '';
   };
 
   home.packages = with pkgs; [
-    waybar
     font-awesome
     wlogout
     jq
