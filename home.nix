@@ -18,6 +18,7 @@
     ./modules/home/wofi.nix
     ./modules/home/gtk.nix
     ./modules/home/dunst.nix
+    ./modules/home/hyprlock.nix
   ];
 
   # You can specify packages for your user environment
@@ -40,6 +41,7 @@
     bat
     wofi
     dunst
+    hyprlock
   ];
 
   programs = {
