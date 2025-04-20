@@ -45,7 +45,24 @@
           ./modules/bootloader.nix
           ./modules/user.nix
           ./modules/default.nix
+          ./nvim/default.nix
           # ./modules/nvidia.nix
+
+          catppuccin.nixosModules.catppuccin
+          # Add Home Manager as a NixOS module
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+
+            # Configure your user's Home Manager settings
+            home-manager.users.konan = {
+              imports = [
+                ./home.nix
+                catppuccin.homeModules.catppuccin
+              ];
+            };
+          }
         ];
       };
 
