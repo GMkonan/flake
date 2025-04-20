@@ -18,10 +18,11 @@ sudo nixos-rebuild switch --flake ~/flake#thinkpad (or other host)
 - [x] check if the catppuccin nix thing is actually working
 - [x] make catppuccin config be enable for everything in home manager
 - [ ] check catppuccin gtk being not supported, and see what you can do
+- [ ] Make thinkpad suspend on idle for more than 20 minutes
 - hyprland
     - [x] resize panels
     - [ ] solve electron issue
-    - [ ] widgets for hyprland (ags?)
+    - [ ] widgets for hyprland (ags? Astal?)
     - [x] change color borders
     - [x] wallpaper change (change some configs)
 - wofi

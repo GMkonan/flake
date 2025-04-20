@@ -10,80 +10,66 @@
 
     settings = {
       general = {
-        disable_loading_bar = false;
-        hide_cursor = true;
-        grace = 5;
-        no_fade_in = false;
+        grace = 3;
+        ignore_empty_input = true;
+        immediate_render = true;
       };
 
-      background = [
-        {
-          path = "${config.home.homeDirectory}/flake/wallpapers/girl-on-balcony.png";
-        }
-      ];
+      background = {
+        monitor = "";
+        path = "${config.home.homeDirectory}/flake/wallpapers/night-girl-city-sky.jpeg";
+        # path = "/home/${user}/.cache/current-wallpaper";
+      };
 
-      input-field = [
-        {
-          size = {
-            width = 300;
-            height = 50;
-          };
-          outline_thickness = 1;
-          dots_size = 0.27; # Scale of input field height
-          dots_spacing = 0.15; # Scale of dots' absolute size
-          dots_center = false;
-          outer_color = "rgb(151515)";
-          inner_color = "rgb(200, 200, 200)";
-          font_color = "rgb(10, 10, 10)";
-          fade_on_empty = true;
-          placeholder_text = "<i>Password</i>";
-          hide_input = false;
-          position = {
-            x = 0;
-            y = -90;
-          };
-          halign = "center";
-          valign = "center";
-        }
-      ];
+      input-field = {
+        monitor = "";
+        size = "250, 50";
+        outline_thickness = 1;
+        dots_size = 0.27; # Scale of input field height
+        dots_spacing = 0.15; # Scale of dots' absolute size
+        dots_center = true;
+        check_color = "rgb(200, 200, 200)";
+        position = "0, 00";
+        fade_on_empty = true;
+        placeholder_text = "<i>Password</i>";
+        hide_input = false;
+        halign = "center";
+        valign = "center";
+      };
 
-      labels = [
+      label = [
         {
-          # Clock
-          text = "$TIME";
-          color = "rgb(200, 200, 200)";
-          font_size = 50;
-          font_family = "JetBrains Mono Nerd Font";
-          position = {
-            x = 0;
-            y = 80;
-          };
+          monitor = "";
+          text = ''cmd[update:1000] echo "<b><big> $(${pkgs.coreutils}/bin/date +"%H:%M") </big></b>"'';
+
+          font_size = 64;
+          font_family = "monospace";
+
+          position = "0, -50";
           halign = "center";
-          valign = "center";
+          valign = "top";
         }
+
         {
-          # Welcome text
-          text = "Welcome back, $USER!";
-          color = "rgb(200, 200, 200)";
-          font_size = 20;
-          font_family = "JetBrains Mono Nerd Font";
-          position = {
-            x = 0;
-            y = 0;
-          };
+          monitor = "";
+          text = ''cmd[update:18000000] echo "<b> "$(${pkgs.coreutils}/bin/date +'%A, %-d %B %Y')" </b>"'';
+
+          font_size = 24;
+          font_family = "monospace";
+
+          position = "0, -120";
           halign = "center";
-          valign = "center";
+          valign = "top";
         }
+
         {
-          # Lock icon
-          text = "󰌾";
-          color = "rgb(200, 200, 200)";
-          font_size = 21;
-          font_family = "JetBrains Mono Nerd Font";
-          position = {
-            x = 0;
-            y = -160;
-          };
+          monitor = "";
+          text = "Welcome Back $USER";
+
+          font_size = 24;
+          font_family = "monospace";
+
+          position = "0, 70";
           halign = "center";
           valign = "center";
         }
@@ -102,7 +88,8 @@
 
       listener = [
         {
-          timeout = 900;
+          timeout = 900; # 15 minutes
+          # suspend if its locked for more than 15 minutes
           on-timeout = "${pkgs.procps}/bin/pidof hyprlock && ${pkgs.systemd}/bin/systemctl suspend";
         }
       ];

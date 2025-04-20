@@ -11,7 +11,7 @@
 
         modules-left = ["custom/power-button" "hyprland/workspaces"];
         modules-center = ["hyprland/window"];
-        modules-right = ["group/system" "clock" "battery" "custom/notification"];
+        modules-right = ["group/system" "battery" "clock#date" "clock#time"];
 
         "custom/power-button" = {
           format = "";
@@ -92,18 +92,46 @@
           format-icons = ["󰁻" "󰁼" "󰁾" "󰂀" "󰂂" "󰁹"];
         };
 
-        clock = {
-          format = "{:%I:%M %p} ";
+        # clock = {
+        #   format = "{:%I:%M %p} ";
+        #   interval = 1;
+        #   tooltip-format = "<tt>{calendar}</tt>";
+        #   calendar = {
+        #     format = {
+        #       today = "<span color='#fAfBfC'><b>{}</b></span>";
+        #     };
+        #   };
+        #   actions = {
+        #     on-click-right = "shift_down";
+        #     on-click = "shift_up";
+        #   };
+        # };
+
+        "clock#time" = {
+          format = "{:%H:%M}";
           interval = 1;
+          tooltip = false;
+        };
+
+        # Date module
+        "clock#date" = {
+          format = "{:%a  %d  %b}";
+          interval = 60;
           tooltip-format = "<tt>{calendar}</tt>";
           calendar = {
+            mode = "month";
             format = {
               today = "<span color='#fAfBfC'><b>{}</b></span>";
+              months = "<span color='#ffead3'><b>{}</b></span>";
+              weekdays = "<span color='#ecc6d9'><b>{}</b></span>";
+              days = "<span color='#bfc9db'>{}</span>";
             };
           };
           actions = {
             on-click-right = "shift_down";
             on-click = "shift_up";
+            on-scroll-up = "shift_up";
+            on-scroll-down = "shift_down";
           };
         };
 
@@ -161,7 +189,7 @@
         border: none;
         border-radius: 0;
         font-family: "Font Awesome 5 Free", "Noto Sans", "Roboto", "Arial", sans-serif;
-        font-size: 12px;
+        font-size: 16px;
         min-height: 0;
         margin: 0;
         padding: 0;
@@ -173,19 +201,18 @@
         margin: 2px 5px;
       }
 
-      /* Space first and last modules evenly */
-      .modules-right:last-child { margin-right: 5px; }
-      .modules-left:first-child { margin-left: 5px; }
-
-      #clock,
       #system,
-      #custom-power-button,
-      #battery {
+      #custom-power-button {
         background-color: @mantle;
         border-radius: 4px;
         margin: 2px 5px;
         padding: 3px 5px;
         font-size: 14px;
+      }
+
+      #battery {
+        margin: 2px 5px;
+        padding: 3px 5px;
       }
 
       #custom-power-button {
@@ -199,8 +226,18 @@
         font-size: 16px;
       }
 
-      #clock {
-        margin-right: 1rem;
+      #clock.time {
+        margin-left: 5px;
+        padding: 1px 5px;
+        background: @mauve;
+        color: @crust;
+        font-weight: bold;
+        font-size: 18px;
+      }
+
+      #clock.date {
+        font-weight: bold;
+        font-size: 18px;
       }
 
       #workspaces {
@@ -279,7 +316,6 @@
 
   home.packages = with pkgs; [
     font-awesome
-    wlogout
     jq
     xdg-desktop-portal
     xdg-desktop-portal-wlr
