@@ -57,7 +57,7 @@
           font_size = 24;
           font_family = "monospace";
 
-          position = "0, -120";
+          position = "0, -150";
           halign = "center";
           valign = "top";
         }
