@@ -22,8 +22,10 @@
       };
 
       input = {
-        kb_layout = "us";
-        kb_variant = "intl";
+        kb_layout = "us,br";
+        # kb_options = "grp:alt_shift_toggle"; # Alt+Shift to switch layouts
+        # kb_layout = "us";
+        # kb_variant = "intl";
         follow_mouse = 1;
         sensitivity = -0.5;
       };
@@ -85,6 +87,9 @@
         "ALT, P, exec, hyprshot -m region --clipboard-only"
 
         "ALT SHIFT, P, exec, pkill waybar && hyprctl dispatch exec waybar"
+
+        "ALT, L, exec, hyprctl switchxkblayout current next"
+        # "ALT, L, keyboard, switchxkblayout next"
       ];
     };
   };

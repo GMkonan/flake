@@ -11,7 +11,7 @@
 
         modules-left = ["custom/power-button" "hyprland/workspaces"];
         modules-center = ["hyprland/window"];
-        modules-right = ["group/system" "battery" "clock#date" "clock#time"];
+        modules-right = ["hyprland/language" "group/system" "battery" "clock#date" "clock#time"];
 
         "custom/power-button" = {
           format = "";
@@ -26,6 +26,16 @@
             "bluetooth"
           ];
           orientation = "horizontal";
+        };
+
+        "hyprland/language" = {
+          format = "⌨ {}";
+          format-en = "US";
+          # format-<shortcode> should use the short description and not name, which is why we do "pt" instead of "br" which seems more obvious
+          # You can check this by chaning layouts while executing waybar on debug mode
+          # this could be useful at some point too: https://github.com/Alexays/Waybar/issues/3676
+          format-pt = "BR";
+          on-click = "hyprctl switchxkblayout current next";
         };
 
         bluetooth = {
@@ -211,6 +221,11 @@
       }
 
       #battery {
+        margin: 2px 5px;
+        padding: 3px 5px;
+      }
+
+      #language {
         margin: 2px 5px;
         padding: 3px 5px;
       }
