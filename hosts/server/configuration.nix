@@ -1,13 +1,15 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -15,14 +17,16 @@
 
   systemd.enableEmergencyMode = false;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nixos-server"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.interfaces.enp27s0.ipv4.addresses = [ {
-	address = "";
-	prefixLength = 24;
-	} ];
+  networking.interfaces.enp27s0.ipv4.addresses = [
+    {
+      address = "";
+      prefixLength = 24;
+    }
+  ];
   networking.defaultGateway = "";
-  networking.nameservers = [ "8.8.8.8" ];
+  networking.nameservers = ["8.8.8.8"];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -31,7 +35,7 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
@@ -63,15 +67,15 @@
   users.users.chico = {
     isNormalUser = true;
     description = "chico";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = ["networkmanager" "wheel" "docker"];
     packages = with pkgs; [];
   };
 
-fileSystems."/media/data" = {
-  device = "/dev/disk/by-uuid/AECEDEC4CEDE83CD";  # specifying by uuid to ensure we are using the correct HD
-  fsType = "ntfs";
-  options = [ "defaults" "nofail" "uid=1000" "gid=1000" "umask=022" ];
-};
+  fileSystems."/media/data" = {
+    device = "/dev/disk/by-uuid/AECEDEC4CEDE83CD"; # specifying by uuid to ensure we are using the correct HD
+    fsType = "ntfs";
+    options = ["defaults" "nofail" "uid=1000" "gid=1000" "umask=022"];
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -79,11 +83,11 @@ fileSystems."/media/data" = {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-   wget
-   ntfs3g
-   docker
-   git
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+    ntfs3g
+    docker
+    git
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -100,20 +104,20 @@ fileSystems."/media/data" = {
   services.openssh.enable = true;
 
   services.samba = {
-  enable = true;
-  securityType = "user";
-  openFirewall = true;
-  shares = {
-    chicodata = {
-      path = "/media/data/share-data";
-      "read only" = "no";
-      browseable = "yes";
-      writable = "yes";
-      "guest ok" = "yes";
-      "create mask" = "0644";
-      "directory mask" = "0755";
-      "force user" = "chico";
-      comment = "chico share data";
+    enable = true;
+    securityType = "user";
+    openFirewall = true;
+    shares = {
+      chicodata = {
+        path = "/media/data/share-data";
+        "read only" = "no";
+        browseable = "yes";
+        writable = "yes";
+        "guest ok" = "yes";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+        "force user" = "chico";
+        comment = "chico share data";
       };
     };
   };
@@ -139,5 +143,4 @@ fileSystems."/media/data" = {
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }

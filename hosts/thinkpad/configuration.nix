@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   imports = [
     ./hardware-configuration.nix
   ];
@@ -12,7 +12,7 @@
     options = "--delete-older-than 30d";
   };
 
-  networking.hostName = "nixos";
+  networking.hostName = "bonfire";
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
