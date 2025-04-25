@@ -11,6 +11,10 @@
         "eDP-1,preferred,auto,1" # Position laptop screen to the right
       ];
 
+      animations = {
+        enabled = false; # Completely disable all animations
+      };
+
       general = {
         gaps_in = 5;
         gaps_out = 10;
@@ -25,7 +29,7 @@
         kb_layout = "us,br";
         # kb_options = "grp:alt_shift_toggle"; # Alt+Shift to switch layouts
         # kb_layout = "us";
-        # kb_variant = "intl";
+        # kb_variant = "intl"; # Should probably add abnt2 here
         follow_mouse = 1;
         sensitivity = -0.5;
       };
@@ -35,7 +39,7 @@
         sensitivity = 0;
       };
 
-      exec-once = ["waybar" "swaync"];
+      exec-once = ["waybar"];
 
       decoration = {
         rounding = 16;
@@ -88,7 +92,7 @@
 
         "ALT SHIFT, P, exec, pkill waybar && hyprctl dispatch exec waybar"
 
-        "ALT, L, exec, hyprctl switchxkblayout current next"
+        "ALT SHIFT, L, exec, hyprctl switchxkblayout current next"
         # "ALT, L, keyboard, switchxkblayout next"
       ];
     };
