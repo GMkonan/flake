@@ -20,6 +20,7 @@
     ./modules/home/dunst.nix
     ./modules/home/hyprlock.nix
     ./modules/home/wlogout.nix
+    ./modules/home/ags.nix
   ];
 
   # You can specify packages for your user environment

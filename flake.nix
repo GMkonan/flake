@@ -14,6 +14,7 @@
     };
     hyprland.url = "github:hyprwm/Hyprland";
     catppuccin.url = "github:catppuccin/nix";
+    ags.url = "github:Aylur/ags";
   };
 
   outputs = inputs @ {
@@ -25,6 +26,7 @@
     home-manager,
     hyprland,
     catppuccin,
+    ags,
   }: {
     nixosConfigurations = let
       system = "x86_64-linux";
@@ -71,6 +73,7 @@
 
         specialArgs = {
           inherit zen;
+          inherit inputs;
         };
 
         modules = [
