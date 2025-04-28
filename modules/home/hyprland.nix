@@ -59,11 +59,13 @@
         "ALT, l, movefocus, r"
         "ALT, k, movefocus, u"
         "ALT, j, movefocus, d"
-        "ALT, 1, workspace, 1"
-        "ALT, 2, workspace, 2"
-        "ALT, 3, workspace, 3"
-        "ALT, 4, workspace, 4"
-        "ALT, 5, workspace, 5"
+
+        # Windows
+        "ALT, 1, workspace, 1" # Notes/Code
+        "ALT, 2, workspace, 2" # Zen
+        "ALT, 3, workspace, 3" # Slack/Discord
+        "ALT, 4, workspace, 4" # Todo List
+        "ALT, 5, workspace, 5" # vscode (work) /
         "ALT, 6, workspace, 6"
         "ALT, 7, workspace, 7"
         "ALT, 8, workspace, 8"
