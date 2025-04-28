@@ -8,7 +8,7 @@ with lib; let
     # https://github.com/hyprwm/hyprpaper/issues/108#issuecomment-2119611893
     # Maybe add lutgen later
     name = "catppuccin-mocha";
-    wallpapers = ../../wallpapers;
+    wallpapers = ../../../wallpapers;
   };
   wallpapers = filesystem.listFilesRecursive theme.wallpapers;
   wallpaperBashArray = "(\"${strings.concatStrings (strings.intersperse "\" \"" (map (wallpaper: "${wallpaper}") wallpapers))}\")";
