@@ -1,11 +1,6 @@
-# modules/desktop/gnome.nix
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
-    gnome.gnome-tweaks
+    gnome-tweaks
     gnomeExtensions.user-themes
     gnomeExtensions.workspace-indicator
     gnomeExtensions.dash-to-dock
@@ -24,8 +19,8 @@
         "blur-my-shell@aunetx"
       ];
       favorite-apps = [
-        "firefox.desktop"
-        "org.gnome.Terminal.desktop"
+        "zen.desktop"
+        "Ghostty.desktop"
         "org.gnome.Nautilus.desktop"
         "code.desktop"
       ];
@@ -41,31 +36,10 @@
       show-battery-percentage = true;
     };
 
-    # Window manager preferences
-    "org/gnome/desktop/wm/preferences" = {
-      button-layout = "appmenu:minimize,maximize,close";
-      workspace-names = ["Main" "Work" "Communication" "Media"];
-      focus-mode = "click";
-      num-workspaces = 4;
-    };
-
-    # Window manager keybindings
-    "org/gnome/desktop/wm/keybindings" = {
-      switch-to-workspace-1 = ["<Super>1"];
-      switch-to-workspace-2 = ["<Super>2"];
-      switch-to-workspace-3 = ["<Super>3"];
-      switch-to-workspace-4 = ["<Super>4"];
-      move-to-workspace-1 = ["<Shift><Super>1"];
-      move-to-workspace-2 = ["<Shift><Super>2"];
-      move-to-workspace-3 = ["<Shift><Super>3"];
-      move-to-workspace-4 = ["<Shift><Super>4"];
-    };
-
-    # Mutter settings
-    "org/gnome/mutter" = {
-      dynamic-workspaces = false;
-      edge-tiling = true;
-      workspaces-only-on-primary = true;
+    "org/gnome/desktop/background" = {
+      color-shading-type = "solid";
+      picture-options = "zoom";
+      picture-uri-dark = "file://" + ../../wallpapers/night-girl-city-sky.jpeg;
     };
 
     # File manager settings
@@ -75,26 +49,14 @@
       show-hidden-files = true;
     };
 
-    # Terminal settings
-    "org/gnome/terminal/legacy/profiles:" = {
-      default = "b1dcc9dd-5262-4d8d-a863-c897e6d979b9";
-      list = ["b1dcc9dd-5262-4d8d-a863-c897e6d979b9"];
-    };
-
-    "org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9" = {
-      audible-bell = false;
-      use-system-font = true;
-      use-theme-colors = true;
-    };
-
     # Dash to dock settings
     "org/gnome/shell/extensions/dash-to-dock" = {
-      dock-position = "LEFT";
+      dock-position = "BOTTOM";
       extend-height = true;
       dock-fixed = false;
       autohide = true;
       intellihide = true;
-      multi-monitor = true;
+      multi-monitor = false;
       height-fraction = 0.9;
     };
   };
