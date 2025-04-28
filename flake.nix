@@ -26,7 +26,7 @@
     home-manager,
     hyprland,
     catppuccin,
-    ags,
+    ...
   }: {
     nixosConfigurations = let
       system = "x86_64-linux";
@@ -99,6 +99,7 @@
               imports = [
                 ./home.nix
                 catppuccin.homeModules.catppuccin
+                inputs.ags.homeManagerModules.default
               ];
             };
           }
