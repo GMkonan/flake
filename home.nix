@@ -21,6 +21,8 @@
     ./modules/home/wm/hyprlock.nix
     ./modules/home/wm/wlogout.nix
     ./modules/home/wm/ags.nix
+
+    ./modules/home/gnome.nix
   ];
 
   # You can specify packages for your user environment
