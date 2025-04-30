@@ -6,9 +6,13 @@
       "$mod" = "ALT";
 
       monitor = [
-        # ",preferred,auto,1
-        "DP-1,preferred,0x0,2" # DisplayPort monitor as primary, at position 0,0
+        "desc:Samsung Electric Company LU28R55 HX5W500759 ,preferred,1920x0,2" # 4k Monitor as primary, at position 1920,0 to be on the right of 1080p monitor
+        "desc:AOC 24G2W1G4 UKCN4XA003806,highrr,0x0,1" # 1080p Monitor as secondary, at position 0,0
         "eDP-1,preferred,auto,1" # Position laptop screen to the right
+
+        ",preferred,auto,1" # Position any random new monitor to the right
+
+        # "HDMI-A-1,preferred,auto,1" # HDMI 4k Monitor
       ];
 
       animations = {

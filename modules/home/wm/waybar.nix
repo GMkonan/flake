@@ -148,7 +148,7 @@
         network = {
           format = "{icon}";
           format-disconnected = "󰖪";
-          format-ethernet = "󰈀/{cidr}";
+          format-ethernet = "󰈀";
           format-icons = [
             "󰤯"
             "󰤟"

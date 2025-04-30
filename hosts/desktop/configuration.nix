@@ -15,6 +15,8 @@
     options = "--delete-older-than 30d";
   };
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   networking.networkmanager.enable = true;
 
   time.timeZone = "America/Sao_Paulo";

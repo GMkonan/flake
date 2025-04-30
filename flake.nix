@@ -15,6 +15,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
     catppuccin.url = "github:catppuccin/nix";
     ags.url = "github:Aylur/ags";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   outputs = inputs @ {
@@ -26,6 +27,7 @@
     home-manager,
     hyprland,
     catppuccin,
+    nixos-hardware,
     ...
   }: {
     nixosConfigurations = let
@@ -48,8 +50,10 @@
           ./modules/user.nix
           ./modules/default.nix
           ./nvim/default.nix
+          ./modules/hyprland.nix
           # ./modules/nvidia.nix
 
+          nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
           catppuccin.nixosModules.catppuccin
           # Add Home Manager as a NixOS module
           home-manager.nixosModules.home-manager
