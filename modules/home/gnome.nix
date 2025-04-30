@@ -1,8 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   home.packages = with pkgs; [
     gnome-tweaks
     gnomeExtensions.user-themes
-    gnomeExtensions.workspace-indicator
     gnomeExtensions.dash-to-dock
     gnomeExtensions.blur-my-shell
     # Add other GNOME-related packages here
@@ -14,7 +17,6 @@
       disable-user-extensions = false;
       enabled-extensions = [
         "user-theme@gnome-shell-extensions.gcampax.github.com"
-        "workspace-indicator@gnome-shell-extensions.gcampax.github.com"
         "dash-to-dock@micxgx.gmail.com"
         "blur-my-shell@aunetx"
       ];
@@ -33,7 +35,29 @@
       clock-show-weekday = true;
       clock-show-date = true;
       gtk-theme = "Adwaita-dark";
+      "scaling-factor" = lib.hm.gvariant.mkUint32 1;
       show-battery-percentage = true;
+    };
+
+    "org/gnome/mutter" = {
+      "experimental-features" = ["scale-monitor-framebuffer"];
+    };
+
+    "org/gnome/desktop/interface" = {
+      "text-scaling-factor" = 1.0;
+    };
+
+    "org/gnome/mutter/monitors.xml" = {
+      "monitors" = [
+        {
+          "monitor-name" = "HDMI-1"; # Your 4K monitor
+          "scale" = 2.0;
+        }
+        {
+          "monitor-name" = "DP-1"; # Your 1080p monitor
+          "scale" = 1.0;
+        }
+      ];
     };
 
     "org/gnome/desktop/background" = {
