@@ -39,11 +39,18 @@ sudo nixos-rebuild switch --flake ~/flake#thinkpad (or other host)
 
 - server
     - [ ] Manage secrets with sops-nix (for now I'm just not commiting secrets)
-    - [ ] Add tailscale (to access server services on other pcs/networks)
+    - [x] Add tailscale (to access server services on other pcs/networks)
 
 - Nix
     - [ ] Delete useless stuff from configuration.nix from hosts and etc, module it better
-    - [ ] Add gc 30 days to other hosts to cleanup generations
+    - [x] Add gc 30 days to other hosts to cleanup generations
+
+- Desktop
+    - [ ] Change its name to something else (character name?)
+    - [ ] fix kde/gaming stuff
+        - [ ] scroll issue
+        - [ ] brave is not working
+        - [ ] test steam
 
 #### Some Refs:
 - https://github.com/Zakar98k/hyprland-catppuccin-dotz
