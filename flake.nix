@@ -51,7 +51,7 @@
           ./modules/default.nix
           ./nvim/default.nix
           ./modules/hyprland.nix
-          # ./modules/nvidia.nix
+          ./modules/nvidia.nix
 
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
           catppuccin.nixosModules.catppuccin
