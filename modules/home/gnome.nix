@@ -84,41 +84,41 @@
     # };
 
     # Dash to Panel settings
-    "org/gnome/shell/extensions/dash-to-panel" = {
-      panel-position = "BOTTOM";
-      panel-size = 32;
-      animate-show-apps = true;
-      appicon-margin = 8;
-      appicon-padding = 4;
-      dot-position = "BOTTOM";
-      dot-style-focused = "DOTS";
-      dot-style-unfocused = "DOTS";
-      trans-use-custom-bg = true;
-      trans-bg-color = "#241f31";
-      hide-overview-on-startup = true;
-      hot-keys = true;
-      multi-monitors = false;
-      hotkeys-overlay-combo = "TEMPORARILY";
-      isolate-workspaces = true;
-      middle-click-action = "LAUNCH";
-      panel-element-positions = ''
-        {"0":[
-          {"element":"showAppsButton","visible":true,"position":"stackedTL"},
-          {"element":"taskbar","visible":true,"position":"centerMonitor"},
-          {"element":"leftBox","visible":true,"position":"stackedTL"},
-          {"element":"rightBox","visible":true,"position":"stackedBR"},
-          {"element":"centerBox","visible":true,"position":"centerMonitor"},
-          {"element":"dateMenu","visible":true,"position":"stackedBR"},
-          {"element":"systemMenu","visible":true,"position":"stackedBR"}
-        ]}
-      '';
-      show-apps-icon-file = "";
-      show-apps-icon-side-padding = 8;
-      show-window-previews = true;
-      status-icon-padding = -1;
-      tray-padding = -1;
-      window-preview-title-position = "TOP";
-    };
+    # "org/gnome/shell/extensions/dash-to-panel" = {
+    #   panel-position = "BOTTOM";
+    #   panel-size = 32;
+    #   animate-show-apps = true;
+    #   appicon-margin = 8;
+    #   appicon-padding = 4;
+    #   dot-position = "BOTTOM";
+    #   dot-style-focused = "DOTS";
+    #   dot-style-unfocused = "DOTS";
+    #   trans-use-custom-bg = true;
+    #   trans-bg-color = "#241f31";
+    #   hide-overview-on-startup = true;
+    #   hot-keys = true;
+    #   multi-monitors = false;
+    #   hotkeys-overlay-combo = "TEMPORARILY";
+    #   isolate-workspaces = true;
+    #   middle-click-action = "LAUNCH";
+    #   panel-element-positions = ''
+    #     {"0":[
+    #       {"element":"showAppsButton","visible":true,"position":"stackedTL"},
+    #       {"element":"taskbar","visible":true,"position":"centerMonitor"},
+    #       {"element":"leftBox","visible":true,"position":"stackedTL"},
+    #       {"element":"rightBox","visible":true,"position":"stackedBR"},
+    #       {"element":"centerBox","visible":true,"position":"centerMonitor"},
+    #       {"element":"dateMenu","visible":true,"position":"stackedBR"},
+    #       {"element":"systemMenu","visible":true,"position":"stackedBR"}
+    #     ]}
+    #   '';
+    #   show-apps-icon-file = "";
+    #   show-apps-icon-side-padding = 8;
+    #   show-window-previews = true;
+    #   status-icon-padding = -1;
+    #   tray-padding = -1;
+    #   window-preview-title-position = "TOP";
+    # };
   };
 
   # GNOME-related services
