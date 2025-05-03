@@ -15,8 +15,8 @@
   };
 
   # Keep Wayland environment variables
-  environment.sessionVariables = {
-    XDG_SESSION_TYPE = "wayland";
-    XDG_CURRENT_DESKTOP = "Hyprland";
-  };
+  #environment.sessionVariables = {
+  #  XDG_SESSION_TYPE = "wayland";
+  #  XDG_CURRENT_DESKTOP = "Hyprland";
+  #};
 }

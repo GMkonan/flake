@@ -38,26 +38,26 @@
       show-battery-percentage = true;
     };
 
-    # "org/gnome/mutter" = {
-    #   "experimental-features" = ["scale-monitor-framebuffer"];
-    # };
+    "org/gnome/mutter" = {
+      "experimental-features" = ["scale-monitor-framebuffer"];
+    };
     #
-    # "org/gnome/desktop/interface" = {
-    #   "text-scaling-factor" = 1.0;
-    # };
+    "org/gnome/desktop/interface" = {
+      "text-scaling-factor" = 1.0;
+    };
     #
-    # "org/gnome/mutter/monitors.xml" = {
-    #   "monitors" = [
-    #     {
-    #       "monitor-name" = "HDMI-1"; # Your 4K monitor
-    #       "scale" = 2.0;
-    #     }
-    #     {
-    #       "monitor-name" = "DP-1"; # Your 1080p monitor
-    #       "scale" = 1.0;
-    #     }
-    #   ];
-    # };
+    "org/gnome/mutter/monitors.xml" = {
+      "monitors" = [
+        {
+          "monitor-name" = "HDMI-1"; # Your 4K monitor
+          "scale" = 2.0;
+        }
+        {
+          "monitor-name" = "DP-1"; # Your 1080p monitor
+          "scale" = 1.0;
+        }
+      ];
+    };
 
     "org/gnome/desktop/background" = {
       color-shading-type = "solid";
