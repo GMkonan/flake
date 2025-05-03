@@ -53,6 +53,8 @@ sudo nixos-rebuild switch --flake ~/flake#thinkpad (or other host)
         - [ ] test steam
 
 #### Some Refs:
+- https://github.com/hyprwm/Hyprland/discussions/192#discussioncomment-12845902
+(chrome/electron flickering in hyprland fix)
 - https://github.com/Zakar98k/hyprland-catppuccin-dotz
 - https://github.com/elkowar/eww/
 - ags

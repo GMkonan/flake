@@ -3,7 +3,7 @@
     ./hardware-configuration.nix
   ];
 
-  networking.hostName = "nixos-desktop"; # Define your hostname.
+  networking.hostName = "bocchi";
 
   nix.gc = {
     automatic = true;
