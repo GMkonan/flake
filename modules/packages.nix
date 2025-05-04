@@ -11,7 +11,8 @@
     obsidian
     brave
     slack
-    discord
+    # discord
+    vesktop
     zed-editor
     vscode
     bruno
