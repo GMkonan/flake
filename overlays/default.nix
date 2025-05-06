@@ -31,4 +31,22 @@ final: prev: {
         echo "Vesktop wrapping complete."
       '';
   });
+
+  ticktick = prev.ticktick.overrideAttrs (oldAttrs: {
+    # Ensure makeWrapper is available during the build
+    nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [final.makeWrapper];
+
+    postFixup =
+      (oldAttrs.postFixup or "")
+      + ''
+        echo "Wrapping ticktick in overlay..."
+        wrapProgram $out/bin/ticktick \
+          --add-flags "--enable-features=WaylandLinuxDrmSyncobj" \
+          --add-flags "--enable-features=UseOzonePlatform" \
+          --add-flags "-ozone-platform=wayland" \
+          --add-flags "--disable-smooth-scrolling"
+
+        echo "ticktick wrapping complete."
+      '';
+  });
 }
