@@ -32,6 +32,8 @@
   }: {
     nixosConfigurations = let
       system = "x86_64-linux";
+
+      overlays = import ./overlays/default.nix;
     in {
       desktop = nixpkgs.lib.nixosSystem {
         inherit system;
@@ -41,6 +43,17 @@
         };
 
         modules = [
+          # Module to apply the overlay to the system's package set
+          ({
+            config,
+            pkgs,
+            ...
+          }: {
+            nixpkgs.overlays = [
+              overlays
+            ];
+          })
+
           ./hosts/desktop/configuration.nix
           ./modules/packages.nix
           ./modules/nixos-shared.nix
@@ -56,14 +69,12 @@
 
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
           catppuccin.nixosModules.catppuccin
-          # Add Home Manager as a NixOS module
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "hm-backup";
 
-            # Configure your user's Home Manager settings
             home-manager.users.konan = {
               imports = [
                 ./home.nix
