@@ -18,6 +18,7 @@
     docker
     wl-clipboard
     ticktick
+    beamMinimal27Packages.elixir_1_17
     zen.packages.${pkgs.system}.default
   ];
 
