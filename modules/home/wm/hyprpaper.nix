@@ -34,6 +34,7 @@ in {
       ipc = "on";
       splash = false;
       splash_offset = 2.0;
+      wallpaper = ",../../../wallpapers/space-astronaut.png";
     };
   };
 
@@ -42,7 +43,8 @@ in {
       Install = {WantedBy = ["graphical-session.target"];};
       Unit = {
         Description = "Set random desktop background using hyprpaper";
-        After = ["graphical-session-pre.target"];
+        After = ["graphical-session-pre.target" "hyprpaper.service"];
+        Wants = ["hyprpaper.service"];
         PartOf = ["graphical-session.target"];
       };
       Service = {

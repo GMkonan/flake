@@ -65,12 +65,12 @@
         "ALT, j, movefocus, d"
 
         # Windows
-        "ALT, 1, workspace, 1" # Notes/Code
+        "ALT, 1, workspace, 1" # Code / Terminal
         "ALT, 2, workspace, 2" # Zen
-        "ALT, 3, workspace, 3" # Slack/Discord
+        "ALT, 3, workspace, 3" # Slack / Discord
         "ALT, 4, workspace, 4" # Todo List
-        "ALT, 5, workspace, 5" # vscode (work) /
-        "ALT, 6, workspace, 6"
+        "ALT, 5, workspace, 5" # second monitor browser
+        "ALT, 6, workspace, 6" # Terminal
         "ALT, 7, workspace, 7"
         "ALT, 8, workspace, 8"
         "ALT, 9, workspace, 9"
