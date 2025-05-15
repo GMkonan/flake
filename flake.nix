@@ -95,6 +95,17 @@
         };
 
         modules = [
+          # Module to apply the overlay to the system's package set
+          ({
+            config,
+            pkgs,
+            ...
+          }: {
+            nixpkgs.overlays = [
+              overlays
+            ];
+          })
+
           ./hosts/thinkpad/configuration.nix
           ./modules/packages.nix
           ./modules/nixos-shared.nix
