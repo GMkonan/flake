@@ -64,6 +64,7 @@
           ./modules/default.nix
           ./nvim/default.nix
           ./modules/hyprland.nix
+          ./modules/tmux.nix
           ./modules/nvidia.nix
           ./modules/gaming.nix
 
