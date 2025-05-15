@@ -12,17 +12,11 @@
   catppuccin.flavor = "mocha";
 
   imports = [
-    ./modules/home/wm/hyprpaper.nix
-    ./modules/home/wm/waybar.nix
-    ./modules/home/wm/hyprland.nix
-    ./modules/home/wm/wofi.nix
-    ./modules/home/gtk.nix
-    ./modules/home/wm/dunst.nix
-    ./modules/home/wm/hyprlock.nix
-    ./modules/home/wm/wlogout.nix
-    ./modules/home/wm/ags.nix
+    ./modules/home/wm
+    ./modules/home/cli
 
     ./modules/home/gnome.nix
+    ./modules/home/gtk.nix
   ];
 
   # You can specify packages for your user environment

@@ -167,164 +167,166 @@
       };
     };
 
-    style = ''
-      @define-color rosewater #f5e0dc;
-      @define-color flamingo #f2cdcd;
-      @define-color pink #f5c2e7;
-      @define-color mauve #cba6f7;
-      @define-color red #f38ba8;
-      @define-color maroon #eba0ac;
-      @define-color peach #fab387;
-      @define-color yellow #f9e2af;
-      @define-color green #a6e3a1;
-      @define-color teal #94e2d5;
-      @define-color sky #89dceb;
-      @define-color sapphire #74c7ec;
-      @define-color blue #89b4fa;
-      @define-color lavender #b4befe;
-      @define-color text #cdd6f4;
-      @define-color subtext1 #bac2de;
-      @define-color subtext0 #a6adc8;
-      @define-color overlay2 #9399b2;
-      @define-color overlay1 #7f849c;
-      @define-color overlay0 #6c7086;
-      @define-color surface2 #585b70;
-      @define-color surface1 #45475a;
-      @define-color surface0 #313244;
-      @define-color base #1e1e2e;
-      @define-color mantle #181825;
-      @define-color crust #11111b;
+    style =
+      #css
+      ''
+        @define-color rosewater #f5e0dc;
+        @define-color flamingo #f2cdcd;
+        @define-color pink #f5c2e7;
+        @define-color mauve #cba6f7;
+        @define-color red #f38ba8;
+        @define-color maroon #eba0ac;
+        @define-color peach #fab387;
+        @define-color yellow #f9e2af;
+        @define-color green #a6e3a1;
+        @define-color teal #94e2d5;
+        @define-color sky #89dceb;
+        @define-color sapphire #74c7ec;
+        @define-color blue #89b4fa;
+        @define-color lavender #b4befe;
+        @define-color text #cdd6f4;
+        @define-color subtext1 #bac2de;
+        @define-color subtext0 #a6adc8;
+        @define-color overlay2 #9399b2;
+        @define-color overlay1 #7f849c;
+        @define-color overlay0 #6c7086;
+        @define-color surface2 #585b70;
+        @define-color surface1 #45475a;
+        @define-color surface0 #313244;
+        @define-color base #1e1e2e;
+        @define-color mantle #181825;
+        @define-color crust #11111b;
 
-      * {
-        border: none;
-        border-radius: 0;
-        font-family: "Font Awesome 5 Free", "Noto Sans", "Roboto", "Arial", sans-serif;
-        font-size: 16px;
-        min-height: 0;
-        margin: 0;
-        padding: 0;
-      }
+        * {
+          border: none;
+          border-radius: 0;
+          font-family: "Font Awesome 5 Free", "Noto Sans", "Roboto", "Arial", sans-serif;
+          font-size: 16px;
+          min-height: 0;
+          margin: 0;
+          padding: 0;
+        }
 
-      #waybar {
-        background: @crust;
-        color: @text;
-        margin: 2px 5px;
-      }
+        #waybar {
+          background: @crust;
+          color: @text;
+          margin: 2px 5px;
+        }
 
-      #system,
-      #custom-power-button {
-        border-radius: 4px;
-        margin: 2px 5px;
-        padding: 3px 5px;
-        font-size: 14px;
-      }
+        #system,
+        #custom-power-button {
+          border-radius: 4px;
+          margin: 2px 5px;
+          padding: 3px 5px;
+          font-size: 14px;
+        }
 
-      #battery {
-        margin: 2px 5px;
-        padding: 3px 5px;
-      }
+        #battery {
+          margin: 2px 5px;
+          padding: 3px 5px;
+        }
 
-      #language {
-        margin: 2px 5px;
-        padding: 3px 5px;
-      }
+        #language {
+          margin: 2px 5px;
+          padding: 3px 5px;
+        }
 
-      #custom-power-button {
-        padding-right: 17px;
-        padding-left: 12px;
-        color: @red;
-      }
+        #custom-power-button {
+          padding-right: 17px;
+          padding-left: 12px;
+          color: @red;
+        }
 
-      #pulseaudio {
-        font-size: 16px;
-      }
+        #pulseaudio {
+          font-size: 16px;
+        }
 
-      #clock.time {
-        margin-left: 5px;
-        padding: 1px 5px;
-        background: @mauve;
-        color: @crust;
-        font-weight: bold;
-        font-size: 18px;
-      }
+        #clock.time {
+          margin-left: 5px;
+          padding: 1px 5px;
+          background: @mauve;
+          color: @crust;
+          font-weight: bold;
+          font-size: 18px;
+        }
 
-      #clock.date {
-        font-weight: bold;
-        font-size: 18px;
-      }
+        #clock.date {
+          font-weight: bold;
+          font-size: 18px;
+        }
 
-      #workspaces {
-        background-color: @mantle;
-        border-radius: 4px;
-      }
+        #workspaces {
+          background-color: @mantle;
+          border-radius: 4px;
+        }
 
-      #workspaces > button {
-        padding: 0px 8px;
-        font-weight: 900;
-        font-size: 18px;
-        border-radius: 0px;
-      }
+        #workspaces > button {
+          padding: 0px 8px;
+          font-weight: 900;
+          font-size: 18px;
+          border-radius: 0px;
+        }
 
-      #workspaces button.active {
-        color: @crust;
-        background: @lavender
-      }
+        #workspaces button.active {
+          color: @crust;
+          background: @lavender
+        }
 
-      #workspaces button:hover {
-        background-color: @sapphire;
-      }
+        #workspaces button:hover {
+          background-color: @sapphire;
+        }
 
-      #battery {
-        color: @green;
-      }
+        #battery {
+          color: @green;
+        }
 
-      #battery.charging {
-        color: @green;
-      }
+        #battery.charging {
+          color: @green;
+        }
 
-      #battery.warning:not(.charging) {
-        color: @red;
-      }
+        #battery.warning:not(.charging) {
+          color: @red;
+        }
 
-      #network {
-        margin-right: 15px;
-      }
+        #network {
+          margin-right: 15px;
+        }
 
-      #pulseaudio {
-        margin-right: 15px;
-      }
+        #pulseaudio {
+          margin-right: 15px;
+        }
 
-      #pulseaudio-slider {
-        border: none;
-      }
+        #pulseaudio-slider {
+          border: none;
+        }
 
-      #pulseaudio-slider {
-        margin-left: 5px;
-        margin-right: 5px;
-      }
+        #pulseaudio-slider {
+          margin-left: 5px;
+          margin-right: 5px;
+        }
 
-      #pulseaudio-slider slider {
-        margin-left: -10px;
-        min-width: 10px;
-        min-height: 10px;
-        background: transparent;
-        box-shadow: none;
-        padding: 0px;
-      }
+        #pulseaudio-slider slider {
+          margin-left: -10px;
+          min-width: 10px;
+          min-height: 10px;
+          background: transparent;
+          box-shadow: none;
+          padding: 0px;
+        }
 
-      #pulseaudio-slider trough {
-        min-width: 80px;
-        border-radius: 5px;
-        background-color: @surface0;
-      }
+        #pulseaudio-slider trough {
+          min-width: 80px;
+          border-radius: 5px;
+          background-color: @surface0;
+        }
 
-      #pulseaudio-slider highlight {
-        border-radius: 5px;
-        min-height: 8px;
-        background-color: @lavender;
-      }
+        #pulseaudio-slider highlight {
+          border-radius: 5px;
+          min-height: 8px;
+          background-color: @lavender;
+        }
 
-    '';
+      '';
   };
 
   home.packages = with pkgs; [
