@@ -208,7 +208,7 @@
         }
 
         #waybar {
-          background: @crust;
+          background: alpha(@crust, 0.2);
           color: @text;
           margin: 2px 5px;
         }
