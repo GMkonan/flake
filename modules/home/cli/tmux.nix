@@ -23,6 +23,7 @@
       #tmux
       ''
         set -g status on
+        set -g status-position bottom
         set -s set-clipboard on
         bind-key b set-option status
 
