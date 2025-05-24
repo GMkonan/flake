@@ -20,6 +20,7 @@
       url = "github:aylur/astal";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = inputs @ {
@@ -33,6 +34,7 @@
     catppuccin,
     nixos-hardware,
     astal,
+    stylix,
     ...
   }: {
     nixosConfigurations = let
@@ -75,6 +77,7 @@
 
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
           catppuccin.nixosModules.catppuccin
+          inputs.stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
