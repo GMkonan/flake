@@ -38,6 +38,8 @@
     # Add more user packages here
     fastfetch
     htop
+    astal.io
+    astal.hyprland
   ];
 
   programs = {

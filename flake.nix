@@ -16,6 +16,16 @@
     catppuccin.url = "github:catppuccin/nix";
     ags.url = "github:Aylur/ags";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    astal = {
+      url = "github:aylur/astal";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    myShellFlake = {
+      url = "path:./my-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.astal.follows = "astal";
+      inputs.ags.follows = "ags";
+    };
   };
 
   outputs = inputs @ {
@@ -28,6 +38,8 @@
     hyprland,
     catppuccin,
     nixos-hardware,
+    astal,
+    myShellFlake,
     ...
   }: {
     nixosConfigurations = let
