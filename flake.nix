@@ -21,7 +21,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     myShellFlake = {
-      url = "path:./my-shell";
+      url = "path:./modules/ags";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.astal.follows = "astal";
       inputs.ags.follows = "ags";
@@ -52,6 +52,7 @@
 
         specialArgs = {
           inherit zen;
+          inherit inputs;
         };
 
         modules = [

@@ -73,6 +73,26 @@
         "type": "github"
       }
     },
+    "astal_2": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1747093850,
+        "narHash": "sha256-SaHAtzUyfm4urAcUEZlBFn7dWhoDqA6kaeFZ11CCTf8=",
+        "owner": "aylur",
+        "repo": "astal",
+        "rev": "4820a3e37cc8eb81db6ed991528fb23472a8e4de",
+        "type": "github"
+      },
+      "original": {
+        "owner": "aylur",
+        "repo": "astal",
+        "type": "github"
+      }
+    },
     "brew-src": {
       "flake": false,
       "locked": {
@@ -425,6 +445,29 @@
         "type": "github"
       }
     },
+    "myShellFlake": {
+      "inputs": {
+        "ags": [
+          "ags"
+        ],
+        "astal": [
+          "astal"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-sBrCwjoyYbA5/quQSBa0U1ipSMmF9sVVu5P2aG0Sffs=",
+        "path": "./modules/ags",
+        "type": "path"
+      },
+      "original": {
+        "path": "./modules/ags",
+        "type": "path"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -636,9 +679,11 @@
     "root": {
       "inputs": {
         "ags": "ags",
+        "astal": "astal_2",
         "catppuccin": "catppuccin",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "myShellFlake": "myShellFlake",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixos-hardware": "nixos-hardware",
