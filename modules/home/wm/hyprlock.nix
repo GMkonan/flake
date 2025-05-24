@@ -6,8 +6,6 @@
   programs.hyprlock = {
     enable = true;
 
-    catppuccin.enable = false;
-
     settings = {
       general = {
         grace = 3;

@@ -3,9 +3,6 @@
     ./hardware-configuration.nix
   ];
 
-  catppuccin.enable = true;
-  catppuccin.flavor = "mocha";
-
   nix.gc = {
     automatic = true;
     dates = "weekly";

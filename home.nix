@@ -12,16 +12,13 @@
 
   fonts.fontconfig.enable = true;
 
-  catppuccin.enable = true;
-  catppuccin.flavor = "mocha";
-
   imports = [
     ./modules/home/wm
     ./modules/home/cli
 
     ./modules/home/gnome.nix
     ./modules/home/gtk.nix
-    ./modules/home/stylix.nix
+    # ./modules/home/stylix.nix
   ];
 
   # You can specify packages for your user environment
@@ -43,8 +40,7 @@
     # Add more user packages here
     fastfetch
     htop
-    astal.io
-    astal.hyprland
+    btop
   ];
 
   programs = {

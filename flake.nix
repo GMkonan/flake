@@ -13,14 +13,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland.url = "github:hyprwm/Hyprland";
-    catppuccin.url = "github:catppuccin/nix";
     ags.url = "github:Aylur/ags";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     astal = {
       url = "github:aylur/astal";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    stylix.url = "github:danth/stylix";
+    stylix = {
+      url = "github:danth/stylix/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -31,7 +33,6 @@
     zen,
     home-manager,
     hyprland,
-    catppuccin,
     nixos-hardware,
     astal,
     stylix,
@@ -76,19 +77,19 @@
           ./modules/gaming.nix
 
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
-          catppuccin.nixosModules.catppuccin
-          inputs.stylix.nixosModules.stylix
+          # stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "hm-backup";
-            home-manager.extraSpecialArgs = {inherit inputs;};
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+            };
 
             home-manager.users.konan = {
               imports = [
                 ./home.nix
-                catppuccin.homeModules.catppuccin
                 inputs.ags.homeManagerModules.default
               ];
             };
@@ -126,7 +127,6 @@
           ./modules/default.nix
           ./modules/hyprland.nix
           ./nvim/default.nix
-          catppuccin.nixosModules.catppuccin
           # Add Home Manager as a NixOS module
           home-manager.nixosModules.home-manager
           {
@@ -137,7 +137,6 @@
             home-manager.users.konan = {
               imports = [
                 ./home.nix
-                catppuccin.homeModules.catppuccin
                 inputs.ags.homeManagerModules.default
               ];
             };
