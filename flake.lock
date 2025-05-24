@@ -445,29 +445,6 @@
         "type": "github"
       }
     },
-    "myShellFlake": {
-      "inputs": {
-        "ags": [
-          "ags"
-        ],
-        "astal": [
-          "astal"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-sBrCwjoyYbA5/quQSBa0U1ipSMmF9sVVu5P2aG0Sffs=",
-        "path": "./modules/ags",
-        "type": "path"
-      },
-      "original": {
-        "path": "./modules/ags",
-        "type": "path"
-      }
-    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -683,7 +660,6 @@
         "catppuccin": "catppuccin",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
-        "myShellFlake": "myShellFlake",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixos-hardware": "nixos-hardware",

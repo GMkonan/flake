@@ -20,12 +20,6 @@
       url = "github:aylur/astal";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    myShellFlake = {
-      url = "path:./modules/ags";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.astal.follows = "astal";
-      inputs.ags.follows = "ags";
-    };
   };
 
   outputs = inputs @ {
@@ -39,7 +33,6 @@
     catppuccin,
     nixos-hardware,
     astal,
-    myShellFlake,
     ...
   }: {
     nixosConfigurations = let
@@ -87,6 +80,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "hm-backup";
+            home-manager.extraSpecialArgs = {inherit inputs;};
 
             home-manager.users.konan = {
               imports = [

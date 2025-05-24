@@ -41,13 +41,6 @@
 
     ngrok
     silicon
-
-    inputs.myShellFlake.packages.${pkgs.system}.default # The "my-shell" application
-
-    # GObject Introspection dependencies for "my-shell"
-    # These ensure GJS can find the typelibs for astal3 and io at runtime.
-    inputs.astal.packages.${pkgs.system}.astal3
-    inputs.astal.packages.${pkgs.system}.io
   ];
 
   fonts.packages = with pkgs; [
