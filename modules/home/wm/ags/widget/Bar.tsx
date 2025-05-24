@@ -1,63 +1,217 @@
+import Battery from "gi://AstalBattery";
 import Hyprland from "gi://AstalHyprland";
-import { Variable } from "astal";
-import { App, Astal } from "astal/gtk3";
+import Mpris from "gi://AstalMpris";
+import Network from "gi://AstalNetwork";
+import Tray from "gi://AstalTray";
+import Wp from "gi://AstalWp";
+import { GLib, Variable, bind } from "astal";
+import { App } from "astal/gtk3";
+import { Astal, type Gdk, Gtk } from "astal/gtk3";
 
-const hyprland = Hyprland.get_default();
-const minified = Variable(true);
-let nowin = false;
+function SysTray() {
+	const tray = Tray.get_default();
 
-hyprland.connect("event", () => {
-	let found = 0;
-	for (const client of hyprland.get_clients()) {
-		if (client.workspace == hyprland.get_focused_workspace()) {
-			found++;
-		}
+	for (const item of tray.get_items()) {
+		print(item.title);
 	}
 
-	if (found == 0) {
-		nowin = true;
-		minified.set(false);
-	} else {
-		nowin = false;
-		minified.set(true);
-	}
-});
+	return (
+		<box className="SysTray">
+			{bind(tray, "items").as((items) =>
+				items.map((item) => (
+					<menubutton
+						tooltipMarkup={bind(item, "tooltipMarkup")}
+						usePopover={false}
+						actionGroup={bind(item, "actionGroup").as((ag) => ["dbusmenu", ag])}
+						menuModel={bind(item, "menuModel")}
+					>
+						<icon gicon={bind(item, "gicon")} />
+					</menubutton>
+				)),
+			)}
+		</box>
+	);
+}
 
-export default function Bar(state) {
+function Wifi() {
+	const network = Network.get_default();
+	const wifi = bind(network, "wifi");
+
+	return (
+		<box visible={wifi.as(Boolean)}>
+			{wifi.as(
+				(wifi) =>
+					wifi && (
+						<icon
+							tooltipText={bind(wifi, "ssid").as(String)}
+							className="Wifi"
+							icon={bind(wifi, "iconName")}
+						/>
+					),
+			)}
+		</box>
+	);
+}
+
+function AudioSlider() {
+	const speaker = Wp.get_default()?.audio.defaultSpeaker!;
+
+	return (
+		<box className="AudioSlider" css="min-width: 140px">
+			<icon icon={bind(speaker, "volumeIcon")} />
+			<slider
+				hexpand
+				onDragged={({ value }) => (speaker.volume = value)}
+				value={bind(speaker, "volume")}
+			/>
+		</box>
+	);
+}
+
+function BatteryLevel() {
+	const bat = Battery.get_default();
+
+	return (
+		<box className="Battery" visible={bind(bat, "isPresent")}>
+			<icon icon={bind(bat, "batteryIconName")} />
+			<label
+				label={bind(bat, "percentage").as((p) => `${Math.floor(p * 100)} %`)}
+			/>
+		</box>
+	);
+}
+
+function Media() {
+	const mpris = Mpris.get_default();
+
+	return (
+		<box className="Media">
+			{bind(mpris, "players").as((ps) =>
+				ps[0] ? (
+					<box>
+						<box
+							className="Cover"
+							valign={Gtk.Align.CENTER}
+							css={bind(ps[0], "coverArt").as(
+								(cover) => `background-image: url('${cover}');`,
+							)}
+						/>
+						<label
+							label={bind(ps[0], "metadata").as(
+								() => `${ps[0].title} - ${ps[0].artist}`,
+							)}
+						/>
+					</box>
+				) : (
+					<label label="Nothing Playing" />
+				),
+			)}
+		</box>
+	);
+}
+
+function Workspaces() {
+	const hypr = Hyprland.get_default();
+
+	// I may do it so a workspace number only show on the monitor is open
+	return (
+		<box className="Workspaces">
+			{bind(hypr, "workspaces").as((wss) =>
+				wss
+					.filter((ws) => !(ws.id >= -99 && ws.id <= -2))
+					.sort((a, b) => a.id - b.id)
+					.map((ws) => (
+						<button
+							className={bind(hypr, "focusedWorkspace").as((fw) =>
+								ws === fw ? "focused" : "",
+							)}
+							onClicked={() => ws.focus()}
+						>
+							{ws.id}
+						</button>
+					)),
+			)}
+		</box>
+	);
+}
+
+function FocusedClient() {
+	const hypr = Hyprland.get_default();
+	const focused = bind(hypr, "focusedClient");
+
+	return (
+		<box className="Focused" visible={focused.as(Boolean)}>
+			{focused.as(
+				(client) =>
+					client && <label label={bind(client, "title").as(String)} />,
+			)}
+		</box>
+	);
+}
+
+function Date({ format = "%a %d %b" }) {
+	const date = Variable<string>("").poll(
+		1000,
+		() => GLib.DateTime.new_now_local().format(format)!,
+	);
+
+	return (
+		<label className="Date" onDestroy={() => date.drop()} label={date()} />
+	);
+}
+
+function Time({ format = "%H:%M" }) {
+	const time = Variable<string>("").poll(
+		1000,
+		() => GLib.DateTime.new_now_local().format(format)!,
+	);
+
+	return (
+		<label className="Time" onDestroy={() => time.drop()} label={time()} />
+	);
+}
+
+function TestW() {
+	const count = Variable(false);
+
+	function increment() {
+		count.set(true);
+		print("clicked button");
+	}
+	return (
+		<box>
+			<button onClicked={increment}>ad</button>
+			{count.get() === true && <box>cool</box>}
+		</box>
+	);
+}
+
+export default function Bar(monitor: Gdk.Monitor) {
+	const { TOP, LEFT, RIGHT } = Astal.WindowAnchor;
+
 	return (
 		<window
-			name="ShyBar"
-			className="ShyBar"
-			monitor={0}
+			className="Bar"
+			gdkmonitor={monitor}
 			exclusivity={Astal.Exclusivity.EXCLUSIVE}
-			anchor={
-				Astal.WindowAnchor.LEFT |
-				Astal.WindowAnchor.TOP |
-				Astal.WindowAnchor.BOTTOM
-			}
-			application={App}
+			anchor={TOP | LEFT | RIGHT}
 		>
-			<eventbox
-				onHover={() => {
-					if (!nowin) minified.set(false);
-				}}
-				onHoverLost={() => {
-					if (!nowin) minified.set(true);
-				}}
-			>
-				<box
-					vertical
-					className={minified((value) =>
-						value ? "BarContainerMini" : "BarContainer",
-					)}
-				>
-					<Icon minified={minified} />
-
-					<box hexpand vexpand />
-
-					<Time minified={minified} />
+			<centerbox>
+				<box hexpand halign={Gtk.Align.START}>
+					<Workspaces />
 				</box>
-			</eventbox>
+				<box>
+					<Media />
+				</box>
+				<box hexpand halign={Gtk.Align.END}>
+					<SysTray />
+					<Wifi />
+					<AudioSlider />
+					<BatteryLevel />
+					<Date />
+					<Time />
+				</box>
+			</centerbox>
 		</window>
 	);
 }
