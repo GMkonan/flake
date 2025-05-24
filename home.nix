@@ -36,6 +36,8 @@
   # User environment packages
   home.packages = with pkgs; [
     # Add more user packages here
+    fastfetch
+    htop
   ];
 
   programs = {

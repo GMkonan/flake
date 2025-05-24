@@ -45,9 +45,9 @@
 
       exec-once = ["waybar"];
 
-      decoration = {
-        rounding = 16;
-      };
+      # decoration = {
+      #   rounding = 16;
+      # };
 
       bind = [
         "ALT, Return, exec, ${pkgs.ghostty}/bin/ghostty"
@@ -99,6 +99,8 @@
         "ALT SHIFT, P, exec, pkill waybar && hyprctl dispatch exec waybar"
 
         "ALT SHIFT, L, exec, hyprctl switchxkblayout current next"
+
+        "ALT SHIFT, F, togglefloating,"
         # "ALT, L, keyboard, switchxkblayout next"
       ];
     };

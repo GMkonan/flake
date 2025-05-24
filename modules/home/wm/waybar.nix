@@ -9,8 +9,8 @@
         height = 15;
         spacing = 4;
 
-        modules-left = ["custom/power-button"];
-        modules-center = ["hyprland/workspaces"];
+        modules-left = ["custom/power-button" "hyprland/workspaces"];
+        modules-center = [];
         modules-right = ["hyprland/language" "group/system" "battery" "clock#date" "clock#time"];
 
         "custom/power-button" = {
@@ -208,7 +208,7 @@
         }
 
         #waybar {
-          background: alpha(@crust, 0.2);
+          background: alpha(@crust, 0.6);
           color: @text;
           margin: 2px 5px;
         }
@@ -256,11 +256,11 @@
         }
 
         #workspaces {
-          background-color: @mantle;
           border-radius: 4px;
         }
 
         #workspaces > button {
+          color: @text;
           padding: 0px 8px;
           font-weight: 900;
           font-size: 18px;
@@ -269,7 +269,7 @@
 
         #workspaces button.active {
           color: @crust;
-          background: @lavender
+          background: @mauve;
         }
 
         #workspaces button:hover {
