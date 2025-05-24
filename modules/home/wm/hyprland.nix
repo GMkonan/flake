@@ -98,9 +98,10 @@
 
         "ALT SHIFT, P, exec, pkill waybar && hyprctl dispatch exec waybar"
 
-        "ALT SHIFT, L, exec, hyprctl switchxkblayout current next"
+        "ALT SHIFT, A, exec, hyprctl switchxkblayout current next"
 
-        "ALT SHIFT, F, togglefloating,"
+        "ALT SHIFT, G, togglefloating,"
+        "ALT SHIFT, F, fullscreen,"
         # "ALT, L, keyboard, switchxkblayout next"
       ];
     };
