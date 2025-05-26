@@ -20,7 +20,7 @@
         corner_radius = 8;
 
         # Text
-        font = "monospace 10";
+        # font = "monospace 10";
         line_height = 0;
         markup = "full";
         format = "<b>%s</b>\n%b";

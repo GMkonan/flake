@@ -77,7 +77,7 @@
           ./modules/gaming.nix
 
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
-          # stylix.nixosModules.stylix
+          stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

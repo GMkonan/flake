@@ -26,7 +26,7 @@
         dots_size = 0.27; # Scale of input field height
         dots_spacing = 0.15; # Scale of dots' absolute size
         dots_center = true;
-        check_color = "rgb(200, 200, 200)";
+        # check_color = "rgb(200, 200, 200)";
         position = "0, 00";
         fade_on_empty = true;
         placeholder_text = "<i>Password</i>";

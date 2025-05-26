@@ -18,7 +18,7 @@
 
     ./modules/home/gnome.nix
     ./modules/home/gtk.nix
-    # ./modules/home/stylix.nix
+    ./modules/home/stylix.nix
   ];
 
   # You can specify packages for your user environment

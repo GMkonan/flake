@@ -34,7 +34,7 @@
       enable-hot-corners = true;
       clock-show-weekday = true;
       clock-show-date = true;
-      gtk-theme = "Adwaita-dark";
+      # gtk-theme = "Adwaita-dark";
       show-battery-percentage = true;
     };
 
