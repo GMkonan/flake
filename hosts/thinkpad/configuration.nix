@@ -41,6 +41,8 @@
     variant = "";
   };
 
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+
   services.printing.enable = true;
 
   # Enable sound with pipewire.

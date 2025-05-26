@@ -34,6 +34,8 @@
     LC_TIME = "pt_BR.UTF-8";
   };
 
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+
   services.xserver.enable = true;
 
   services.xserver.xkb = {
