@@ -6,7 +6,7 @@ import Tray from "gi://AstalTray";
 import Wp from "gi://AstalWp";
 import { GLib, Variable, bind } from "astal";
 import { App } from "astal/gtk3";
-import { Astal, type Gdk, Gtk } from "astal/gtk3";
+import { Astal, type Gdk, Gtk, type Widget } from "astal/gtk3";
 
 function SysTray() {
 	const tray = Tray.get_default();
@@ -103,7 +103,7 @@ function Media() {
 						/>
 					</box>
 				) : (
-					<label label="Nothing Playing" />
+					<label />
 				),
 			)}
 		</box>
@@ -186,8 +186,54 @@ function TestW() {
 	);
 }
 
+type MenuProps = Pick<
+	Widget.WindowProps,
+	// | "name"
+	// | "namespace"
+	// | "className"
+	| "visible"
+	// | "child"
+	| "marginBottom"
+	| "marginTop"
+	| "marginLeft"
+	| "marginRight"
+	| "halign"
+	| "valign"
+> & {
+	onClose?(self: Widget.Window): void;
+};
+
+function Menu({
+	onClose,
+	halign,
+	valign,
+	marginBottom,
+	marginTop,
+	marginLeft,
+	marginRight,
+	...props
+}: MenuProps) {
+	return (
+		<window {...props}>
+			<box
+				expand
+				halign={halign}
+				valign={valign}
+				marginBottom={marginBottom}
+				marginTop={marginTop}
+				marginStart={marginLeft}
+				marginEnd={marginRight}
+			>
+				<button onClicked={(self) => onClose(self)}>close</button>
+			</box>
+		</window>
+	);
+}
+
 export default function Bar(monitor: Gdk.Monitor) {
 	const { TOP, LEFT, RIGHT } = Astal.WindowAnchor;
+
+	const v = Variable(false);
 
 	return (
 		<window
@@ -196,9 +242,18 @@ export default function Bar(monitor: Gdk.Monitor) {
 			exclusivity={Astal.Exclusivity.EXCLUSIVE}
 			anchor={TOP | LEFT | RIGHT}
 		>
+			<Menu
+				valign={Gtk.Align.START}
+				halign={Gtk.Align.END}
+				marginTop={36}
+				marginRight={60}
+				visible={v()}
+				onClose={() => v.set(false)}
+			/>
 			<centerbox>
 				<box hexpand halign={Gtk.Align.START}>
 					<Workspaces />
+					<button onClicked={() => v.set(true)}>open</button>
 				</box>
 				<box>
 					<Media />
