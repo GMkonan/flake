@@ -34,7 +34,7 @@ in {
       ipc = "on";
       splash = false;
       splash_offset = 2.0;
-      wallpaper = ",../../../wallpapers/space-astronaut.png";
+      wallpaper = ",~/flake/allpapers/space-astronaut.png";
     };
   };
 
