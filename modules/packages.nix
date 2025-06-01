@@ -22,6 +22,7 @@
     bruno
     helix
     google-chrome
+    jujutsu
 
     oh-my-posh
     zoxide
