@@ -12,7 +12,7 @@
     escapeTime = 50;
 
     # keyMode = "vi";
-    # prefix = "C-t";
+    prefix = "C-Space";
 
     plugins = with pkgs.tmuxPlugins; [
       fzf-tmux-url
