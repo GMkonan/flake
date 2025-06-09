@@ -15,6 +15,7 @@
   imports = [
     ./modules/home/wm
     ./modules/home/cli
+    ./modules/home/gui
 
     ./modules/home/gnome.nix
     ./modules/home/gtk.nix
