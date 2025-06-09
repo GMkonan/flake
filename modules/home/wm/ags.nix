@@ -5,7 +5,7 @@
 }: {
   programs.ags = {
     enable = true;
-    configDir = ./ags;
+    # configDir = ./ags;
 
     # additional packages to add to gjs's runtime
     extraPackages = [
