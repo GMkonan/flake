@@ -1,4 +1,7 @@
 {pkgs, ...}: {
+  home.packages = [
+    (pkgs.writeShellScriptBin "tmux-sesh" (builtins.readFile ./tmux-sesh.sh))
+  ];
   programs.tmux = {
     enable = true;
     terminal = "tmux-256color";
