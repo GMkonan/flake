@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
+    neovim
     # LSPs
     gopls
     typescript-language-server
