@@ -127,13 +127,17 @@
           ./modules/default.nix
           ./modules/hyprland.nix
           ./nvim/default.nix
-          # Add Home Manager as a NixOS module
+
+          stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "hm-backup";
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+            };
 
-            # Configure your user's Home Manager settings
             home-manager.users.konan = {
               imports = [
                 ./home.nix
