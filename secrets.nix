@@ -1,4 +1,4 @@
 {
-  address = "";
-  gateway = "";
+  address = "192.168.15.233";
+  gateway = "192.168.15.1";
 }
