@@ -153,6 +153,7 @@
 
         modules = [
           ./hosts/server/configuration.nix
+          ./nvim/default.nix
         ];
       };
     };
