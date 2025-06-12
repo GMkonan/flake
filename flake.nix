@@ -42,6 +42,8 @@
       system = "x86_64-linux";
 
       overlays = import ./overlays/default.nix;
+
+      secrets = import ./secrets.nix;
     in {
       desktop = nixpkgs.lib.nixosSystem {
         inherit system;
@@ -150,6 +152,11 @@
 
       server = nixpkgs.lib.nixosSystem {
         inherit system;
+
+        specialArgs = {
+          inherit (secrets) address;
+          inherit (secrets) gateway;
+        };
 
         modules = [
           ./hosts/server/configuration.nix

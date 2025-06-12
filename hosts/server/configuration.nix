@@ -4,6 +4,8 @@
 {
   config,
   pkgs,
+  address,
+  gateway,
   ...
 }: {
   imports = [
@@ -21,11 +23,11 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.interfaces.enp27s0.ipv4.addresses = [
     {
-      address = "";
+      address = address;
       prefixLength = 24;
     }
   ];
-  networking.defaultGateway = "";
+  networking.defaultGateway = gateway;
   networking.nameservers = ["8.8.8.8"];
 
   # Configure network proxy if necessary
@@ -88,25 +90,26 @@
     ntfs3g
     docker
     git
+    gcc
   ];
 
-services.homepage-dashboard = {
-	enable = true;
-	openFirewall = true;
-	allowedHosts = "127.0.0.1:8082,localhost:8082";
-	services = [
-  {
-    "Media" = [
+  services.homepage-dashboard = {
+    enable = true;
+    openFirewall = true;
+    allowedHosts = "127.0.0.1:8082,localhost:8082";
+    services = [
       {
-        "Kyoo" = {
-          description = "Best media solution";
-          href = "";
-        };
+        "Media" = [
+          {
+            "Kyoo" = {
+              description = "Best media solution";
+              href = "";
+            };
+          }
+        ];
       }
     ];
-  }
-	];
-};
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
