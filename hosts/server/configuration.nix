@@ -67,13 +67,13 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
-    defaultUserShell = pkgs.zsh;
+    # defaultUserShell = pkgs.zsh;
 
     users.chico = {
       isNormalUser = true;
       description = "chico";
       extraGroups = ["networkmanager" "wheel" "docker"];
-      shell = pkgs.zsh;
+      # shell = pkgs.zsh;
       packages = with pkgs; [];
     };
   };
