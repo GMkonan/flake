@@ -66,11 +66,16 @@
   virtualisation.docker.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.chico = {
-    isNormalUser = true;
-    description = "chico";
-    extraGroups = ["networkmanager" "wheel" "docker"];
-    packages = with pkgs; [];
+  users = {
+    defaultUserShell = pkgs.zsh;
+
+    users.chico = {
+      isNormalUser = true;
+      description = "chico";
+      extraGroups = ["networkmanager" "wheel" "docker"];
+      shell = pkgs.zsh;
+      packages = with pkgs; [];
+    };
   };
 
   fileSystems."/media/data" = {
@@ -96,7 +101,7 @@
   services.homepage-dashboard = {
     enable = true;
     openFirewall = true;
-    allowedHosts = "127.0.0.1:8082,localhost:8082";
+    allowedHosts = "127.0.0.1:8082,localhost:8082,${address}:8082";
     services = [
       {
         "Media" = [
