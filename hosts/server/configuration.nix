@@ -96,19 +96,136 @@
     docker
     git
     gcc
+
+    qbittorrent
   ];
+
+  services.radarr = {
+    enable = true;
+    openFirewall = true;
+  };
+
+  services.deluge = {
+    enable = true;
+    web.enable = true;
+    web.openFirewall = true;
+    openFirewall = true;
+  };
+
+  services.bazarr = {
+    enable = true;
+    openFirewall = true;
+  };
+
+  services.sonarr = {
+    enable = true;
+    openFirewall = true;
+  };
+
+  services.prowlarr = {
+    enable = true;
+    openFirewall = true;
+  };
 
   services.homepage-dashboard = {
     enable = true;
     openFirewall = true;
     allowedHosts = "127.0.0.1:8082,localhost:8082,${address}:8082";
+    customCSS = ''
+      body, html {
+        font-family: SF Pro Display, Helvetica, Arial, sans-serif !important;
+      }
+      .font-medium {
+        font-weight: 700 !important;
+      }
+      .font-light {
+        font-weight: 500 !important;
+      }
+      .font-thin {
+        font-weight: 400 !important;
+      }
+    '';
+    settings = {
+      title = "Chico's Homepage";
+      layout = [
+        {
+          Media = {
+            header = true;
+            style = "row";
+            columns = 4;
+          };
+        }
+
+        {
+          Arr = {
+            header = true;
+            style = "row";
+            columns = 4;
+          };
+        }
+
+        {
+          Downloads = {
+            header = true;
+            style = "row";
+            columns = 4;
+          };
+        }
+      ];
+    };
     services = [
       {
         "Media" = [
           {
             "Kyoo" = {
               description = "Best media solution";
-              href = "";
+              href = "http://${address}:8901";
+              icon = "https://github.com/zoriya/Kyoo/blob/master/icons/icon-256x256.png?raw=true";
+              siteMonitor = "http://${address}:8901";
+            };
+          }
+        ];
+      }
+      {
+        "Arr" = [
+          {
+            "Prowlarr" = {
+              description = "Indexer";
+              href = "http://${address}:9696";
+              icon = "prowlarr";
+            };
+          }
+          {
+            "Sonarr" = {
+              description = "TV shows";
+              href = "http://${address}:8989";
+              icon = "sonarr";
+            };
+          }
+          {
+            "Radarr" = {
+              description = "Movie collection manager";
+              href = "http://${address}:7878";
+              icon = "radarr";
+            };
+          }
+          {
+            "Bazarr" = {
+              description = "Subtitles";
+              href = "http://${address}:6767";
+              icon = "bazarr";
+            };
+          }
+        ];
+      }
+
+      {
+        "Downloads" = [
+          {
+            "Deluge" = {
+              description = "Torrent client";
+              href = "http://${address}:8112";
+              icon = "deluge";
             };
           }
         ];
