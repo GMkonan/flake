@@ -65,14 +65,14 @@
 
   virtualisation.docker.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
-    # defaultUserShell = pkgs.zsh;
+    groups.media = {};
 
+    # defaultUserShell = pkgs.zsh;
     users.chico = {
       isNormalUser = true;
       description = "chico";
-      extraGroups = ["networkmanager" "wheel" "docker"];
+      extraGroups = ["networkmanager" "wheel" "docker" "media"];
       # shell = pkgs.zsh;
       packages = with pkgs; [];
     };
@@ -81,7 +81,7 @@
   fileSystems."/media/data" = {
     device = "/dev/disk/by-uuid/AECEDEC4CEDE83CD"; # specifying by uuid to ensure we are using the correct HD
     fsType = "ntfs";
-    options = ["defaults" "nofail" "uid=1000" "gid=1000" "umask=022"];
+    options = ["defaults" "nofail" "uid=1000" "gid=media" "umask=002"];
   };
 
   # Allow unfree packages
@@ -97,12 +97,13 @@
     git
     gcc
 
-    qbittorrent
+    lm_sensors
   ];
 
   services.radarr = {
     enable = true;
     openFirewall = true;
+    group = "media";
   };
 
   services.deluge = {
@@ -110,21 +111,50 @@
     web.enable = true;
     web.openFirewall = true;
     openFirewall = true;
+    group = "media";
   };
 
   services.bazarr = {
     enable = true;
     openFirewall = true;
+    group = "media";
   };
 
   services.sonarr = {
     enable = true;
     openFirewall = true;
+    group = "media";
   };
 
   services.prowlarr = {
     enable = true;
     openFirewall = true;
+  };
+
+  # systemd.tmpfiles.rules = [
+  #   "d /media/data/share-data 2770 chico media - -"
+  # ];
+
+  services.paperless = {
+    enable = true;
+    mediaDir = "/home/chico/paperless/data";
+    user = "chico";
+    # put docs here, they will be added and indexed to paperless and later removed from consumptionDir
+    consumptionDir = "/home/chico/paperless/consume";
+    consumptionDirIsPublic = true;
+    passwordFile = "/home/chico/paperless/password";
+    settings.PAPERLESS_OCR_LANGUAGE = "por+eng";
+    address = "0.0.0.0";
+    port = 28981;
+  };
+  networking.firewall.allowedTCPPorts = [28981];
+
+  # systemd.services.paperless-scheduler.after = ["var-lib-paperless.mount"];
+  # systemd.services.paperless-consumer.after = ["var-lib-paperless.mount"];
+  # systemd.services.paperless-web.after = ["var-lib-paperless.mount"];
+
+  services.glances = {
+    enable = true;
   };
 
   services.homepage-dashboard = {
@@ -149,6 +179,14 @@
       title = "Chico's Homepage";
       layout = [
         {
+          Glances = {
+            header = false;
+            style = "row";
+            columns = 4;
+          };
+        }
+
+        {
           Media = {
             header = true;
             style = "row";
@@ -171,9 +209,65 @@
             columns = 4;
           };
         }
+        {
+          Misc = {
+            header = true;
+            style = "row";
+            columns = 4;
+          };
+        }
       ];
     };
     services = [
+      {
+        "Glances" = [
+          {
+            "CPU/RAM Usage" = {
+              widget = {
+                type = "glances";
+                url = "http://localhost:61208";
+                metric = "info";
+                chart = true;
+                version = 4;
+              };
+            };
+          }
+          {
+            "CPU Temp" = {
+              widget = {
+                type = "glances";
+                url = "http://localhost:61208";
+                metric = "sensor:Package id 0";
+                chart = true;
+                version = 4;
+              };
+            };
+          }
+
+          {
+            "Network" = {
+              widget = {
+                type = "glances";
+                url = "http://localhost:61208";
+                metric = "network:enp27s0";
+                chart = true;
+                version = 4;
+              };
+            };
+          }
+          {
+            "Process" = {
+              widget = {
+                type = "glances";
+                url = "http://localhost:61208";
+                metric = "process";
+                chart = true;
+                version = 4;
+              };
+            };
+          }
+        ];
+      }
       {
         "Media" = [
           {
@@ -193,6 +287,7 @@
               description = "Indexer";
               href = "http://${address}:9696";
               icon = "prowlarr";
+              siteMonitor = "http://${address}:9696";
             };
           }
           {
@@ -200,6 +295,7 @@
               description = "TV shows";
               href = "http://${address}:8989";
               icon = "sonarr";
+              siteMonitor = "http://${address}:8989";
             };
           }
           {
@@ -207,6 +303,7 @@
               description = "Movie collection manager";
               href = "http://${address}:7878";
               icon = "radarr";
+              siteMonitor = "http://${address}:7878";
             };
           }
           {
@@ -214,6 +311,7 @@
               description = "Subtitles";
               href = "http://${address}:6767";
               icon = "bazarr";
+              siteMonitor = "http://${address}:6767";
             };
           }
         ];
@@ -226,6 +324,19 @@
               description = "Torrent client";
               href = "http://${address}:8112";
               icon = "deluge";
+              siteMonitor = "http://${address}:8112";
+            };
+          }
+        ];
+      }
+      {
+        "Misc" = [
+          {
+            "Paperless" = {
+              description = "Digital documents";
+              href = "http://${address}:28981";
+              icon = "paperless";
+              siteMonitor = "http://${address}:28981";
             };
           }
         ];
