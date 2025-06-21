@@ -65,6 +65,8 @@
 
   virtualisation.docker.enable = true;
 
+  users.users.sonarr.extraGroups = ["media"];
+  users.users.immich.extraGroups = ["media"];
   users = {
     groups.media = {};
 
@@ -80,8 +82,8 @@
 
   fileSystems."/media/data" = {
     device = "/dev/disk/by-uuid/AECEDEC4CEDE83CD"; # specifying by uuid to ensure we are using the correct HD
-    fsType = "ntfs";
-    options = ["defaults" "nofail" "uid=1000" "gid=media" "umask=002"];
+    fsType = "ntfs-3g";
+    options = ["defaults" "nofail" "uid=1000" "gid=991" "umask=002"];
   };
 
   # Allow unfree packages
@@ -155,6 +157,14 @@
 
   services.glances = {
     enable = true;
+  };
+
+  services.immich = {
+    enable = true;
+    host = "${address}";
+    openFirewall = true;
+    mediaLocation = "/media/data/immich/immich/";
+    group = "media";
   };
 
   services.homepage-dashboard = {
@@ -337,6 +347,14 @@
               href = "http://${address}:28981";
               icon = "paperless";
               siteMonitor = "http://${address}:28981";
+            };
+          }
+          {
+            "Immich" = {
+              description = "Photos";
+              href = "http://${address}:2283";
+              icon = "immich";
+              siteMonitor = "http://${address}:2283";
             };
           }
         ];
