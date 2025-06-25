@@ -15,6 +15,13 @@ darwin-rebuild switch --flake ~/flake#mini
 sudo nixos-rebuild switch --flake ~/flake#thinkpad (or other host)
 
 #### Todo
+
+##### V2
+I want to setup things differently, which will make me change a lot of the
+structure of this flake. will be working this in the v2 branch. Questions:
+- How overlays will work in this new config format?
+
+
 - hyprland
     - [ ] widgets for hyprland (ags? Astal?)
 - hyprpaper
