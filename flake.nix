@@ -26,6 +26,22 @@
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
+  outputs = inputs:
+    import ./lib/bootstrap.nix inputs {
+      x86_64-linux = {
+        homes.nixos = ./homes/nixos;
+        hosts.desktop = ./hosts/desktop;
+        hosts.thinkpad = ./hosts/thinkpad;
+
+        hosts.server = ./hosts/server;
+        homes.server = ./homes/server;
+      };
+      aarch64-darwin = {
+        homes.darwin = ./homes/darwin;
+        hosts.mini = ./hosts/mac;
+      };
+    };
+
   outputs = inputs @ {
     self,
     nix-darwin,
