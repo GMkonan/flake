@@ -13,6 +13,29 @@
         modules-center = [];
         modules-right = ["hyprland/language" "group/system" "battery" "clock#date" "clock#time"];
 
+        "hyprland/workspaces" = {
+          "format" = "{icon}";
+          "on-click" = "activate";
+          "sort-by-number" = true;
+          "disable-scroll" = true;
+          "format-icons" = {
+            "1" = "";
+            "2" = "";
+            "3" = "";
+            "4" = "";
+            "5" = "";
+            "6" = "";
+            "7" = "";
+            "8" = "";
+            "9" = "";
+            "urgent" = "";
+            "active" = "";
+            "default" = "";
+          };
+          "tooltip" = false;
+          all-outputs = true;
+        };
+
         "custom/power-button" = {
           format = "";
           on-click = "wlogout";
@@ -102,21 +125,6 @@
           format-icons = ["󰁻" "󰁼" "󰁾" "󰂀" "󰂂" "󰁹"];
         };
 
-        # clock = {
-        #   format = "{:%I:%M %p} ";
-        #   interval = 1;
-        #   tooltip-format = "<tt>{calendar}</tt>";
-        #   calendar = {
-        #     format = {
-        #       today = "<span color='#fAfBfC'><b>{}</b></span>";
-        #     };
-        #   };
-        #   actions = {
-        #     on-click-right = "shift_down";
-        #     on-click = "shift_up";
-        #   };
-        # };
-
         "clock#time" = {
           format = "{:%H:%M}";
           interval = 1;
@@ -127,7 +135,8 @@
         "clock#date" = {
           format = "{:%a  %d  %b}";
           interval = 60;
-          tooltip-format = "<tt>{calendar}</tt>";
+          tooltip = true;
+          tooltip-format = "{:%A; %d %B %Y}\n<tt>{calendar}</tt>";
           calendar = {
             mode = "month";
             format = {
@@ -255,25 +264,10 @@
           font-size: 18px;
         }
 
-        #workspaces {
-          border-radius: 4px;
-        }
-
         #workspaces > button {
-          color: @text;
           padding: 0px 8px;
-          font-weight: 900;
-          font-size: 18px;
+          font-size: 8px;
           border-radius: 0px;
-        }
-
-        #workspaces button.active {
-          color: @crust;
-          background: @mauve;
-        }
-
-        #workspaces button:hover {
-          background-color: @sapphire;
         }
 
         #battery {
