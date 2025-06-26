@@ -59,9 +59,6 @@ in {
     LC_TIME = "pt_BR.UTF-8";
   };
 
-  # experimental
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-
   # hosts desktop, thinkpad
   services.xserver.enable = true;
 
