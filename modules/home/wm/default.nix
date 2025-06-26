@@ -2,6 +2,7 @@
   imports = [
     ./ags.nix
     ./wofi.nix
+    ./walker.nix
     ./dunst.nix
     ./waybar.nix
     ./wlogout.nix
