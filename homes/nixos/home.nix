@@ -13,13 +13,13 @@
   fonts.fontconfig.enable = true;
 
   imports = [
-    ./modules/home/wm
-    ./modules/home/cli
-    ./modules/home/gui
+    ../../modules/home/wm
+    ../../modules/home/cli
+    ../../modules/home/gui
 
-    ./modules/home/gnome.nix
-    ./modules/home/gtk.nix
-    ./modules/home/stylix.nix
+    ../../modules/home/gnome.nix
+    ../../modules/home/gtk.nix
+    ../../modules/home/stylix.nix
   ];
 
   # User environment packages

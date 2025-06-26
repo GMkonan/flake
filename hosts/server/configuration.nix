@@ -1,16 +1,11 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-{
-  config,
-  pkgs,
-  address,
-  gateway,
-  ...
-}: {
+{pkgs, ...}: let
+  secrets = import ../../secrets.nix;
+in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware.nix
+
+    ../../nvim/default.nix
   ];
 
   # Bootloader.
@@ -23,11 +18,11 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.interfaces.enp27s0.ipv4.addresses = [
     {
-      address = address;
+      address = secrets.address;
       prefixLength = 24;
     }
   ];
-  networking.defaultGateway = gateway;
+  networking.defaultGateway = secrets.gateway;
   networking.nameservers = ["8.8.8.8"];
 
   # Configure network proxy if necessary
@@ -161,7 +156,7 @@
 
   services.immich = {
     enable = true;
-    host = "${address}";
+    host = "${secrets.address}";
     openFirewall = true;
     mediaLocation = "/media/data/immich/immich/";
     group = "media";
@@ -170,7 +165,7 @@
   services.homepage-dashboard = {
     enable = true;
     openFirewall = true;
-    allowedHosts = "127.0.0.1:8082,localhost:8082,${address}:8082";
+    allowedHosts = "127.0.0.1:8082,localhost:8082,${secrets.address}:8082";
     customCSS = ''
       body, html {
         font-family: SF Pro Display, Helvetica, Arial, sans-serif !important;
@@ -283,9 +278,9 @@
           {
             "Kyoo" = {
               description = "Best media solution";
-              href = "http://${address}:8901";
+              href = "http://${secrets.address}:8901";
               icon = "https://github.com/zoriya/Kyoo/blob/master/icons/icon-256x256.png?raw=true";
-              siteMonitor = "http://${address}:8901";
+              siteMonitor = "http://${secrets.address}:8901";
             };
           }
         ];
@@ -295,33 +290,33 @@
           {
             "Prowlarr" = {
               description = "Indexer";
-              href = "http://${address}:9696";
+              href = "http://${secrets.address}:9696";
               icon = "prowlarr";
-              siteMonitor = "http://${address}:9696";
+              siteMonitor = "http://${secrets.address}:9696";
             };
           }
           {
             "Sonarr" = {
               description = "TV shows";
-              href = "http://${address}:8989";
+              href = "http://${secrets.address}:8989";
               icon = "sonarr";
-              siteMonitor = "http://${address}:8989";
+              siteMonitor = "http://${secrets.address}:8989";
             };
           }
           {
             "Radarr" = {
               description = "Movie collection manager";
-              href = "http://${address}:7878";
+              href = "http://${secrets.address}:7878";
               icon = "radarr";
-              siteMonitor = "http://${address}:7878";
+              siteMonitor = "http://${secrets.address}:7878";
             };
           }
           {
             "Bazarr" = {
               description = "Subtitles";
-              href = "http://${address}:6767";
+              href = "http://${secrets.address}:6767";
               icon = "bazarr";
-              siteMonitor = "http://${address}:6767";
+              siteMonitor = "http://${secrets.address}:6767";
             };
           }
         ];
@@ -332,9 +327,9 @@
           {
             "Deluge" = {
               description = "Torrent client";
-              href = "http://${address}:8112";
+              href = "http://${secrets.address}:8112";
               icon = "deluge";
-              siteMonitor = "http://${address}:8112";
+              siteMonitor = "http://${secrets.address}:8112";
             };
           }
         ];
@@ -344,17 +339,17 @@
           {
             "Paperless" = {
               description = "Digital documents";
-              href = "http://${address}:28981";
+              href = "http://${secrets.address}:28981";
               icon = "paperless";
-              siteMonitor = "http://${address}:28981";
+              siteMonitor = "http://${secrets.address}:28981";
             };
           }
           {
             "Immich" = {
               description = "Photos";
-              href = "http://${address}:2283";
+              href = "http://${secrets.address}:2283";
               icon = "immich";
-              siteMonitor = "http://${address}:2283";
+              siteMonitor = "http://${secrets.address}:2283";
             };
           }
         ];
