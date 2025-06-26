@@ -41,6 +41,8 @@ in {
   # NOT A MODULE
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+
   # network
   networking.networkmanager.enable = true;
 

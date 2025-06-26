@@ -20,6 +20,9 @@
     ../../modules/home/gnome.nix
     ../../modules/home/gtk.nix
     ../../modules/home/stylix.nix
+
+    inputs.stylix.homeModules.stylix
+    inputs.ags.homeManagerModules.default
   ];
 
   # User environment packages
