@@ -12,6 +12,8 @@
 
   fonts.fontconfig.enable = true;
 
+  nixpkgs.config.allowUnfree = true;
+
   imports = [
     ../../modules/home/wm
     ../../modules/home/cli
