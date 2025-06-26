@@ -5,7 +5,7 @@ in {
     # Include the results of the hardware scan.
     ./hardware.nix
 
-    ../../nvim/default.nix
+    ../../nvim
   ];
 
   # Bootloader.
