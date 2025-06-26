@@ -1,6 +1,28 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: let
+  overlays = import ../../overlays/default.nix;
+in {
+  nixpkgs.overlays = [overlays];
+
   imports = [
     ./hardware.nix
+
+    ../../modules/system/packages.nix
+    ../../modules/system/nixos-shared.nix
+    ../../modules/system/tailscale.nix
+    ../../modules/system/hyprland.nix
+    ../../modules/system/nvidia.nix
+    ../../modules/system/default.nix
+    ../../nvim/default.nix
+
+    ../../modules/system/bootloader.nix
+    ../../modules/system/user.nix
+
+    inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+    inputs.stylix.nixosModules.stylix
   ];
 
   networking.hostName = "bocchi";
