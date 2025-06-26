@@ -20,6 +20,7 @@
     ticktick
     postgresql
     beamMinimal27Packages.elixir_1_17
+    home-manager
     inputs.zen.packages.${pkgs.system}.default
   ];
 
