@@ -1,6 +1,6 @@
 {
   pkgs,
-  zen,
+  inputs,
   ...
 }: {
   nixpkgs.config = {
@@ -20,7 +20,7 @@
     ticktick
     postgresql
     beamMinimal27Packages.elixir_1_17
-    zen.packages.${pkgs.system}.default
+    inputs.zen.packages.${pkgs.system}.default
   ];
 
   fonts.packages = with pkgs; [
