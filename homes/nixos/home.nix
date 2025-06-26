@@ -25,6 +25,7 @@
 
     inputs.stylix.homeModules.stylix
     inputs.ags.homeManagerModules.default
+    inputs.walker.homeManagerModules.default
   ];
 
   # User environment packages
