@@ -32,6 +32,7 @@
     graphite-cli
     gh
     lazydocker
+    lazygit
     nodejs
     bun
     pnpm
