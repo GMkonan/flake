@@ -1,12 +1,12 @@
 # Flake nix
-
-Nix stuff for both my darwin (mac) and linux pcs
+Nix + home manager config for multiple hosts. Inspired by bocchi the rock
+characters.
 
 ## Hosts
-- NixOS thinkpad T480
-- Darwin (mac mini)
-- NixOS Media Server
-- Nixos Desktop
+- Bocchi (Desktop)
+- Ryo (thinkpad T480)
+- Nijika (mac mini)
+- Seika (Server)
 
 ### Darwin
 darwin-rebuild switch --flake ~/flake#mini
@@ -19,7 +19,6 @@ sudo nixos-rebuild switch --flake ~/flake#thinkpad (or other host)
 ##### V2
 I want to setup things differently, which will make me change a lot of the
 structure of this flake. will be working this in the v2 branch. Questions:
-- How overlays will work in this new config format?
 
 
 - hyprland
@@ -32,9 +31,13 @@ structure of this flake. will be working this in the v2 branch. Questions:
 
 - server
     - [ ] Manage secrets with sops-nix (for now I'm just not commiting secrets)
+        - https://github.com/Mic92/sops-nix
 
 - Nix
     - [ ] Delete useless stuff from configuration.nix from hosts and etc, module it better
+
+
+https://github.com/abenz1267/walker/tree/master
 
 #### Some Refs:
 - https://github.com/hyprwm/Hyprland/discussions/192#discussioncomment-12845902
