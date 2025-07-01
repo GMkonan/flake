@@ -11,7 +11,7 @@ in {
     inputs.stylix.nixosModules.stylix
   ];
 
-  networking.hostName = "bonfire";
+  networking.hostName = "ryo";
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
