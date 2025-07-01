@@ -14,7 +14,7 @@ in {
 
   systemd.enableEmergencyMode = false;
 
-  networking.hostName = "kessoku"; # Define your hostname.
+  networking.hostName = "seika"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.interfaces.enp27s0.ipv4.addresses = [
     {
