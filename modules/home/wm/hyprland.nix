@@ -101,6 +101,7 @@
         "ALT SHIFT, A, exec, hyprctl switchxkblayout current next"
 
         "ALT SHIFT, G, togglefloating,"
+        "ALT SHIFT, G, centerwindow,"
         "ALT SHIFT, F, fullscreen,"
         # "ALT, L, keyboard, switchxkblayout next"
       ];
