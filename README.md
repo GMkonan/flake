@@ -20,22 +20,26 @@ sudo nixos-rebuild switch --flake ~/flake#thinkpad (or other host)
 I want to setup things differently, which will make me change a lot of the
 structure of this flake. will be working this in the v2 branch. Questions:
 
+- fastfetch
+    - [ ] seika dot art (server)
+    - [ ] ryo dot art (laptop)
+    - [ ] nijika dot art (mac mini)
 
-- hyprland
-    - [ ] widgets for hyprland (ags? Astal?)
+- widgets
+    - [ ] ags stuff...
+
 - hyprpaper
     - [ ] day and night wallpapers separated
 
 - waybar
     - [ ] Add pomodoro
 
+- tmux
+    - [ ] status stuff? pomodoro on tmux?
+
 - server
     - [ ] Manage secrets with sops-nix (for now I'm just not commiting secrets)
         - https://github.com/Mic92/sops-nix
-
-- Nix
-    - [ ] Delete useless stuff from configuration.nix from hosts and etc, module it better
-
 
 https://github.com/abenz1267/walker/tree/master
 
