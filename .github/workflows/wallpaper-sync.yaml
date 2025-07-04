@@ -1,0 +1,74 @@
+name: Sync active wallpapers in flake to public wallpapers repo
+
+on:
+  push:
+    paths:
+      - 'wallpapers/**'
+    branches:
+      - main
+
+jobs:
+  sync-wallpapers:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Get changed files
+        id: changed-files
+        run: |
+          # Get list of added/modified files in wallpapers folder
+          CHANGED_FILES=$(git diff --name-only --diff-filter=A HEAD~1 HEAD | grep '^wallpapers/' | grep -E '\.(jpg|jpeg|png|gif|webp|bmp)$' || true)
+          echo "changed_files<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGED_FILES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Checkout target repository
+        uses: actions/checkout@v4
+        with:
+          repository: 'GMkonan/wallpapers'
+          token: ${{ secrets.WALLPAPERS_TOKEN }}
+          path: 'target-repo'
+
+      - name: Copy new images and update README
+        if: steps.changed-files.outputs.changed_files != ''
+        run: |
+          echo "$file"
+          # Copy new images
+          while IFS= read -r file; do
+            if [ -n "$file" ]; then
+              echo "Copying $file to target repository"
+              cp "$file" "target-repo/wallpapers/active/$file"
+
+              # echo "#### $file" >> README.md
+              # echo "![$file](https://raw.githubusercontent.com/GMkonan/wallpapers/main/active/$file)" >> README.md
+              # echo "" >> README.md
+              sed -i "/^## Previews$/a\\
+              #### $file\\
+              ![$file](https://raw.githubusercontent.com/GMkonan/wallpapers/main/active/$file)\\
+              " target-repo/README.md
+            fi
+          done <<< "${{ steps.changed-files.outputs.changed_files }}"
+
+      - name: Commit and push to target repository
+        if: steps.changed-files.outputs.changed_files != ''
+        run: |
+          cd target-repo
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          git add .
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Add new wallpapers and update README
+
+            Added wallpapers:
+            ${{ steps.changed-files.outputs.changed_files }}"
+
+            git push
+          fi
