@@ -53,3 +53,4 @@ https://github.com/abenz1267/walker/tree/master
 - https://github.com/catppuccin/nix?tab=readme-ov-file
 - https://www.reddit.com/r/archlinux/comments/136eaiw/hyprland_with_waybar_config_reloading/
 - https://github.com/elliottminns/dotfiles/blob/main/nix/home/hyprland.nix
+- https://nixos.org/guides/nix-pills/06-our-first-derivation.html

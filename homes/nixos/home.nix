@@ -26,13 +26,14 @@
     inputs.stylix.homeModules.stylix
     inputs.ags.homeManagerModules.default
     inputs.walker.homeManagerModules.default
+    inputs.sops-nix.homeManagerModules.sops
   ];
 
   # User environment packages
   home.packages = with pkgs; [
-    fastfetch
     htop
     btop
     python3
+    age
   ];
 }
