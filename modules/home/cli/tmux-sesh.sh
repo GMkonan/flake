@@ -17,15 +17,15 @@ tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     tmux new-session -ds "flake" -c "$HOME/flake" -e "CMD=$EDITOR ."
-    tmux new-window -dt "flake:1" -c "$HOME/flake" -e "CMD="
+    tmux new-window -dt "flake:2" -c "$HOME/flake" -e "CMD="
 
     tmux new-session -ds "dotfiles" -c "$HOME/dotfiles" -e "CMD=$EDITOR ."
-    tmux new-window -dt "dotfiles:1" -c "$HOME/dotfiles" -e "CMD="
+    tmux new-window -dt "dotfiles:2" -c "$HOME/dotfiles" -e "CMD="
 
     tmux new-session -ds "$selected_name" -c "$selected" -e "CMD=$EDITOR ."
-    tmux new-window -dt "$selected_name:1" -c "$selected" -e "CMD="
+    tmux new-window -dt "$selected_name:2" -c "$selected" -e "CMD="
 
-    tmux attach-session -t $selected_name:0
+    tmux attach-session -t $selected_name:1
     exit 0
 fi
 
@@ -33,7 +33,7 @@ current_session=$(tmux display-message -p "#S")
 
 if ! tmux has-session "-t=$selected_name" 2> /dev/null; then
     tmux new-session -ds "$selected_name" -c "$selected" -e "CMD=$EDITOR ."
-    tmux new-window -dt "$selected_name:1" -c "$selected" -e "CMD="
+    tmux new-window -dt "$selected_name:2" -c "$selected" -e "CMD="
 fi
 
 tmux switch-client -t "$selected_name"
