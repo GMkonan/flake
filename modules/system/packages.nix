@@ -42,6 +42,12 @@
 
     ngrok
     silicon
+
+    (inputs.quickshell.packages.${pkgs.system}.default.override {
+      withWayland = true;
+      withX11 = false;
+      withHyprland = true;
+    })
   ];
 
   fonts.packages = with pkgs; [
