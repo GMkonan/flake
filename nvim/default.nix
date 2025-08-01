@@ -8,7 +8,7 @@
     lua-language-server
     yaml-language-server
     nil
-
+    kdePackages.qtdeclarative
     # Formatters
     alejandra
     biome
