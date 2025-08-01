@@ -39,6 +39,8 @@ in {
     variant = "";
   };
 
+  qt.enable = true;
+
   # hosts thinkpad?
   services.printing.enable = true;
 
