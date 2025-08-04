@@ -43,7 +43,7 @@
         sensitivity = 0;
       };
 
-      exec-once = ["waybar"];
+      exec-once = ["qs"];
 
       # decoration = {
       #   rounding = 16;
@@ -96,7 +96,7 @@
 
         "ALT, P, exec, hyprshot -m region --clipboard-only"
 
-        "ALT SHIFT, P, exec, pkill waybar && hyprctl dispatch exec waybar"
+        "ALT SHIFT, P, exec, pkill quickshell && hyprctl dispatch exec qs"
 
         "ALT SHIFT, A, exec, hyprctl switchxkblayout current next"
 
