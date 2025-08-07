@@ -15,7 +15,7 @@
 
       background = {
         monitor = "";
-        path = "${config.home.homeDirectory}/flake/wallpapers/night-girl-city-sky.jpeg";
+        path = "${config.home.homeDirectory}/flake/wallpapers/dark/night-girl-city-sky.jpeg";
         # path = "/home/${user}/.cache/current-wallpaper";
       };
 

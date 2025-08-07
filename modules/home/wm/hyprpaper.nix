@@ -8,7 +8,10 @@ with lib; let
     # https://github.com/hyprwm/hyprpaper/issues/108#issuecomment-2119611893
     # Maybe add lutgen later
     name = "catppuccin-mocha";
-    wallpapers = ../../../wallpapers;
+    # either dark or light or both its what I want to do
+    # based on time of the day or user preference
+    type = "dark";
+    wallpapers = ../../../wallpapers + /${theme.type};
   };
   wallpapers = filesystem.listFilesRecursive theme.wallpapers;
   wallpaperBashArray = "(\"${strings.concatStrings (strings.intersperse "\" \"" (map (wallpaper: "${wallpaper}") wallpapers))}\")";
@@ -34,8 +37,8 @@ in {
       ipc = "on";
       splash = false;
       splash_offset = 2.0;
-      preload = ["~/flake/wallpapers/space-astronaut.png"];
-      wallpaper = [",~/flake/wallpapers/space-astronaut.png"];
+      preload = ["~/flake/wallpapers/dark/space-astronaut.png"];
+      wallpaper = [",~/flake/wallpapers/dark/space-astronaut.png"];
     };
   };
 

@@ -62,7 +62,7 @@
     "org/gnome/desktop/background" = {
       color-shading-type = "solid";
       picture-options = "zoom";
-      picture-uri-dark = "file://" + ../../wallpapers/night-girl-city-sky.jpeg;
+      picture-uri-dark = "file://" + ../../wallpapers/dark/night-girl-city-sky.jpeg;
     };
 
     # File manager settings
