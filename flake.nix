@@ -11,7 +11,6 @@
 
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew/main";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     zen = {
@@ -36,7 +35,6 @@
 
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     astal = {
