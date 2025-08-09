@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   home.packages = [
-    pkgs._1password
+    pkgs._1password-cli
     pkgs._1password-gui
   ];
   # programs._1password.enable = true;
