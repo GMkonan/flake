@@ -33,6 +33,9 @@ in {
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  #mullvad vpn https://discourse.nixos.org/t/connected-to-mullvadvpn-but-no-internet-connection/35803/8
+  # services.resolved.enable = true;
+
   # keeb
   services.xserver.xkb = {
     layout = "us";

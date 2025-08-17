@@ -5,6 +5,5 @@
     obs-studio
     libreoffice
     shotcut
-    mullvad-vpn
   ];
 }

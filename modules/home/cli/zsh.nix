@@ -14,6 +14,5 @@
     ripgrep
     graphite-cli
     opencode
-    # mullvad
   ];
 }
