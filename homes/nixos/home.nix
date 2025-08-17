@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   pkgs,
   ...
@@ -22,6 +23,7 @@
     ../../modules/home/gnome.nix
     ../../modules/home/gtk.nix
     ../../modules/home/stylix.nix
+    ../../modules/home/sops.nix
 
     inputs.stylix.homeModules.stylix
     inputs.ags.homeManagerModules.default

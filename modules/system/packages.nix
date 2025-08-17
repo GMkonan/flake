@@ -17,7 +17,6 @@
     # discord
     vesktop
     zed-editor
-    vscode
     bruno
     helix
     google-chrome
