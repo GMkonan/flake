@@ -3,12 +3,7 @@
   inputs,
   pkgs,
   ...
-}: let
-  secrets = import ./.secrets.nix.template;
-  # secrets = {
-  #   GITHUB_TOKEN = builtins.getEnv "GITHUB_TOKEN";
-  # };
-in {
+}: {
   home.username = "konan";
   home.homeDirectory = "/home/konan";
 
@@ -21,10 +16,10 @@ in {
   nixpkgs.config.allowUnfree = true;
 
   # Debug: This will show in the build output
-  warnings = [
-    "GITHUB_TOKEN length: ${toString (builtins.stringLength secrets.GITHUB_TOKEN)}"
-    "GITHUB_TOKEN starts with: ${builtins.substring 0 10 secrets.GITHUB_TOKEN}..."
-  ];
+  # warnings = [
+  #   "GITHUB_TOKEN length: ${toString (builtins.stringLength secrets.GITHUB_TOKEN)}"
+  #   "GITHUB_TOKEN starts with: ${builtins.substring 0 10 secrets.GITHUB_TOKEN}..."
+  # ];
 
   imports = [
     ../../modules/home/wm
@@ -45,5 +40,6 @@ in {
     btop
     python3
     age
+    lsof
   ];
 }
