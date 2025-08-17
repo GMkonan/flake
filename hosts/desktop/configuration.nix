@@ -15,7 +15,6 @@ in {
 
     inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
     inputs.stylix.nixosModules.stylix
-    inputs.sops-nix.nixosModules.sops
   ];
 
   networking.hostName = "bocchi";

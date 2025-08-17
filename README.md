@@ -25,9 +25,6 @@ structure of this flake. will be working this in the v2 branch. Questions:
     - [ ] ryo dot art (laptop)
     - [ ] nijika dot art (mac mini)
 
-- widgets
-    - [ ] ags stuff...
-
 - hyprpaper
     - [ ] day and night wallpapers separated
 
@@ -36,10 +33,6 @@ structure of this flake. will be working this in the v2 branch. Questions:
 
 - tmux
     - [ ] status stuff? pomodoro on tmux?
-
-- server
-    - [ ] Manage secrets with sops-nix (for now I'm just not commiting secrets)
-        - https://github.com/Mic92/sops-nix
 
 https://github.com/abenz1267/walker/tree/master
 

@@ -3,7 +3,12 @@
   inputs,
   pkgs,
   ...
-}: {
+}: let
+  secrets = import ./.secrets.nix.template;
+  # secrets = {
+  #   GITHUB_TOKEN = builtins.getEnv "GITHUB_TOKEN";
+  # };
+in {
   home.username = "konan";
   home.homeDirectory = "/home/konan";
 
@@ -15,6 +20,12 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  # Debug: This will show in the build output
+  warnings = [
+    "GITHUB_TOKEN length: ${toString (builtins.stringLength secrets.GITHUB_TOKEN)}"
+    "GITHUB_TOKEN starts with: ${builtins.substring 0 10 secrets.GITHUB_TOKEN}..."
+  ];
+
   imports = [
     ../../modules/home/wm
     ../../modules/home/cli
@@ -23,12 +34,9 @@
     ../../modules/home/gnome.nix
     ../../modules/home/gtk.nix
     ../../modules/home/stylix.nix
-    ../../modules/home/sops.nix
 
     inputs.stylix.homeModules.stylix
-    inputs.ags.homeManagerModules.default
     inputs.walker.homeManagerModules.default
-    inputs.sops-nix.homeManagerModules.sops
   ];
 
   # User environment packages

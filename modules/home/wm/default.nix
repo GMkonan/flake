@@ -1,6 +1,5 @@
 {
   imports = [
-    ./ags.nix
     ./wofi.nix
     ./walker.nix
     ./dunst.nix
