@@ -52,7 +52,7 @@
       bind = [
         "ALT, Return, exec, ${pkgs.ghostty}/bin/ghostty"
         "ALT, Q, killactive,"
-        "ALT SHIFT, E, exit,"
+        # "ALT SHIFT, E, exit,"
         "ALT, R, exec, ${pkgs.wofi}/bin/wofi --show drun"
         "ALT, Z, exec, zen"
         "ALT, left, movefocus, l"
