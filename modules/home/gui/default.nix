@@ -4,5 +4,6 @@
     ./1password.nix
     ./spotify.nix
     ./vscode.nix
+    ./obs.nix
   ];
 }
