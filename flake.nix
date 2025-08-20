@@ -64,6 +64,7 @@
         homes.nixos = ./homes/nixos;
         hosts.desktop = ./hosts/desktop;
         hosts.thinkpad = ./hosts/thinkpad;
+        hosts.ryo = ./hosts/ryo;
 
         hosts.server = ./hosts/server;
         homes.server = ./homes/server;
