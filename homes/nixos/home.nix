@@ -41,5 +41,6 @@
     python3
     age
     lsof
+    brightnessctl
   ];
 }
