@@ -2,6 +2,14 @@
   wayland.windowManager.hyprland = {
     enable = true;
 
+    extraConfig = ''
+
+      device {
+              name=syna8020:00-06cb:ce5c-touchpad
+              sensitivity=0.3
+            }
+
+    '';
     settings = {
       "$mod" = "ALT";
 
@@ -10,7 +18,7 @@
         # "desc:AOC 24G2W1G4 UKCN4XA003806,highrr,0x0,1" # 1080p Monitor as secondary, at position 0,0
         # "eDP-1,preferred,auto,1" # Position laptop screen to the right
 
-        # ",preferred,auto,1" # Position any random new monitor to the right
+        ",preferred,auto,1" # Position any random new monitor to the right
 
         # "HDMI-A-1,preferred,auto,1" # HDMI 4k Monitor
       ];
@@ -38,12 +46,7 @@
         sensitivity = -0.5;
       };
 
-      device = {
-        name = "tpps/2-ibm-trackpoint";
-        sensitivity = 0;
-      };
-
-      exec-once = ["qs"];
+      exec-once = ["qs" "kanshi"];
 
       # decoration = {
       #   rounding = 16;
@@ -97,6 +100,7 @@
         "ALT, P, exec, hyprshot -m region --clipboard-only"
 
         "ALT SHIFT, P, exec, pkill quickshell && hyprctl dispatch exec qs"
+        "ALT SHIFT, T, exec, hyprctl dispatch exec kanshi"
 
         "ALT SHIFT, A, exec, hyprctl switchxkblayout current next"
 
