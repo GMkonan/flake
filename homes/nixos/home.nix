@@ -42,5 +42,6 @@
     age
     lsof
     brightnessctl
+    mullvad-vpn
   ];
 }
