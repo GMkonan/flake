@@ -21,6 +21,23 @@ in {
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  # services.logind = {
+  #   lidSwitch = "ignore";
+  #   lidSwitchDocked = "ignore";
+  # };
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Experimental = true; # Show battery charge of Bluetooth devices
+      };
+    };
+  };
+
+  services.blueman.enable = true;
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
