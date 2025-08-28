@@ -1,7 +1,7 @@
 {
   imports = [
     ./wofi.nix
-    ./walker.nix
+    # ./walker.nix
     ./dunst.nix
     ./waybar.nix
     ./wlogout.nix

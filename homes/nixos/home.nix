@@ -31,7 +31,7 @@
     ../../modules/home/stylix.nix
 
     inputs.stylix.homeModules.stylix
-    inputs.walker.homeManagerModules.default
+    # inputs.walker.homeManagerModules.default
   ];
 
   # User environment packages

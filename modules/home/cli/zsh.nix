@@ -14,5 +14,6 @@
     ripgrep
     graphite-cli
     opencode
+    shikane
   ];
 }
