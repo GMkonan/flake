@@ -16,5 +16,7 @@
     opencode
     ni
     shikane
+    devpod
+    devcontainer
   ];
 }
