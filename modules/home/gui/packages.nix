@@ -4,5 +4,8 @@
     mpv
     libreoffice
     shotcut
+    devpod-desktop
+    qmk
+    vial
   ];
 }
