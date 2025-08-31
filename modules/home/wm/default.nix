@@ -10,5 +10,6 @@
     ./hyprpaper.nix
     ./hypridle.nix
     ./kanshi.nix
+    ./niri.nix
   ];
 }
