@@ -74,23 +74,4 @@
       ];
     };
   };
-
-  services.hypridle = {
-    enable = true;
-    settings = {
-      general = {
-        lock_cmd = "${pkgs.procps}/bin/pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
-
-        before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
-      };
-
-      listener = [
-        {
-          timeout = 900; # 15 minutes
-          # suspend if its locked for more than 15 minutes
-          on-timeout = "${pkgs.procps}/bin/pidof hyprlock && ${pkgs.systemd}/bin/systemctl suspend";
-        }
-      ];
-    };
-  };
 }
