@@ -12,5 +12,6 @@
     ./audio.nix
     ./auto-upgrade.nix
     ./locale.nix
+    ./niri.nix
   ];
 }
