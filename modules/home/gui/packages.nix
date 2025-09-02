@@ -7,5 +7,6 @@
     devpod-desktop
     qmk
     vial
+    bitwarden
   ];
 }
