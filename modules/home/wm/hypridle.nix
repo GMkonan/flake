@@ -4,21 +4,21 @@
     # systemdTarget = "hyprland-session.target";
     settings = {
       general = {
-        after_sleep_cmd = "hyprctl dispatch dpms on";
+        # after_sleep_cmd = "hyprctl dispatch dpms on";
         ignore_dbus_inhibit = false;
-        lock_cmd = "hyprlock";
-        # before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
+        lock_cmd = "qs ipc call globalIPC toggleLock";
+        before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
       };
 
       listener = [
         {
           timeout = 900; # 15 minutes
-          on-timeout = "hyprlock";
+          on-timeout = "qs ipc call globalIPC toggleLock";
         }
         {
           timeout = 1200;
-          on-timeout = "hyprctl dispatch dpms off";
-          on-resume = "hyprctl dispatch dpms on";
+          # on-timeout = "hyprctl dispatch dpms off";
+          # on-resume = "hyprctl dispatch dpms on";
         }
       ];
     };

@@ -41,7 +41,14 @@
 
     ngrok
     silicon
+    cava
 
+    material-symbols
+    qt6Packages.qt5compat
+    libsForQt5.qt5.qtgraphicaleffects
+    kdePackages.qtbase
+    kdePackages.qtdeclarative
+    kdePackages.qtstyleplugin-kvantum
     (inputs.quickshell.packages.${pkgs.system}.default.override {
       withWayland = true;
       withX11 = false;
@@ -52,5 +59,8 @@
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     # nerd-fonts.commit-mono
+    material-symbols
+    material-icons
+    roboto
   ];
 }
