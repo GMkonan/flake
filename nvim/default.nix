@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  # home.file."nvim".source = ../nvim;
+  # Put the whole folder into ~/.config/nvim
+  xdg.configFile."nvim".source = ../nvim;
+
   environment.systemPackages = with pkgs; [
     neovim
     # LSPs

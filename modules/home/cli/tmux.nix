@@ -2,6 +2,7 @@
   home.packages = [
     (pkgs.writeShellScriptBin "tmux-sesh" (builtins.readFile ./tmux-sesh.sh))
   ];
+
   programs.tmux = {
     enable = true;
     baseIndex = 1;
