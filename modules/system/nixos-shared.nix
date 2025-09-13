@@ -12,7 +12,6 @@
   environment.systemPackages = with pkgs; [
     vim
     git
-    ghostty
     zsh
     gcc
     docker

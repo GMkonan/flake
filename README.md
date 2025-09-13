@@ -45,3 +45,11 @@ https://github.com/abenz1267/walker/tree/master
 - https://www.reddit.com/r/archlinux/comments/136eaiw/hyprland_with_waybar_config_reloading/
 - https://github.com/elliottminns/dotfiles/blob/main/nix/home/hyprland.nix
 - https://nixos.org/guides/nix-pills/07-working-derivation.html
+
+
+
+```
+nix run github:nix-community/nixos-generators -- --format iso --flake .#ryo
+
+nix run github:nix-community/nixos-generators -- --format iso --flake .#ryo -o ryo-iso
+```
