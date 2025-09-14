@@ -12,7 +12,6 @@
   environment.systemPackages = with pkgs; [
     vim
     git
-    zsh
     gcc
     docker
     wl-clipboard

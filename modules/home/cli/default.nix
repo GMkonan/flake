@@ -6,5 +6,6 @@
     ./zsh.nix
     ./fastfetch.nix
     ./bat.nix
+    ./psql.nix
   ];
 }

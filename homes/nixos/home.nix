@@ -29,6 +29,8 @@
     ../../modules/home/gnome.nix
     ../../modules/home/gtk.nix
     ../../modules/home/stylix.nix
+    ../../nvim
+    ../../quickshell
 
     inputs.stylix.homeModules.stylix
     # inputs.walker.homeManagerModules.default

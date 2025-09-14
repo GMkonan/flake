@@ -1,9 +1,14 @@
-{pkgs, ...}: {
-  # home.file."nvim".source = ../nvim;
+{
+  pkgs,
+  lib,
+  ...
+}: {
+  home.activation.symlinkNvim = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    ln -sfn "/home/konan/flake/nvim" "/home/konan/.config/nvim"
+  '';
   # Put the whole folder into ~/.config/nvim
-  xdg.configFile."nvim".source = ../nvim;
 
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
     neovim
     # LSPs
     gopls

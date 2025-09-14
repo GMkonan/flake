@@ -5,7 +5,7 @@
     ./tailscale.nix
     ./vpn.nix
     ./hyprland.nix
-    ../../nvim
+    # ../../nvim
     ./bootloader.nix
     ./user.nix
     ./gc.nix
