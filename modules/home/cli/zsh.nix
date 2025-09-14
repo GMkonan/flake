@@ -36,6 +36,25 @@
 
       tt = "sh ~/flake/modules/home/cli/tmux-sesh.sh";
     };
+
+    initContent = ''
+      # ---------------------------------------
+      # Secrets file (created manually)
+      # ---------------------------------------
+      if [ -f "$HOME/.secrets" ]; then
+        source "$HOME/.secrets"
+      fi
+
+      # Default editor
+      export EDITOR="nvim"
+
+      # Run one-shot command from $CMD env var
+      if [ -n "$CMD" ]; then
+          cmd="$CMD"
+          unset CMD
+          eval "$cmd"
+      fi
+    '';
   };
 
   programs.oh-my-posh = {
