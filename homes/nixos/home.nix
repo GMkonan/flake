@@ -21,6 +21,10 @@
   #   "GITHUB_TOKEN starts with: ${builtins.substring 0 10 secrets.GITHUB_TOKEN}..."
   # ];
 
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
+
   imports = [
     ../../modules/home/wm
     ../../modules/home/cli

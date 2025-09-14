@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   # Define a user account. Don't forget to set a password with ‘passwd’.
 
+  # Enabled in whole system but configured via home manager
+  programs.zsh.enable = true;
   users = {
     defaultUserShell = pkgs.zsh;
 

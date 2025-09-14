@@ -1,5 +1,4 @@
 {pkgs, ...}: {
-  # For now I will still manage zsh myself
   programs.zsh = {
     enable = true;
     autocd = true;
@@ -44,9 +43,6 @@
       if [ -f "$HOME/.secrets" ]; then
         source "$HOME/.secrets"
       fi
-
-      # Default editor
-      export EDITOR="nvim"
 
       # Run one-shot command from $CMD env var
       if [ -n "$CMD" ]; then
