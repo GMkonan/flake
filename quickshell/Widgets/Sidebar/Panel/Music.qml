@@ -5,6 +5,7 @@ import Quickshell.Services.Mpris
 import qs.Settings
 import qs.Components
 import QtQuick
+import Quickshell.Widgets
 
 Rectangle {
     id: musicCard
@@ -161,21 +162,37 @@ Rectangle {
                         border.color: Qt.rgba(Theme.accentPrimary.r, Theme.accentPrimary.g, Theme.accentPrimary.b, 0.3)
                         border.width: 1
 
-                        Image {
-                            id: albumArt
-                            anchors.fill: parent
-                            anchors.margins: 2
-                            fillMode: Image.PreserveAspectCrop
-                            smooth: true
-                            cache: false
-                            asynchronous: true
-                            sourceSize.width: 60
-                            sourceSize.height: 60
-                            source: currentPlayer ? (currentPlayer.trackArtUrl || "") : ""
-                            visible: source.toString() !== ""
-
-                            // Rounded corners using layer
+                        ClippingWrapperRectangle {
+                            radius: 30
+                            width: 60
+                            height: 60
+                            Image {
+                                id: albumArt
+                                anchors.fill: parent
+                                source: currentPlayer ? (currentPlayer.trackArtUrl || "") : ""
+                                fillMode: Image.PreserveAspectCrop
+                                visible: source.toString() !== ""
+                                asynchronous: true
+                                cache: false
+                                smooth: true
+                            }
                         }
+
+                        // Image {
+                        //     id: albumArt
+                        //     anchors.fill: parent
+                        //     anchors.margins: 2
+                        //     fillMode: Image.PreserveAspectCrop
+                        //     smooth: true
+                        //     cache: false
+                        //     asynchronous: true
+                        //     sourceSize.width: 60
+                        //     sourceSize.height: 60
+                        //     source: currentPlayer ? (currentPlayer.trackArtUrl || "") : ""
+                        //     visible: source.toString() !== ""
+                        //
+                        //     // Rounded corners using layer
+                        // }
 
                         // Fallback music icon
                         Text {

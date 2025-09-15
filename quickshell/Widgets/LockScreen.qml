@@ -145,8 +145,8 @@ WlSessionLock {
                 anchors.fill: parent
                 visible: true
                 blurEnabled: true
-                blurMax: 24
-                blur: 0.6
+                blurMax: 40
+                blur: 0.9
             }
             // Main content container (moved up, Rectangle removed)
             ColumnLayout {
@@ -162,26 +162,34 @@ WlSessionLock {
                     radius: 40
                     color: Theme.accentPrimary
 
-                    Image {
-                        id: avatarImage
-                        anchors.fill: parent
-                        anchors.margins: 4
-                        source: Settings.profileImage
-                        fillMode: Image.PreserveAspectCrop
-                        visible: false
-                        asynchronous: true
+                    // Image {
+                    //     id: avatarImage
+                    //     anchors.fill: parent
+                    //     anchors.margins: 4
+                    //     source: Settings.profileImage
+                    //     fillMode: Image.PreserveAspectCrop
+                    //     visible: false
+                    //     asynchronous: true
+                    // }
+                    ClippingWrapperRectangle {
+
+                        Layout.alignment: Qt.AlignHCenter
+                        radius: 40
+                        width: 80
+                        height: 80
+                        color: Theme.accentPrimary
+                        Image {
+                            id: avatarImage
+                            anchors.fill: parent
+                            // anchors.margins: 4
+                            source: Settings.profileImage !== undefined ? Settings.profileImage : ""
+                            // fillMode: Image.PreserveAspectCrop
+                            asynchronous: true
+
+                            z: 1
+                        }
                     }
 
-                    MultiEffect {
-                        source: avatarImage
-                        anchors.fill: avatarImage
-                        visible: true
-                        // brightness: 0.4
-                        // saturation: 0.2
-                        // blurEnabled: true
-                        // blurMax: 24
-                        // blur: 1.0
-                    }
                     // OpacityMask {
                     //     anchors.fill: avatarImage
                     //     source: avatarImage
@@ -226,7 +234,7 @@ WlSessionLock {
                     height: 50
                     radius: 25
                     color: Theme.surface
-                    opacity: 0.3
+                    opacity: 0.4
                     border.color: passwordInput.activeFocus ? Theme.accentPrimary : Theme.outline
                     border.width: 2
 
@@ -250,7 +258,7 @@ WlSessionLock {
                             anchors.centerIn: parent
                             text: "Enter password..."
                             color: Theme.textSecondary
-                            opacity: 0.6
+                            opacity: 0.8
                             font.pixelSize: 16
                             visible: !passwordInput.text && !passwordInput.activeFocus
                         }

@@ -47,6 +47,8 @@ Rectangle {
                     }
                     ClippingWrapperRectangle {
                         radius: 32
+                        width: 48
+                        height: 48
                         Image {
                             id: avatarImage
                             anchors.fill: parent
@@ -54,9 +56,6 @@ Rectangle {
                             fillMode: Image.PreserveAspectCrop
                             asynchronous: true
                             cache: false
-                            sourceSize.width: 48
-                            sourceSize.height: 48
-                            z: 1
                         }
                     }
 

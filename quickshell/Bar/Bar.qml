@@ -27,7 +27,7 @@ Scope {
                     id: panel
                     screen: modelData
                     color: "transparent"
-                    implicitHeight: barBackground.height + 24
+                    implicitHeight: barBackground.height // + 24 if you want activewindow showing up
                     anchors.top: true
                     anchors.left: true
                     anchors.right: true
@@ -77,7 +77,7 @@ Scope {
                         anchors.left: parent.left
                     }
 
-                    ActiveWindow {}
+                    // ActiveWindow {}
 
                     Workspace {
                         id: workspace
@@ -112,11 +112,11 @@ Scope {
                             trayMenu: externalTrayMenu
                         }
 
-                         CustomTrayMenu {
-                             id: externalTrayMenu
-                         }
+                        CustomTrayMenu {
+                            id: externalTrayMenu
+                        }
 
-                         ClockWidget {}
+                        ClockWidget {}
 
                         PanelPopup {
                             id: sidebarPopup
