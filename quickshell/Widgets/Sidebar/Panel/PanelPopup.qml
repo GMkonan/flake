@@ -16,7 +16,7 @@ PanelWindow {
     screen: modelData
     anchors.top: true
     anchors.right: true
-    margins.top: -24
+    // margins.top: -24 // This is if you have active window component enabled
     WlrLayershell.keyboardFocus: (settingsModal.visible && mouseArea.containsMouse) ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
 
     // Animation properties
@@ -291,7 +291,7 @@ PanelWindow {
         Keys.onEscapePressed: panelPopup.hidePopup()
     }
 
-    onVisibleChanged: if (!visible) /* cleanup if needed */{}
+    onVisibleChanged: if (!visible) /* cleanup if needed */ {}
 
     // Update height when screen changes
     onScreenChanged: {
