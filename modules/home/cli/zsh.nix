@@ -15,7 +15,7 @@
       f = "nvim $(fzf --preview 'bat --style=numbers --color=always --line-range :500 {}')";
 
       # tmux
-      tn = "tmux new -s ${PWD:t}";
+      tn = "tmux new -s \"\$(basename \$PWD)\"";
       tls = "tmux list-sessions";
       ta = "tmux a";
 
