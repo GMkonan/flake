@@ -8,5 +8,6 @@
     qmk
     vial
     bitwarden
+    # code-cursor
   ];
 }
