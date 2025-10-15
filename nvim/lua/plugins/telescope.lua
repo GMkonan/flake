@@ -28,7 +28,7 @@ return {
     { 'nvim-telescope/telescope-ui-select.nvim' },
 
     -- Useful for getting pretty icons, but requires a Nerd Font.
-    { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+    { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
   },
   config = function()
     -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -59,13 +59,13 @@ return {
       defaults = {
         vimgrep_arguments = {
           'rg',
-          '--follow', -- Follow symbolic links
-          '--hidden', -- Search for hidden files
-          '--no-heading', -- Don't group matches by each file
+          '--follow',        -- Follow symbolic links
+          '--hidden',        -- Search for hidden files
+          '--no-heading',    -- Don't group matches by each file
           '--with-filename', -- Print the file path with the matched lines
-          '--line-number', -- Show line numbers
-          '--column', -- Show column numbers
-          '--smart-case', -- Smart case search
+          '--line-number',   -- Show line numbers
+          '--column',        -- Show column numbers
+          '--smart-case',    -- Smart case search
 
           -- Exclude some patterns from search
           '--glob=!**/.git/*',
@@ -104,6 +104,7 @@ return {
         ['ui-select'] = {
           require('telescope.themes').get_dropdown(),
         },
+        fzf = {}
       },
     }
 

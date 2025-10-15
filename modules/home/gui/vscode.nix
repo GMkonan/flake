@@ -8,7 +8,7 @@
     enable = true;
     # Unfortunately can't use vscodium because its not compatible with devcontainers
     # which is the only reason I use vscode
-    package = pkgs.code-cursor;
+    package = pkgs.vscode;
 
     mutableExtensionsDir = true;
     profiles.default = {
@@ -26,7 +26,7 @@
         yoavbls.pretty-ts-errors
         eamodio.gitlens
         # Currently using cursor one that is not on hm yet
-        # ms-vscode-remote.remote-containers
+        ms-vscode-remote.remote-containers
 
         # Vim keybindings
         vscodevim.vim

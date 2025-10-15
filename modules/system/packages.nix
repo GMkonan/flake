@@ -33,6 +33,7 @@
     lazydocker
     lazygit
     nodejs
+    lua
     bun
     pnpm
     flyctl

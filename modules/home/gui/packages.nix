@@ -4,10 +4,10 @@
     mpv
     libreoffice
     shotcut
-    devpod-desktop
     qmk
     vial
     bitwarden
+    figma-linux
     # code-cursor
   ];
 }
