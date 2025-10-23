@@ -34,9 +34,10 @@
     ../../modules/home/gtk.nix
     ../../modules/home/stylix.nix
     ../../nvim
-    ../../quickshell
+    # ../../quickshell
 
     inputs.stylix.homeModules.stylix
+    inputs.noctalia.homeModules.default
     # inputs.walker.homeManagerModules.default
   ];
 
