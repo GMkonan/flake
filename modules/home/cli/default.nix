@@ -7,5 +7,6 @@
     ./fastfetch.nix
     ./bat.nix
     ./psql.nix
+    ./taskwarrior.nix
   ];
 }
