@@ -3,7 +3,7 @@
     davinci-resolve
     mpv
     libreoffice
-    shotcut
+    # shotcut
     vial
     bitwarden
     figma-linux
