@@ -7,6 +7,8 @@
     vial
     bitwarden
     figma-linux
+    vscode
     # code-cursor
+    # devpod-desktop
   ];
 }

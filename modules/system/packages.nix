@@ -50,6 +50,7 @@
     kdePackages.qtbase
     kdePackages.qtdeclarative
     kdePackages.qtstyleplugin-kvantum
+    inputs.noctalia.packages.${pkgs.system}.default
     # (inputs.quickshell.packages.${pkgs.system}.default.override {
     #   withWayland = true;
     #   withX11 = false;
