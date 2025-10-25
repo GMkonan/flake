@@ -5,7 +5,7 @@
     # https://docs.noctalia.dev/getting-started/nixos/#config-ref
     settings = {
       general = {
-        avatarImage = "../../../ryo.jpg";
+        avatarImage = "~/flake/ryo.jpg";
         lockOnSuspend = true;
         language = "";
       };
@@ -21,7 +21,8 @@
       };
       wallpaper = {
         enabled = true;
-        directory = "../../../wallpapers/dark";
+        directory = "~/flake/wallpapers/dark/";
+        defaultWallpaper = "~/flake/wallpapers/dark/moonlit.png";
         randomEnabled = true;
         randomIntervalSec = 600;
       };
