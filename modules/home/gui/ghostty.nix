@@ -3,7 +3,7 @@
     enable = true;
 
     settings = {
-      theme = "catppuccin-mocha";
+      theme = "Catppuccin Mocha";
       font-size = 12;
       background-opacity = 0.9;
       command = "zsh";
