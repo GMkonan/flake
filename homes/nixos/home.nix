@@ -50,5 +50,6 @@
     lsof
     brightnessctl
     mullvad-vpn
+    hyprshot
   ];
 }
