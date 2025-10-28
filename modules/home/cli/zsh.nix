@@ -71,6 +71,7 @@
     ripgrep
     graphite-cli
     opencode
+    claude-code
     ni
     shikane
   ];
