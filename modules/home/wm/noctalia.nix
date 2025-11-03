@@ -2,12 +2,73 @@
   programs.noctalia-shell = {
     enable = true;
 
+    # #173688
     # https://docs.noctalia.dev/getting-started/nixos/#config-ref
     settings = {
       general = {
-        avatarImage = "~/flake/ryo.jpg";
+        avatarImage = "~/flake/ryo-2-twitter.jpg";
         lockOnSuspend = true;
         language = "";
+      };
+      bar = {
+        position = "top";
+        backgroundOpacity = 1;
+        monitors = [];
+        density = "default";
+        showCapsule = true;
+        floating = false;
+        marginVertical = 0.25;
+        marginHorizontal = 0.25;
+        widgets = {
+          left = [
+            {
+              id = "ControlCenter";
+            }
+            # {
+            #   id = "SystemMonitor";
+            # }
+            {
+              id = "ActiveWindow";
+            }
+          ];
+          center = [
+            {
+              id = "TaskbarGrouped";
+            }
+          ];
+          right = [
+            # {
+            #   id = "ScreenRecorder";
+            # }
+            {
+              id = "MediaMini";
+            }
+            {
+              id = "KeyboardLayout";
+            }
+            {
+              id = "Tray";
+            }
+            {
+              id = "NotificationHistory";
+            }
+            {
+              id = "wifi";
+            }
+            {
+              id = "Battery";
+            }
+            {
+              id = "Volume";
+            }
+            # {
+            #   id = "Brightness";
+            # }
+            {
+              id = "Clock";
+            }
+          ];
+        };
       };
       location = {
         name = "Vitoria, ES, Brazil";
@@ -17,14 +78,15 @@
         showCalendarEvents = true;
       };
       colorSchemes = {
-        predefinedScheme = "Catppuccin";
+        predefinedScheme = "Tokyo Night";
       };
       wallpaper = {
         enabled = true;
         directory = "~/flake/wallpapers/dark/";
-        defaultWallpaper = "~/flake/wallpapers/dark/moonlit.png";
-        randomEnabled = true;
-        randomIntervalSec = 600;
+        defaultWallpaper = "~/flake/wallpapers/dark/ryo-night-looking-cam.jpg";
+
+        # randomEnabled = true;
+        # randomIntervalSec = 1200;
       };
     };
   };

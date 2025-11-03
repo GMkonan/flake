@@ -8,7 +8,7 @@
     # ./hyprland.nix
     # ./hyprlock.nix
     # ./hyprpaper.nix
-    # ./hypridle.nix
+    ./hypridle.nix
     ./kanshi.nix
     ./niri.nix
     ./noctalia.nix

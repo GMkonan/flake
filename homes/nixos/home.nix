@@ -51,5 +51,6 @@
     brightnessctl
     mullvad-vpn
     hyprshot
+    devcontainer
   ];
 }
