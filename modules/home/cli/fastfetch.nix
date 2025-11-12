@@ -5,17 +5,16 @@
       logo = {
         # source = ./test.txt;
         # fastfetch only works outside tmux btw
-        source = "~/Downloads/for_exceptional_patron.png";
+        # source = "~/Downloads/y7ZgnZWPRIolCzyADjhqIXmYIH15MI5cVhp3JOrX-removebg-preview.png";
         # color = {
         #   "1" = "#173688";
         # };
-        width = 32;
-        height = 12;
-        type = "kitty";
-        padding = {
-          top = 2;
-          right = 2;
-        };
+        # width = 48;
+        # height = 20;
+        # type = "kitty";
+        # padding = {
+        #   right = 2;
+        # };
       };
 
       display = {

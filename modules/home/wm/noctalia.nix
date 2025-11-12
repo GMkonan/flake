@@ -83,7 +83,7 @@
       wallpaper = {
         enabled = true;
         directory = "~/flake/wallpapers/dark/";
-        defaultWallpaper = "~/flake/wallpapers/dark/ryo-night-looking-cam.jpg";
+        defaultWallpaper = "../../../wallpapers/dark/ryo-night-looking-cam.jpg";
 
         # randomEnabled = true;
         # randomIntervalSec = 1200;
