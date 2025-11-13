@@ -36,6 +36,7 @@
     lua
     bun
     pnpm
+    deno
     flyctl
     go
     rustup
