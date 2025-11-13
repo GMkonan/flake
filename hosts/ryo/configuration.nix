@@ -26,6 +26,8 @@ in {
   #   lidSwitchDocked = "ignore";
   # };
 
+  programs.nix-ld.enable = true;
+
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
