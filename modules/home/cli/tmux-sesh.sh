@@ -19,8 +19,8 @@ if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     tmux new-session -ds "flake" -c "$HOME/flake" -e "CMD=$EDITOR ."
     tmux new-window -dt "flake:2" -c "$HOME/flake" -e "CMD="
 
-    # tmux new-session -ds "dotfiles" -c "$HOME/dotfiles" -e "CMD=$EDITOR ."
-    # tmux new-window -dt "dotfiles:2" -c "$HOME/dotfiles" -e "CMD="
+    tmux new-session -ds "tasks" -c "$HOME" -e "CMD=taskwarrior-tui"
+    tmux new-window -dt "tasks:2" -c "$HOME/notes" -e "CMD=$EDITOR ."
 
     tmux new-session -ds "$selected_name" -c "$selected" -e "CMD=$EDITOR ."
     tmux new-window -dt "$selected_name:2" -c "$selected" -e "CMD="
