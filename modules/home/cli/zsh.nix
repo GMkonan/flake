@@ -74,5 +74,6 @@
     claude-code
     ni
     shikane
+    kubectl
   ];
 }

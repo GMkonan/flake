@@ -5,7 +5,7 @@
     libreoffice
     # shotcut
     vial
-    bitwarden
+    bitwarden-desktop
     figma-linux
     vscode
     # code-cursor

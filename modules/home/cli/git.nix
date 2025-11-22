@@ -6,22 +6,23 @@
   programs.git = {
     enable = true;
 
-    userName = "GMkonan";
-    userEmail = "guilhemont@hotmail.com";
+    settings = {
+      user = {
+        name = "GMkonan";
+        email = "guilhemont@hotmail.com";
+      };
+      alias = {
+        staash = "stash --all";
+        rblame = "blame -w -C -C -C";
+        wdiff = "diff --word-diff";
+        cbranch = "branch --column";
 
-    aliases = {
-      staash = "stash --all";
-      rblame = "blame -w -C -C -C";
-      wdiff = "diff --word-diff";
-      cbranch = "branch --column";
+        # Now pointing to the managed githelpers
+        l = "!. ~/.config/git/githelpers && pretty_git_log";
 
-      # Now pointing to the managed githelpers
-      l = "!. ~/.config/git/githelpers && pretty_git_log";
+        safe-push = "push --force-with-lease --force-if-includes";
+      };
 
-      safe-push = "push --force-with-lease --force-if-includes";
-    };
-
-    extraConfig = {
       apply.whitespace = "fix";
       init.defaultBranch = "main";
       core = {
