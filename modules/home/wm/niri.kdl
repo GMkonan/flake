@@ -17,7 +17,8 @@ input {
 
             // For example:
             layout "us,br"
-            options "grp:alt_shift_toggle"
+            // alt_caps_toggle
+            options "grp:win_space_toggle"
 
             // If this section is empty, niri will fetch xkb settings
             // from org.freedesktop.locale1. You can control these using
