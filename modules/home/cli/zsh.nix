@@ -75,5 +75,7 @@
     ni
     shikane
     kubectl
+    minikube
+    bootdev-cli
   ];
 }
