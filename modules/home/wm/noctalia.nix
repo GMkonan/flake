@@ -10,6 +10,9 @@
         lockOnSuspend = true;
         language = "";
       };
+      dock = {
+        enable = false;
+      };
       bar = {
         position = "top";
         backgroundOpacity = 1;
