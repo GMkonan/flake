@@ -10,5 +10,6 @@
     vscode
     # code-cursor
     # devpod-desktop
+    anki
   ];
 }
