@@ -11,7 +11,7 @@
         language = "";
       };
       dock = {
-        enable = false;
+        enabled = false;
       };
       bar = {
         position = "top";
