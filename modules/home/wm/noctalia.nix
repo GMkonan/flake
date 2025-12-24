@@ -15,7 +15,6 @@
       };
       bar = {
         position = "top";
-        backgroundOpacity = 1;
         monitors = [];
         density = "default";
         showCapsule = true;
