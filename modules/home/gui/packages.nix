@@ -3,7 +3,7 @@
     # davinci-resolve
     mpv
     libreoffice
-    # shotcut
+    shotcut
     vial
     bitwarden-desktop
     figma-linux
@@ -11,5 +11,8 @@
     # code-cursor
     # devpod-desktop
     anki
+    jetbrains.idea-oss
+    ytmdesktop
+    spotify
   ];
 }

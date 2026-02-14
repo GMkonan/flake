@@ -77,5 +77,7 @@
     kubectl
     minikube
     bootdev-cli
+    azure-cli
+    hugo
   ];
 }

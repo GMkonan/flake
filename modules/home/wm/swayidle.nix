@@ -19,7 +19,7 @@ in {
 
     timeouts = [
       {
-        timeout = 900; # 15 minutes
+        timeout = 18000; # 15 minutes
         command = lockAndSuspendCmd;
       }
     ];

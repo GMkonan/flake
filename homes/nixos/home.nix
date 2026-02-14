@@ -52,5 +52,6 @@
     mullvad-vpn
     hyprshot
     devcontainer
+    opencode
   ];
 }

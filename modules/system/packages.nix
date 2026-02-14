@@ -45,6 +45,8 @@
     silicon
     cava
 
+    mprisence
+
     material-symbols
     qt6Packages.qt5compat
     libsForQt5.qt5.qtgraphicaleffects

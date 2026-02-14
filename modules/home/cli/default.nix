@@ -8,5 +8,6 @@
     ./bat.nix
     ./psql.nix
     ./taskwarrior.nix
+    ./opencode.nix
   ];
 }
