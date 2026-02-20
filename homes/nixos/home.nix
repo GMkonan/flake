@@ -29,6 +29,7 @@
     ../../modules/home/wm
     ../../modules/home/cli
     ../../modules/home/gui
+    ../../modules/home/dictation.nix
 
     ../../modules/home/gnome.nix
     ../../modules/home/gtk.nix
