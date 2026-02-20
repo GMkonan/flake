@@ -41,7 +41,6 @@
     go
     rustup
 
-    ngrok
     silicon
     cava
 

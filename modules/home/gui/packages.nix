@@ -14,5 +14,7 @@
     jetbrains.idea-oss
     ytmdesktop
     spotify
+    dbeaver-bin
+    clickhouse
   ];
 }
