@@ -28,6 +28,9 @@ in {
 
   programs.nix-ld.enable = true;
 
+  # Tailscale VPN
+  services.tailscale.enable = true;
+
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
