@@ -116,6 +116,11 @@ gestures {
     position x=1280 y=0
 }
 
+workspace "coding"
+workspace "browser"
+workspace "music"
+workspace "socials"
+
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Layout
@@ -320,6 +325,45 @@ animations {
 
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
+window-rule {
+    match app-id=r#"(code|visual-studio-code|com\.visualstudio\.code)$"#
+    match app-id=r#"(ghostty|com\.mitchellh\.ghostty)$"#
+    match app-id=r#"(zed|Zed|dev\.zed\.Zed)$"#
+
+    open-on-workspace "coding"
+    open-fullscreen true
+}
+
+window-rule {
+    match app-id=r#"(zen|Zen|app\.zen_browser\.zen)$"#
+
+    open-on-workspace "browser"
+    open-fullscreen true
+}
+
+window-rule {
+    match app-id=r#"(spotify|com\.spotify\.Client)$"#
+
+    open-on-workspace "music"
+    open-fullscreen true
+}
+
+window-rule {
+    match app-id=r#"(vesktop|dev\.vesktop\.Vesktop)$"#
+    match app-id=r#"(slack|com\.slack\.Slack)$"#
+
+    open-on-workspace "socials"
+    open-fullscreen true
+}
+
+window-rule {
+    match app-id=r#"(bitwarden|com\.bitwarden\.desktop)$"#
+
+    open-floating true
+    default-column-width { fixed 900; }
+    default-window-height { fixed 650; }
+}
+
 window-rule {
     // This regular expression is intentionally made as specific as possible,
     // since this is the default config, and we want no false positives.
