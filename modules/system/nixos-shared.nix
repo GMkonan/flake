@@ -19,7 +19,7 @@
     postgresql
     beamMinimal27Packages.elixir_1_17
     home-manager
-    inputs.zen.packages.${pkgs.system}.default
+    inputs.zen.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   fonts.packages = with pkgs; [

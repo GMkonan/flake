@@ -4,7 +4,7 @@
   inputs,
   ...
 }: let
-  noctaliaPkg = inputs.noctalia.packages.${pkgs.system}.default;
+  noctaliaPkg = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;
   noctaliaExe = lib.getExe noctaliaPkg;
 
   lockCmd = "${pkgs.bash}/bin/bash -lc '${noctaliaExe} ipc call lockScreen lock'";
@@ -24,20 +24,11 @@ in {
       }
     ];
 
-    events = [
-      {
-        event = "lock";
-        command = lockCmd;
-      }
-      {
-        event = "before-sleep";
-        command = lockCmd;
-      }
-      {
-        event = "after-resume";
-        command = dpmsOn;
-      }
-    ];
+    events = {
+      lock = lockCmd;
+      before-sleep = lockCmd;
+      after-resume = dpmsOn;
+    };
   };
 
   systemd.user.services.swayidle = {
