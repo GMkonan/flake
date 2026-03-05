@@ -51,6 +51,7 @@
     lsof
     brightnessctl
     mullvad-vpn
+    netbird
     hyprshot
     devcontainer
     opencode

@@ -1,4 +1,14 @@
 {
   # systemctl status mullvad-daemon
   services.mullvad-vpn.enable = true;
+
+  services.netbird.clients.wt0 = {
+    name = "netbird";
+    interface = "wt0";
+    hardened = false;
+    port = 51821;
+    ui.enable = false;
+    openFirewall = true;
+    openInternalFirewall = true;
+  };
 }
