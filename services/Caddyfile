@@ -1,0 +1,35 @@
+{$DASH_HOST} {
+  reverse_proxy homepage:3000
+}
+
+{$PORTAINER_HOST} {
+  reverse_proxy portainer:9000
+}
+
+{$KYOO_HOST} {
+  reverse_proxy kyoo-traefik:8901
+}
+
+{$QBIT_HOST} {
+  reverse_proxy qbittorrent:{$QBIT_WEBUI_PORT}
+}
+
+{$SONARR_HOST} {
+  reverse_proxy sonarr:8989
+}
+
+{$RADARR_HOST} {
+  reverse_proxy radarr:7878
+}
+
+{$BAZARR_HOST} {
+  reverse_proxy bazarr:6767
+}
+
+{$PROWLARR_HOST} {
+  reverse_proxy prowlarr:9696
+}
+
+{$GLANCES_HOST} {
+  reverse_proxy glances:61208
+}

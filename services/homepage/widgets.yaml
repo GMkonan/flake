@@ -1,0 +1,12 @@
+- glances:
+    url: http://glances:61208
+    version: 4
+    metric: info
+
+- resources:
+    cpu: true
+    memory: true
+    disk: /
+
+- docker:
+    socket: /var/run/docker.sock

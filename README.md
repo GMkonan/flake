@@ -11,6 +11,12 @@ characters.
 ### Darwin
 darwin-rebuild switch --flake ~/flake#mini
 
+### Mac Mini Server Docs
+
+- `docs/mac-mini-server-day1.md`
+- `docs/mac-mini-server-agent-plan.md`
+- `services/README.md`
+
 ### Nixos
 sudo nixos-rebuild switch --flake ~/flake#thinkpad (or other host)
 
