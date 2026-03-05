@@ -331,21 +331,21 @@ window-rule {
     match app-id=r#"(zed|Zed|dev\.zed\.Zed)$"#
 
     open-on-workspace "coding"
-    open-fullscreen true
+    open-maximized true
 }
 
 window-rule {
     match app-id=r#"(zen|Zen|app\.zen_browser\.zen)$"#
 
     open-on-workspace "browser"
-    open-fullscreen true
+    open-maximized true
 }
 
 window-rule {
     match app-id=r#"(spotify|com\.spotify\.Client)$"#
 
     open-on-workspace "music"
-    open-fullscreen true
+    open-maximized true
 }
 
 window-rule {
@@ -353,7 +353,7 @@ window-rule {
     match app-id=r#"(slack|com\.slack\.Slack)$"#
 
     open-on-workspace "socials"
-    open-fullscreen true
+    open-maximized true
 }
 
 window-rule {

@@ -45,6 +45,7 @@
     cava
 
     mprisence
+    xwayland-satellite
 
     material-symbols
     qt6Packages.qt5compat

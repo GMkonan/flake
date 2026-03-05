@@ -21,6 +21,7 @@ in {
   services.desktopManager.gnome.enable = true;
   services.displayManager.gdm.enable = true;
 
+  programs.xwayland.enable = true;
   # services.logind = {
   #   lidSwitch = "ignore";
   #   lidSwitchDocked = "ignore";

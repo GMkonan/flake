@@ -46,6 +46,17 @@ https://github.com/abenz1267/walker/tree/master
 - https://github.com/elliottminns/dotfiles/blob/main/nix/home/hyprland.nix
 - https://nixos.org/guides/nix-pills/07-working-derivation.html
 
+#### Affinity update command
+
+If you use `affinity-nix`, you can run the graphical updater with:
+
+`nix run github:mrshmllow/affinity-nix#{v3,photo,designer,publisher} -- update`
+
+Examples:
+
+- `nix run github:mrshmllow/affinity-nix#v3 -- update`
+- `nix run github:mrshmllow/affinity-nix#photo -- update`
+
 
 
 ```
