@@ -10,5 +10,6 @@
     ui.enable = false;
     openFirewall = true;
     openInternalFirewall = true;
+    autoStart = false;
   };
 }
