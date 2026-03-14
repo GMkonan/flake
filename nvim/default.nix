@@ -12,7 +12,8 @@
     neovim
     # LSPs
     gopls
-    typescript-language-server
+    typescript
+    vtsls
     svelte-language-server
     lua-language-server
     yaml-language-server

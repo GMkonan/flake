@@ -98,7 +98,7 @@ return {
         pyright = {},
         nil_ls = {},
         biome = {},
-        tsserver = {}, -- Note: using the proper name here (not ts_ls)
+        vtsls = {},
         yamlls = {},
         texlab = {},
         html = {},
