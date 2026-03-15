@@ -1,20 +1,26 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    # davinci-resolve
-    mpv
-    libreoffice
-    shotcut
-    vial
+    # password stuff
     bitwarden-desktop
-    figma-linux
-    vscode
-    # code-cursor
-    # devpod-desktop
-    anki
-    jetbrains.idea-oss
+    _1password-cli
+    _1password-gui
+
+    # music
     ytmdesktop
     spotify
+
+    # db client
     dbeaver-bin
     clickhouse
+
+    # coding
+    vscode
+
+    # MISC
+    mpv
+    libreoffice
+    # figma-linux
+    anki
+    # davinci-resolve
   ];
 }
