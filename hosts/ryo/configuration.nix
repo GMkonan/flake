@@ -42,6 +42,10 @@ in {
     };
   };
 
+  services.power-profiles-daemon.enable = true;
+
+  services.upower.enable = true;
+
   # services.blueman.enable = true;
 
   # Configure keymap in X11

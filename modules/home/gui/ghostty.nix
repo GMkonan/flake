@@ -4,8 +4,8 @@
 
     settings = {
       theme = "Catppuccin Mocha";
-      font-size = 12;
-      background-opacity = 0.9;
+      font-size = 13;
+      # background-opacity = 1.0;
       command = "zsh";
     };
   };

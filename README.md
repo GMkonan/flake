@@ -3,54 +3,27 @@ Nix + home manager config for multiple hosts. Inspired by bocchi the rock
 characters.
 
 ## Hosts
-- Bocchi (Desktop)
-- Ryo (thinkpad T480)
-- Nijika (mac mini)
-- Seika (Server)
-
-### Darwin
-darwin-rebuild switch --flake ~/flake#mini
-
-### Mac Mini Server Docs
-
-- `docs/mac-mini-server-day1.md`
-- `docs/mac-mini-server-agent-plan.md`
-- `services/README.md`
-
-### Nixos
-sudo nixos-rebuild switch --flake ~/flake#thinkpad (or other host)
+- Bocchi (Gaming Desktop) WIP
+- Ryo (thinkpad L14)
+- Seika (mac mini server) WIP
 
 #### Todo
 
-##### V2
-I want to setup things differently, which will make me change a lot of the
-structure of this flake. will be working this in the v2 branch. Questions:
+##### Nix
+- [ ] fastfetch dot art
+- [ ] New structure based on zoe + [this nix config](https://github.com/louis-thevenet/nixos-config/blob/main/README.md)
+- [ ] notifications in the middle plugin
+- [ ] delete unused packages/config/files, keep it minimal
+- [ ] Fix affinity linux
+- [ ] Lazygit?
+- [ ] Add declarative config for a few packages (noctalia, opencode)
 
-- fastfetch
-    - [ ] seika dot art (server)
-    - [ ] ryo dot art (laptop)
-    - [ ] nijika dot art (mac mini)
+##### Niri
+- [ ] Add transparency to other windows
 
-- hyprpaper
-    - [ ] day and night wallpapers separated
-
-- waybar
-    - [ ] Add pomodoro
-
-- tmux
-    - [ ] status stuff? pomodoro on tmux?
-
-https://github.com/abenz1267/walker/tree/master
-
-#### Some Refs:
-- https://github.com/hyprwm/Hyprland/discussions/192#discussioncomment-12845902
-(chrome/electron flickering in hyprland fix)
-- https://github.com/Zakar98k/hyprland-catppuccin-dotz
-- https://github.com/hyprwm/hyprpaper/issues/108#issuecomment-2119611893
-- https://github.com/catppuccin/nix?tab=readme-ov-file
-- https://www.reddit.com/r/archlinux/comments/136eaiw/hyprland_with_waybar_config_reloading/
-- https://github.com/elliottminns/dotfiles/blob/main/nix/home/hyprland.nix
-- https://nixos.org/guides/nix-pills/07-working-derivation.html
+##### Neovim
+- [ ] Add supermaven
+- [ ] Fix the annoying copy command thing
 
 #### Affinity update command
 
@@ -69,4 +42,4 @@ Examples:
 nix run github:nix-community/nixos-generators -- --format iso --flake .#ryo
 
 nix run github:nix-community/nixos-generators -- --format iso --flake .#ryo -o ryo-iso
-```
+``` 

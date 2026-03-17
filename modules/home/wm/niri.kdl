@@ -126,7 +126,7 @@ workspace "socials"
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 10
+    gaps 14
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -327,7 +327,7 @@ animations {
 // by setting an empty default-column-width.
 window-rule {
     match app-id=r#"(code|visual-studio-code|com\.visualstudio\.code)$"#
-    match app-id=r#"(ghostty|com\.mitchellh\.ghostty)$"#
+    // match app-id=r#"(ghostty|com\.mitchellh\.ghostty)$"#
     match app-id=r#"(zed|Zed|dev\.zed\.Zed)$"#
 
     open-on-workspace "coding"
@@ -364,12 +364,14 @@ window-rule {
     default-window-height { fixed 650; }
 }
 
+
 window-rule {
     // This regular expression is intentionally made as specific as possible,
     // since this is the default config, and we want no false positives.
     // You can get away with just app-id="wezterm" if you want.
     match app-id="ghostty"
-    default-column-width { proportion 1.0; }
+    // default-column-width { proportion 1.0; }
+    opacity 0.9;
 }
 
 // Open the Firefox picture-in-picture player as floating by default.
@@ -396,7 +398,7 @@ window-rule {
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
 window-rule {
-    geometry-corner-radius 20
+    // geometry-corner-radius 20
     clip-to-geometry true
 }
 
@@ -410,6 +412,9 @@ binds {
     //
     // Most actions that you can bind here can also be invoked programmatically with
     // `niri msg action do-something`.
+
+
+Mod+Shift+T { toggle-window-rule-opacity; }
 
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
