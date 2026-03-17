@@ -2,93 +2,149 @@
   programs.noctalia-shell = {
     enable = true;
 
-    # #173688
-    # https://docs.noctalia.dev/getting-started/nixos/#config-ref
     settings = {
-      general = {
-        avatarImage = "~/flake/ryo-2-twitter.jpg";
-        lockOnSuspend = true;
-        language = "";
-      };
-      dock = {
-        enabled = false;
-      };
       bar = {
-        position = "top";
-        monitors = [];
-        density = "default";
-        showCapsule = true;
-        floating = false;
-        marginVertical = 0.25;
-        marginHorizontal = 0.25;
+        density = "compact";
+        showCapsule = false;
+        outerCorners = false;
+        marginVertical = 5;
+        marginHorizontal = 5;
+
         widgets = {
           left = [
             {
               id = "ControlCenter";
+              colorizeDistroLogo = false;
+              colorizeSystemIcon = "primary";
+              customIconPath = "/home/konan/Downloads/my-idle-0-symbolic.svg";
+              enableColorization = true;
+              icon = "noctalia";
+              useDistroLogo = true;
             }
-            # {
-            #   id = "SystemMonitor";
-            # }
             {
-              id = "ActiveWindow";
+              id = "Workspace";
+              characterCount = 2;
+              colorizeIcons = true;
+              emptyColor = "none";
+              enableScrollWheel = true;
+              focusedColor = "primary";
+              followFocusedScreen = false;
+              fontWeight = "bold";
+              groupedBorderOpacity = 1;
+              hideUnoccupied = false;
+              iconScale = 0.8;
+              labelMode = "index";
+              occupiedColor = "none";
+              pillSize = 0.7;
+              showApplications = false;
+              showApplicationsHover = false;
+              showBadge = true;
+              showLabelsOnlyWhenOccupied = false;
+              unfocusedIconsOpacity = 1;
             }
           ];
           center = [
             {
-              id = "TaskbarGrouped";
+              id = "plugin:catwalk";
+            }
+            {
+              id = "Clock";
+              clockColor = "primary";
+              customFont = "";
+              formatHorizontal = "HH:mm ddd, MMM dd";
+              formatVertical = "HH mm - dd MM";
+              tooltipFormat = "HH:mm ddd, MMM dd";
+              useCustomFont = false;
             }
           ];
           right = [
-            # {
-            #   id = "ScreenRecorder";
-            # }
             {
               id = "MediaMini";
-            }
-            {
-              id = "KeyboardLayout";
+              compactMode = false;
+              hideMode = "hidden";
+              hideWhenIdle = false;
+              maxWidth = 145;
+              panelShowAlbumArt = true;
+              scrollingMode = "hover";
+              showAlbumArt = true;
+              showArtistFirst = true;
+              showProgressRing = true;
+              showVisualizer = false;
+              textColor = "none";
+              useFixedWidth = false;
+              visualizerType = "linear";
             }
             {
               id = "Tray";
-            }
-            {
-              id = "NotificationHistory";
-            }
-            {
-              id = "wifi";
-            }
-            {
-              id = "Battery";
+              drawerEnabled = true;
+              blacklist = [];
+              chevronColor = "none";
+              colorizeIcons = false;
+              hidePassive = false;
+              pinned = [];
             }
             {
               id = "Volume";
+              displayMode = "onhover";
+              iconColor = "none";
+              middleClickCommand = "pwvucontrol || pavucontrol";
+              textColor = "none";
             }
-            # {
-            #   id = "Brightness";
-            # }
             {
-              id = "Clock";
+              id = "NotificationHistory";
+              hideWhenZero = false;
+              hideWhenZeroUnread = false;
+              iconColor = "none";
+              showUnreadBadge = true;
+              unreadBadgeColor = "primary";
+            }
+            {
+              id = "Battery";
+              deviceNativePath = "__default__";
+              displayMode = "graphic";
+              hideIfIdle = false;
+              hideIfNotDetected = true;
+              showNoctaliaPerformance = false;
+              showPowerProfiles = false;
+            }
+            {
+              id = "plugin:netbird";
+            }
+            {
+              id = "plugin:tailscale";
+            }
+            {
+              id = "plugin:privacy-indicator";
+            }
+            {
+              id = "plugin:keybind-cheatsheet";
             }
           ];
         };
       };
+
+      general = {
+        avatarImage = "~/flake/ryo-2-twitter.jpg";
+      };
+
       location = {
         name = "Vitoria, ES, Brazil";
-        weatherEnabled = true;
-        use12hourFormat = false;
-        showWeekNumberInCalendar = false;
-        showCalendarEvents = true;
       };
-      colorSchemes = {
-        predefinedScheme = "Tokyo Night";
-      };
-      wallpaper = {
-        enabled = true;
-        directory = "~/flake/wallpapers/dark/";
-        defaultWallpaper = "../../../wallpapers/dark/ryo-night-looking-cam.jpg";
 
-        # randomEnabled = true;
-        # randomIntervalSec = 1200;
+      notifications = {
+        density = "compact";
+      };
+
+      wallpaper = {
+        directory = "/home/konan/Pictures/Wallpapers";
+      };
+
+      dock = {
+        enabled = false;
+      };
+
+      colorSchemes = {
+        predefinedScheme = "Nord";
       };
     };
   };
