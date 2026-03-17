@@ -12,11 +12,10 @@ characters.
 ##### Nix
 - [ ] fastfetch dot art
 - [ ] New structure based on zoe + [this nix config](https://github.com/louis-thevenet/nixos-config/blob/main/README.md)
-- [ ] notifications in the middle plugin
 - [ ] delete unused packages/config/files, keep it minimal
 - [ ] Fix affinity linux
-- [ ] Lazygit?
-- [ ] Add declarative config for a few packages (noctalia, opencode)
+- [x] Lazygit?
+- [x] Add declarative config for a few packages (noctalia, opencode)
 
 ##### Niri
 - [ ] Add transparency to other windows
