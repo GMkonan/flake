@@ -1,8 +1,8 @@
 {...}: {
   programs.opencode = {
     enable = true;
-    settings = {
-      theme = "catppuccin";
-    };
+    # settings = {
+    #   theme = "catppuccin";
+    # };
   };
 }

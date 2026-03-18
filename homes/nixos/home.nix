@@ -23,6 +23,7 @@ in {
   };
 
   imports = [
+    ../../modules/home/themes
     ../../modules/home/wm
     ../../modules/home/cli
     ../../modules/home/gui

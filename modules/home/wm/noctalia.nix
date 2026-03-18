@@ -1,4 +1,4 @@
-{...}: {
+{config, ...}: {
   programs.noctalia-shell = {
     enable = true;
 
@@ -124,7 +124,8 @@
       };
 
       general = {
-        avatarImage = "~/flake/ryo-2-twitter.jpg";
+        # Use the theme's profile picture
+        avatarImage = "~/flake/${config.theme.active.paths.profilePicture}";
       };
 
       location = {
@@ -136,7 +137,8 @@
       };
 
       wallpaper = {
-        directory = "/home/konan/Pictures/Wallpapers";
+        # Use the theme's wallpaper directory
+        directory = "~/flake/${config.theme.active.paths.wallpaperDir}";
       };
 
       dock = {

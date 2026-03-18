@@ -1,8 +1,13 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   stylix = {
     enable = true;
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    # Use the active theme's base16 scheme
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
 
     polarity = "dark";
 
@@ -17,9 +22,7 @@
     # cursor.name = "BreezX-RosePine-Linux";
 
     # programs that should not be styled
-    targets.waybar.enable = false;
     targets.vscode.enable = false;
-    targets.opencode.enable = false;
   };
 
   # stylix.image = ../wallpapers/city.png;
