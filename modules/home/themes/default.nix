@@ -1,20 +1,30 @@
-# Theme application module
-# This module reads the active theme and exposes it to all other modules
-{
-  config,
-  lib,
-  pkgs,
-  inputs,
-  ...
-}: let
-  # Theme definitions - defined here to avoid cross-store import issues
+{lib, ...}: let
   themes = {
     ryo-yamada = {
       name = "ryo-yamada";
       description = "A Tokyo Night inspired theme for the ryo host";
 
-      # Base16 color scheme to use with stylix
-      base16Scheme = "tokyo-night-dark";
+      # Custom base16 scheme with exact Tokyo Night colors
+      base16Scheme = {
+        scheme = "Ryo Yamada Tokyo Night";
+        author = "Custom";
+        base00 = "#1a1b26"; # background
+        base01 = "#16161e"; # surface variant
+        base02 = "#24283b"; # surface
+        base03 = "#353D57"; # outline
+        base04 = "#9aa5ce"; # muted text
+        base05 = "#c0caf5"; # text
+        base06 = "#a9b1d6"; # light text
+        base07 = "#ffffff"; # white
+        base08 = "#f7768e"; # error/red
+        base09 = "#e0af68"; # warning/yellow
+        base0A = "#e0af68"; # types/yellow
+        base0B = "#9ece6a"; # success/green
+        base0C = "#7dcfff"; # info/cyan
+        base0D = "#7aa2f7"; # primary/blue
+        base0E = "#bb9af7"; # secondary/purple
+        base0F = "#f7768e"; # error
+      };
 
       # Tokyo Night color palette
       colors = {
@@ -41,19 +51,12 @@
         orange = "#ff9e64"; # base09 - Orange
       };
 
-      # File paths (relative to flake root)
       paths = {
-        # Profile picture for noctalia and other apps
         profilePicture = "assets/pfps/ryo-pfp.jpg";
-
-        # Wallpaper directory for noctalia
         wallpaperDir = "assets/wallpapers";
-
-        # Specific wallpaper to use as default
         defaultWallpaper = "assets/wallpapers/ryo-night-looking-cam.jpg";
       };
 
-      # Fastfetch color configuration
       fastfetch = {
         title = "blue";
         key = "magenta";
@@ -63,7 +66,9 @@
     };
   };
 
-  activeThemeName = "ryo-yamada"; # Change this to switch themes
+  # Change this to switch themes
+  activeThemeName = "ryo-yamada";
+
   activeTheme = themes.${activeThemeName};
 in {
   options.theme = {

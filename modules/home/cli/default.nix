@@ -8,5 +8,6 @@
     ./bat.nix
     ./psql.nix
     ./opencode.nix
+    ./protonvpn.nix
   ];
 }

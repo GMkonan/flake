@@ -147,7 +147,7 @@
 
       colorSchemes = {
         useWallpaperColors = false;
-        predefinedScheme = "Noctalia (default)";
+        # predefinedScheme = "Noctalia (default)";
         darkMode = true;
         # schedulingMode = "off";
         # manualSunrise = "06:30";

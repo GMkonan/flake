@@ -6,8 +6,8 @@
   stylix = {
     enable = true;
 
-    # Use the active theme's base16 scheme
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+    # Use the custom base16 scheme from the active theme
+    base16Scheme = config.theme.active.base16Scheme;
 
     polarity = "dark";
 
@@ -17,13 +17,7 @@
       size = 24;
     };
 
-    # cursor.package = inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default;
-
-    # cursor.name = "BreezX-RosePine-Linux";
-
     # programs that should not be styled
     targets.vscode.enable = false;
   };
-
-  # stylix.image = ../wallpapers/city.png;
 }

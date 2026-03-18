@@ -5,6 +5,9 @@
     _1password-cli
     _1password-gui
 
+    # vpn
+    protonvpn-gui
+
     # music
     ytmdesktop
     spotify
