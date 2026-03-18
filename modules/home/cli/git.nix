@@ -6,15 +6,6 @@
   programs.git = {
     enable = true;
 
-    delta = {
-      enable = true;
-      options = {
-        side-by-side = true;
-        line-numbers = true;
-        syntax-theme = "OneHalfDark";
-      };
-    };
-
     settings = {
       user = {
         name = "GMkonan";
@@ -71,6 +62,17 @@
       help.autocorrect = "prompt";
       commit.verbose = "true";
       merge.conflictstyle = "zdiff3";
+    };
+  };
+
+  # Delta configuration moved to top-level programs.delta
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+    options = {
+      side-by-side = true;
+      line-numbers = true;
+      syntax-theme = "OneHalfDark";
     };
   };
 

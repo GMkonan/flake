@@ -26,6 +26,7 @@ characters.
 
 ##### Neovim
 - [ ] Add supermaven
+- [ ] Add svelte support
 - [ ] Fix the annoying copy command thing
 
 #### Affinity update command
