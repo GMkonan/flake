@@ -6,6 +6,15 @@
   programs.git = {
     enable = true;
 
+    delta = {
+      enable = true;
+      options = {
+        side-by-side = true;
+        line-numbers = true;
+        syntax-theme = "OneHalfDark";
+      };
+    };
+
     settings = {
       user = {
         name = "GMkonan";
@@ -26,26 +35,7 @@
       apply.whitespace = "fix";
       init.defaultBranch = "main";
       core = {
-        pager = "diff-so-fancy | less --tabs=4 -RFX";
         compression = 0;
-      };
-      interactive.diffFilter = "diff-so-fancy --patch";
-
-      color.ui = "true";
-      "color \"diff-highlight\"" = {
-        oldNormal = "red bold";
-        oldHighlight = "red bold 52";
-        newNormal = "green bold";
-        newHighlight = "green bold 22";
-      };
-      "color \"diff\"" = {
-        meta = "11";
-        frag = "magenta bold";
-        func = "146 bold";
-        commit = "yellow bold";
-        old = "red bold";
-        new = "green bold";
-        whitespace = "red reverse";
       };
 
       http.postBuffer = 157286400;
@@ -84,7 +74,7 @@
     };
   };
 
-  home.packages = with pkgs; [diff-so-fancy];
+  home.packages = with pkgs; [delta];
 
   # Git helpers script managed by HM
   xdg.configFile."git/githelpers".text = ''

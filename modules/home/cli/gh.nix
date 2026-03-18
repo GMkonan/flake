@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   programs.gh = {
     enable = true;
     settings = {
@@ -12,4 +12,6 @@
       };
     };
   };
+
+  home.packages = with pkgs; [gh-dash];
 }
