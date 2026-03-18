@@ -3,7 +3,9 @@
   inputs,
   pkgs,
   ...
-}: {
+}: let
+  overlays = import ../../overlays/default.nix {inherit (inputs) nixpkgs-pinned;};
+in {
   home.username = "konan";
   home.homeDirectory = "/home/konan";
 
@@ -14,6 +16,7 @@
   fonts.fontconfig.enable = true;
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [overlays];
 
   home.sessionVariables = {
     EDITOR = "nvim";

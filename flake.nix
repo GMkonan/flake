@@ -57,6 +57,12 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
+    # Temporarily pin nixpkgs for bitwarden-desktop due to electron 39.8.2 build failure
+    # See: https://github.com/NixOS/nixpkgs/issues/500399
+    nixpkgs-pinned = {
+      url = "github:NixOS/nixpkgs/2335b7dfd9a721bcaff65058d6c0a1fabd12e1ac"; # March 10, 2026
+    };
+
     quickshell = {
       url = "github:outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";

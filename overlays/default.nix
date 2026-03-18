@@ -1,4 +1,4 @@
-final: prev: {
+{nixpkgs-pinned}: final: prev: {
   slack = prev.slack.overrideAttrs (oldAttrs: {
     # Ensure makeWrapper is available during the build
     nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [final.makeWrapper];
@@ -49,4 +49,9 @@ final: prev: {
         echo "ticktick wrapping complete."
       '';
   });
+
+  # Temporarily pin bitwarden-desktop due to electron 39.8.2 build failure
+  # See: https://github.com/NixOS/nixpkgs/issues/500399
+  # Error: 39-angle-patchdir.patch failed at electron/patches/config.json
+  bitwarden-desktop = nixpkgs-pinned.legacyPackages.${prev.system}.bitwarden-desktop;
 }

@@ -3,7 +3,7 @@
   inputs,
   ...
 }: let
-  overlays = import ../../overlays/default.nix;
+  overlays = import ../../overlays/default.nix {inherit (inputs) nixpkgs-pinned;};
 in {
   nixpkgs.overlays = [overlays];
 
