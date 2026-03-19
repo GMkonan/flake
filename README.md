@@ -3,9 +3,10 @@ Nix + home manager config for multiple hosts. Inspired by bocchi the rock
 characters.
 
 ## Hosts
-- Bocchi (Gaming Desktop) WIP
+- Bocchi (Gaming Desktop) WIP (30 days linux challenge?)
 - Ryo (thinkpad L14)
-- Seika (mac mini server) WIP
+- Seika (mac mini server) WIP (maybe not?)
+- nijika (thinkpad T480) WIP (should probably be just a minimal version of what i have in L14)
 
 #### Todo
 
