@@ -23,18 +23,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland = {
-      url = "github:hyprwm/Hyprland/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
-    };
-
-    astal = {
-      url = "github:aylur/astal";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     affinity-nix = {
@@ -52,11 +42,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # walker = {
-    #   url = "github:abenz1267/walker";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
     # Temporarily pin nixpkgs for bitwarden-desktop due to electron 39.8.2 build failure
     # See: https://github.com/NixOS/nixpkgs/issues/500399
     nixpkgs-pinned = {
@@ -67,8 +52,9 @@
       url = "github:outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
+      url = "github:noctalia-dev/noctalia-shell/v4.6.7";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
