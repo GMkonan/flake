@@ -16,9 +16,10 @@ characters.
   - GitHub Issue: https://github.com/NixOS/nixpkgs/issues/500399
   - Fix: Update nixpkgs after the fix propagates to nixpkgs-unstable, then remove the pin
 - [ ] fastfetch dot art
-- [ ] New structure based on zoe + [this nix config](https://github.com/louis-thevenet/nixos-config/blob/main/README.md)
-- [ ] delete unused packages/config/files, keep it minimal
+- [ ] New structure based on https://github.com/anotherhadi/nixy/tree/main
 - [ ] Fix affinity linux
+- [ ] Add opencode-flake
+- [x] delete unused packages/config/files, keep it minimal
 - [x] Lazygit?
 - [x] Add declarative config for a few packages (noctalia, opencode)
 
@@ -26,8 +27,12 @@ characters.
 - [ ] Add transparency to other windows
 
 ##### Neovim
-- [ ] Add supermaven
+- [ ] Add supermaven?
+- [ ] Config opencode.nvim
+- [ ] Add yazi.nvim
+- [ ] Add harpoon again
 - [ ] Add svelte support
+- [ ] snacks nvim welcome extension?
 - [ ] Fix the annoying copy command thing
 
 #### Affinity update command

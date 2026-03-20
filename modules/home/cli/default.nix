@@ -9,5 +9,7 @@
     ./psql.nix
     ./opencode.nix
     ./protonvpn.nix
+    ./helix.nix
+    ./dev-tools.nix
   ];
 }

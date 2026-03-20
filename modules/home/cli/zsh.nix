@@ -37,6 +37,8 @@
     };
 
     initContent = ''
+      # https://github.com/ghostty-org/ghostty/discussions/4409#discussioncomment-16082114
+      bindkey -e
       # ---------------------------------------
       # Secrets file (created manually)
       # ---------------------------------------
@@ -84,5 +86,6 @@
     azure-cli
     devcontainer
     hugo
+    silicon
   ];
 }
