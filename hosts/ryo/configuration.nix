@@ -22,10 +22,6 @@ in {
   services.displayManager.gdm.enable = true;
 
   programs.xwayland.enable = true;
-  # services.logind = {
-  #   lidSwitch = "ignore";
-  #   lidSwitchDocked = "ignore";
-  # };
 
   programs.nix-ld.enable = true;
 

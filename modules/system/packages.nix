@@ -7,63 +7,42 @@
     allowUnfree = true;
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # System-level packages - essentials and shared dependencies
   environment.systemPackages = with pkgs; [
-    tmux
-    obsidian
-    brave
-    slack
-    # discord
-    vesktop
-    zed-editor
-    bruno
-    helix
-    google-chrome
-    jujutsu
+    # Essentials (emergency fallback)
+    vim
+    git
+    gcc
 
-    oh-my-posh
-    zoxide
-    lsd
-    fzf
-    fd
-    ripgrep
-    graphite-cli
-    gh
-    lazydocker
-    lazygit
-    nodejs
-    lua
-    bun
-    pnpm
-    deno
-    flyctl
-    go
-    rustup
+    # System services
+    docker
+    postgresql
 
-    silicon
-    cava
+    # Wayland/clipboard integration
+    wl-clipboard
 
-    mprisence
+    # Desktop environment
     xwayland-satellite
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
 
+    # Browsers (system-level)
+    inputs.zen.packages.${pkgs.stdenv.hostPlatform.system}.default
+    brave
+
+    # Qt dependencies (shared)
     material-symbols
     qt6Packages.qt5compat
     libsForQt5.qt5.qtgraphicaleffects
     kdePackages.qtbase
     kdePackages.qtdeclarative
     kdePackages.qtstyleplugin-kvantum
-    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-    # (inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
-    #   withWayland = true;
-    #   withX11 = false;
-    #   withHyprland = true;
-    # })
+
+    # Bootstrap
+    home-manager
   ];
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
-    # nerd-fonts.commit-mono
     material-symbols
     material-icons
     roboto

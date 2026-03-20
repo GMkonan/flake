@@ -156,7 +156,6 @@ in {
         Mod+Z hotkey-overlay-title="Run an Application: Zen" { spawn "zen"; }
         Mod+R hotkey-overlay-title="Open List of applications: noctalia launcher" { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
         Mod+P hotkey-overlay-title="Screenshot Region" { spawn "hyprshot" "-m" "region" "--clipboard-only"; }
-        Super+Alt+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
 
         // Dictation
         Mod+D hotkey-overlay-title="Dictation: Auto-detect language" { spawn "dictate-auto"; }

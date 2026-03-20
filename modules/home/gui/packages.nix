@@ -19,6 +19,18 @@
     # coding
     vscode
 
+    # communication
+    slack
+    vesktop
+
+    # productivity
+    obsidian
+    ticktick
+
+    # dev tools
+    bruno
+    zed-editor
+
     # MISC
     mpv
     libreoffice
