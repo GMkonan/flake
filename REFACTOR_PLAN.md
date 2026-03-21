@@ -1,0 +1,8 @@
+
+### Structure
+
+```
+modules/
+  home/
+  nixos/
+```

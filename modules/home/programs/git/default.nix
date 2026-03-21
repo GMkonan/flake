@@ -3,6 +3,13 @@
   pkgs,
   ...
 }: {
+  home.packages = with pkgs; [
+    graphite-cli
+    jujutsu
+    lazyjj
+    lazygit
+  ];
+
   programs.git = {
     enable = true;
 
@@ -75,8 +82,6 @@
       syntax-theme = "OneHalfDark";
     };
   };
-
-  home.packages = with pkgs; [delta];
 
   # Git helpers script managed by HM
   xdg.configFile."git/githelpers".text = ''
