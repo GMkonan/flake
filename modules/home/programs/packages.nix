@@ -9,7 +9,6 @@
     protonvpn-gui
 
     # music
-    ytmdesktop
     spotify
 
     # db client

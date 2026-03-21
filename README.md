@@ -22,6 +22,12 @@ characters.
 - [x] delete unused packages/config/files, keep it minimal
 - [x] Lazygit?
 - [x] Add declarative config for a few packages (noctalia, opencode)
+- [ ] FastFetch or other
+- [ ] Nixcord
+- [ ] Spicetify
+- [ ] nix utilitys script (nixy like)
+
+
 
 ##### Niri
 - [ ] Add transparency to other windows

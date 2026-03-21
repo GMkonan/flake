@@ -67,25 +67,11 @@
   };
 
   home.packages = with pkgs; [
-    # core
+    # core (should stay here)
     lsd
     fzf
     fd
     ripgrep
     yazi
-    graphite-cli
-    jujutsu
-    lazyjj
-    lazygit
-    lazydocker
-    ni
-    shikane
-    kubectl
-    minikube
-    bootdev-cli
-    azure-cli
-    devcontainer
-    hugo
-    silicon
   ];
 }
