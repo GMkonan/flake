@@ -4,6 +4,7 @@
   ...
 }: {
   home.packages = [
-    inputs.opencode-flake.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # inputs.opencode-flake.packages.${pkgs.stdenv.hostPlatform.system}.default
+    pkgs.opencode
   ];
 }
