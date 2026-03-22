@@ -47,7 +47,7 @@ in {
     workspace "socials"
 
     layout {
-        gaps 14
+        gaps ${toString theme.ui.gapsIn}
         center-focused-column "never"
 
         preset-column-widths {
@@ -60,7 +60,7 @@ in {
 
         // Focus ring with themed colors
         focus-ring {
-            width 2
+            width ${toString theme.ui.borderSize}
             // Using theme colors
             active-color "${theme.colors.primary}"
             inactive-color "${theme.colors.textMuted}"
@@ -69,17 +69,29 @@ in {
         // Border (disabled by default)
         border {
             off
-            width 2
+            width ${toString theme.ui.borderSize}
             active-color "${theme.colors.warning}"
             inactive-color "${theme.colors.textMuted}"
             urgent-color "${theme.colors.error}"
         }
 
         shadow {
-            softness 30
-            spread 5
+            softness ${toString (
+      if theme.ui.blur
+      then 30
+      else 0
+    )}
+            spread ${toString (
+      if theme.ui.blur
+      then 5
+      else 0
+    )}
             offset x=0 y=5
-            color "#0007"
+            color "${
+      if theme.ui.blur
+      then "#0007"
+      else "#0000"
+    }"
         }
 
         struts {

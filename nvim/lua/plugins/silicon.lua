@@ -18,7 +18,7 @@ return {
   end,
   config = function()
     require('nvim-silicon').setup {
-      theme = 'Dracula',
+      theme = vim.env.KONAN_NVIM_SILICON_THEME or 'Dracula',
       window_title = function()
         return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()), ':t')
       end,

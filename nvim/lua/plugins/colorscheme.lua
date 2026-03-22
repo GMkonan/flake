@@ -1,23 +1,46 @@
--- Colorscheme/theme
+local colorscheme = vim.env.KONAN_NVIM_COLORSCHEME or 'tokyonight-night'
+
+local function use_catppuccin(name)
+  return name:match '^catppuccin' ~= nil
+end
+
+local function tokyonight_style(name)
+  local style = name:match '^tokyonight%-(.+)$'
+  return style or 'night'
+end
+
 return {
-  -- You can easily change to a different colorscheme.
-  -- Change the name of the colorscheme plugin below, and then
-  -- change the command in the config to whatever the name of that colorscheme is.
-  --
-  -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-  -- 'folke/tokyonight.nvim',
-  'catppuccin/nvim',
-  name = 'catppuccin',
-  priority = 1000, -- Make sure to load this before all the other start plugins.
-  init = function()
-    require('catppuccin').setup {
-      transparent_background = true,
-    }
-    -- Load the colorscheme here.
-    -- Like many other themes, this one has different styles, and you could load
-    -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-    vim.cmd.colorscheme 'catppuccin'
-    -- You can configure highlights by doing something like:
-    vim.cmd.hi 'Comment gui=none'
-  end,
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    enabled = use_catppuccin(colorscheme),
+    lazy = false,
+    priority = 1000,
+    init = function()
+      require('catppuccin').setup {
+        transparent_background = true,
+      }
+
+      vim.cmd.colorscheme(colorscheme)
+      vim.cmd.hi 'Comment gui=none'
+    end,
+  },
+  {
+    'folke/tokyonight.nvim',
+    enabled = not use_catppuccin(colorscheme),
+    lazy = false,
+    priority = 1000,
+    opts = {
+      style = tokyonight_style(colorscheme),
+      transparent = true,
+      styles = {
+        comments = { italic = false },
+      },
+    },
+    config = function(_, opts)
+      require('tokyonight').setup(opts)
+      vim.cmd.colorscheme(colorscheme)
+      vim.cmd.hi 'Comment gui=none'
+    end,
+  },
 }
