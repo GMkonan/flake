@@ -2,53 +2,83 @@ inputs @ {
   nixpkgs,
   self,
   ...
-}: systems: let
-  # system agnostic lib with custom extensions
+}: inventory: let
   lib = nixpkgs.lib.extend (import ./lib.nix inputs);
 
-  inherit (lib) foldl recursiveUpdate mapAttrsToList;
+  inherit (lib) concatStringsSep filterAttrs foldl' hasSuffix mapAttrs' mapAttrsToList nameValuePair recursiveUpdate unique;
 
-  mapSystem = system: {
-    homes ? {},
-    hosts ? {},
-  }: let
-    pkgs = nixpkgs.legacyPackages.${system};
+  overlay = import ../overlays/default.nix {inherit (inputs) nixpkgs-pinned;};
 
-    systemSpecifics =
-      if pkgs.stdenv.isDarwin
-      then {
-        fn = lib.darwinSystem;
-        option = "darwinConfigurations";
-        command = "nix run nix-darwin --";
-      }
-      else {
-        fn = lib.nixosSystem;
-        option = "nixosConfigurations";
-        command = "sudo nixos-rebuild";
+  mkPkgs = system:
+    import nixpkgs {
+      inherit system;
+      overlays = [overlay];
+      config.allowUnfree = true;
+    };
+
+  mkHost = name: entry: let
+    system = entry.system;
+    path = entry.path;
+    homes =
+      if entry ? homes
+      then lib.coerceToList entry.homes
+      else [];
+    host =
+      (import (path + "/vars.nix"))
+      // {
+        inherit homes name path system;
       };
+    isDarwin = hasSuffix "darwin" system;
+  in {
+    inherit isDarwin system;
 
-    mapHosts = builtins.mapAttrs (hostName: path:
-      systemSpecifics.fn {
+    homeConfig = inputs.home-manager.lib.homeManagerConfiguration {
+      pkgs = mkPkgs system;
+      extraSpecialArgs = {inherit host inputs lib self system;};
+      modules = builtins.map (homeName: ../homes/${homeName}.nix) homes ++ [(path + "/home.nix")];
+    };
+
+    systemConfig =
+      (
+        if isDarwin
+        then inputs.nix-darwin.lib.darwinSystem
+        else nixpkgs.lib.nixosSystem
+      )
+      {
         inherit system;
-        specialArgs = {inherit inputs lib self system hostName;};
-        modules = [path] ++ lib.autoloadedModules;
-      });
+        specialArgs = {inherit host inputs lib self system;};
+        modules = [
+          {
+            nixpkgs.config.allowUnfree = true;
+            nixpkgs.overlays = [overlay];
+          }
+          path
+        ];
+      };
+  };
 
-    mapHomes = builtins.mapAttrs (homeName: path:
-      lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = {inherit inputs lib system homeName;};
-        modules = [path] ++ lib.autoloadedModules;
-      });
+  hosts = builtins.mapAttrs mkHost inventory;
+
+  systems = unique (builtins.map (value: value.system) (builtins.attrValues hosts));
+
+  mapSystem = system: let
+    pkgs = mkPkgs system;
+    hostNames = builtins.attrNames (filterAttrs (_: value: value.system == system) hosts);
+    rebuildCommand =
+      if hasSuffix "darwin" system
+      then "nix run nix-darwin --"
+      else "sudo nixos-rebuild";
   in {
     formatter.${system} = pkgs.alejandra;
+
     devShells.${system}.default = pkgs.mkShell {
       packages = [pkgs.alejandra pkgs.home-manager];
+
       shellHook = ''
         export PS1='\[\e[1;32m\][${system}:\w]\$\[\e[0m\] '
         echo
-        echo "‹os›: ${builtins.concatStringsSep ", " (builtins.attrNames hosts)}"
-        echo "‹hm›: ${builtins.concatStringsSep ", " (builtins.attrNames homes)}"
+        echo "‹os›: ${concatStringsSep ", " hostNames}"
+        echo "‹hm›: ${concatStringsSep ", " hostNames}"
         echo
 
         hm() {
@@ -56,23 +86,28 @@ inputs @ {
         }
 
         os() {
-          ${systemSpecifics.command} switch --flake .#$1
+          ${rebuildCommand} switch --flake .#$1
         }
       '';
     };
-    ${systemSpecifics.option} = mapHosts hosts;
-    homeConfigurations = mapHomes homes;
   };
 
-  configuration = foldl recursiveUpdate {} (mapAttrsToList mapSystem systems);
+  perSystemOutputs = foldl' recursiveUpdate {} (builtins.map mapSystem systems);
 
-  getOptions = configs: foldl recursiveUpdate {} (mapAttrsToList (_: value: value.options) configs);
+  getConfigurations = predicate: key:
+    mapAttrs' (name: value: nameValuePair name value.${key}) (filterAttrs (_: value: predicate value) hosts);
+
+  getOptions = configs: foldl' recursiveUpdate {} (mapAttrsToList (_: value: value.options) configs);
 in
-  configuration
+  perSystemOutputs
   // {
-    inherit lib;
+    overlays.default = overlay;
 
-    # Merge all options into one attribute set for use with ‹nixd›
+    darwinConfigurations = getConfigurations (value: value.isDarwin) "systemConfig";
+    homeConfigurations = getConfigurations (_: true) "homeConfig";
+    inherit lib;
+    nixosConfigurations = getConfigurations (value: !value.isDarwin) "systemConfig";
+
     options = {
       nixos = getOptions self.nixosConfigurations;
       darwin = getOptions self.darwinConfigurations;

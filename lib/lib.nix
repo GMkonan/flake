@@ -1,10 +1,9 @@
 inputs: lib: _:
 {
-  autoloadedModules = let
-    optionsDir = ../modules/autoload;
-    nixFiles = lib.filterAttrs (n: _: lib.hasSuffix ".nix" n) (builtins.readDir optionsDir);
-  in
-    map (file: optionsDir + "/${file}") (builtins.attrNames nixFiles);
+  coerceToList = value:
+    if builtins.isList value
+    then value
+    else [value];
 
   # Helper to easily import modules in home/system configs
   imports = let

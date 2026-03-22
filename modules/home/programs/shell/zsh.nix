@@ -33,7 +33,7 @@
 
       v = "$EDITOR";
 
-      tt = "sh ~/flake/modules/home/cli/tmux-sesh.sh";
+      tt = "tmux-sesh";
     };
 
     initContent = ''
@@ -73,5 +73,9 @@
     fd
     ripgrep
     yazi
+    age
+    btop
+    htop
+    lsof
   ];
 }

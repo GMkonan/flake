@@ -1,16 +1,17 @@
 {
-  pkgs,
+  config,
+  host,
   lib,
+  pkgs,
   ...
 }: {
   home.activation.symlinkNvim = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    ln -sfn "/home/konan/flake/nvim" "/home/konan/.config/nvim"
+    mkdir -p "${config.home.homeDirectory}/.config"
+    ln -sfn "${host.paths.flakeDir}/nvim" "${config.home.homeDirectory}/.config/nvim"
   '';
-  # Put the whole folder into ~/.config/nvim
 
   home.packages = with pkgs; [
     neovim
-    # LSPs
     gopls
     typescript
     vtsls
@@ -19,7 +20,6 @@
     yaml-language-server
     nil
     kdePackages.qtdeclarative
-    # Formatters
     alejandra
     biome
   ];

@@ -1,17 +1,15 @@
-{inputs, ...}: let
-  overlays = import ../../overlays/default.nix {inherit (inputs) nixpkgs-pinned;};
-in {
-  nixpkgs.overlays = [overlays];
-
+{
+  host,
+  inputs,
+  ...
+}: {
   imports = [
     ./hardware.nix
-
-    ../../modules/system
-
+    ../../modules/nixos
     inputs.stylix.nixosModules.stylix
   ];
 
-  networking.hostName = "ryo";
+  networking.hostName = host.hostName;
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
@@ -22,29 +20,22 @@ in {
   services.displayManager.gdm.enable = true;
 
   programs.xwayland.enable = true;
-
   programs.nix-ld.enable = true;
-
-  # Tailscale VPN
-  services.tailscale.enable = true;
 
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
     settings = {
       General = {
-        Experimental = true; # Show battery charge of Bluetooth devices
+        Experimental = true;
       };
     };
   };
 
   services.power-profiles-daemon.enable = true;
-
+  services.printing.enable = true;
   services.upower.enable = true;
 
-  # services.blueman.enable = true;
-
-  # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
     variant = "";
@@ -52,9 +43,5 @@ in {
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  services.printing.enable = true;
-
-  nixpkgs.config.allowUnfree = true;
-
-  system.stateVersion = "24.05";
+  system.stateVersion = host.stateVersion.system;
 }
