@@ -1,19 +1,16 @@
-# konan's flake
+# N4 Stack
 
-personal nixos + home-manager setup for a couple machines.
+Konan's nixos + home-manager flake setup focused on reusability. based on the N4 stack:
+- Nixos as my favorite Operating System
+- Niri as a window manager
+- Noctalia as the desktop shell
+- Neovim as my favorite Editor
 
-it is mostly:
-- host-first
-- standalone home-manager
+#### Features
 - reusable homes
 - theme-driven
-- still being cleaned up as i go
-
-the structure is inspired in part by `anotherhadi/nixy`, but adapted to how i prefer to organize hosts, homes, and theming.
 
 ## Screenshots
-
-coming soon. i still move things around too much, but when i finally stop shuffling pixels every other day i'll drop them here.
 
 ## Structure
 
@@ -29,7 +26,11 @@ coming soon. i still move things around too much, but when i finally stop shuffl
 
 Current hosts:
 - `ryo` - main nixos laptop
+
+Wip hosts:
 - `server` - smaller server-ish setup
+- `desktop` - desktop gaming setup
+- `laptop` - minimal setup for low power laptop
 
 ## Themes
 
@@ -43,21 +44,11 @@ Each host picks one in its `vars.nix`:
 }
 ```
 
-A theme is a normal module that can drive:
-- Stylix
-- wallpapers and profile images
-- window manager colors
-- app theming like Fastfetch, tmux, Neovim, Nixcord, and Spicetify
+Theming works in a combination with stylix, wallpaper and custom colors passed through the config.
 
-If you want to make a new one, the easiest path is:
-
-1. copy `themes/tokyo-night.nix`
-2. rename it
-3. change the colors / assets / app settings
-4. point a host to it in `hosts/<host>/vars.nix`
-
-Fastfetch uses a single text art file at `assets/fetch/logo.txt`.
-If you want a different logo, just replace that file.
+### Special thanks
+I inspired myself in lots of configs like
+- `anotherhadi/nixy`
 
 #### Todo
 
