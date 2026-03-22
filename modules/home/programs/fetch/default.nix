@@ -81,6 +81,13 @@
         disabled = ["winget"];
       }
       {
+        type = "display";
+        key = "display";
+        keyIcon = "󰍹";
+        compactType = "none";
+        preciseRefreshRate = false;
+      }
+      {
         type = "shell";
         key = "shell";
         keyIcon = "";
@@ -100,6 +107,16 @@
         type = "terminalfont";
         key = "font";
         keyIcon = "";
+      }
+      {
+        type = "theme";
+        key = "theme";
+        keyIcon = "󰉼";
+      }
+      {
+        type = "cursor";
+        key = "cursor";
+        keyIcon = "󰆿";
       }
       "break"
       {
