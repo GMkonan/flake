@@ -6,20 +6,11 @@
   pkgs,
   ...
 }: let
-  themeName =
-    if options ? theme
-    then config.theme.name
-    else null;
-
-  nvimColorscheme =
-    if themeName == "tokyo-night"
-    then "tokyonight-night"
-    else "tokyonight-night";
-
-  siliconTheme =
-    if themeName == "tokyo-night"
-    then "Dracula"
-    else "Dracula";
+  nvimTheme = {
+    plugin = lib.attrByPath ["programs" "nvim" "plugin"] "tokyonight" (config.theme.active or {});
+    colorscheme = lib.attrByPath ["programs" "nvim" "colorscheme"] "tokyonight-night" (config.theme.active or {});
+    siliconTheme = lib.attrByPath ["programs" "nvim" "siliconTheme"] "Dracula" (config.theme.active or {});
+  };
 in {
   home.activation.symlinkNvim = lib.hm.dag.entryAfter ["writeBoundary"] ''
     mkdir -p "${config.home.homeDirectory}/.config"
@@ -41,7 +32,8 @@ in {
   ];
 
   home.sessionVariables = lib.mkIf (options ? theme) {
-    KONAN_NVIM_COLORSCHEME = nvimColorscheme;
-    KONAN_NVIM_SILICON_THEME = siliconTheme;
+    KONAN_NVIM_COLORSCHEME = nvimTheme.colorscheme;
+    KONAN_NVIM_SILICON_THEME = nvimTheme.siliconTheme;
+    KONAN_NVIM_THEME_PLUGIN = nvimTheme.plugin;
   };
 }
