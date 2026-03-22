@@ -21,7 +21,7 @@
       favorite-apps = [
         "zen.desktop"
         "org.gnome.Nautilus.desktop"
-        "discord.desktop"
+        "vesktop.desktop"
         "ticktick.desktop"
       ];
     };

@@ -26,6 +26,15 @@
     azure-cli
     devcontainer
     hugo
+    bruno
+
+    # editors
+    vscode
+    zed-editor
+
+    # db stuff
+    dbeaver-bin
+    clickhouse
 
     # Screenshot util for code screenshots via nvim
     silicon
