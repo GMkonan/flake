@@ -5,14 +5,7 @@
   ...
 }: {
   imports = [
-    ../../modules/home/stylix.nix
-    ../../modules/home/system/gnome.nix
-    ../../modules/home/system/gtk.nix
-    ../../modules/home/system/noctalia.nix
     ../../modules/home/themes
-
-    inputs.stylix.homeModules.stylix
-    inputs.noctalia.homeModules.default
   ];
 
   home = {

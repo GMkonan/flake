@@ -1,7 +1,4 @@
 {
-  # systemctl status mullvad-daemon
-  services.mullvad-vpn.enable = true;
-
   services.netbird.ui.enable = false;
   services.netbird.clients.wt0 = {
     name = "netbird";

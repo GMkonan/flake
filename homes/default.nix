@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     # programs
     ../modules/home/programs/dev
@@ -16,6 +20,9 @@
     ../modules/home/system/idle
     ../modules/home/system/kanshi
     ../modules/home/system/gtk
+
+    inputs.stylix.homeModules.stylix
+    inputs.noctalia.homeModules.default
   ];
 
   fonts.fontconfig.enable = true;

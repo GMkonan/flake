@@ -15,17 +15,21 @@ characters.
   - Error: `39-angle-patchdir.patch` fails to apply to `electron/patches/config.json`
   - GitHub Issue: https://github.com/NixOS/nixpkgs/issues/500399
   - Fix: Update nixpkgs after the fix propagates to nixpkgs-unstable, then remove the pin
-- [ ] fastfetch dot art
 - [ ] New structure based on https://github.com/anotherhadi/nixy/tree/main
 - [ ] Fix affinity linux
-- [ ] Add opencode-flake
 - [x] delete unused packages/config/files, keep it minimal
 - [x] Lazygit?
 - [x] Add declarative config for a few packages (noctalia, opencode)
-- [ ] FastFetch or other
+- [ ] Add opencode-flake
 - [ ] Nixcord
 - [ ] Spicetify
+- [ ] nerdFetch
+- [ ] make a better theme module thing ala nixy stuff
+- [ ] fetch dot art
 - [ ] nix utilitys script (nixy like)
+- [ ] divide packages on nixos system better
+- [ ] have a affinity module
+- [ ] create separate modules for brave and zen
 
 
 
