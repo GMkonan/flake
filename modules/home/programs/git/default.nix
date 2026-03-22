@@ -1,17 +1,10 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }: let
-  themeName =
-    if config ? theme
-    then config.theme.name
-    else null;
-
-  deltaTheme =
-    if themeName == "tokyo-night"
-    then "OneHalfDark"
-    else "OneHalfDark";
+  deltaTheme = lib.attrByPath ["programs" "git" "deltaTheme"] "OneHalfDark" (config.theme.active or {});
 in {
   home.packages = with pkgs; [
     graphite-cli

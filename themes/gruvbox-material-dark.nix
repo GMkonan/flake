@@ -4,8 +4,8 @@
   ...
 }: let
   theme = rec {
-    name = "tokyo-night";
-    description = "Tokyo Night theme shared across Stylix and home modules";
+    name = "gruvbox-material-dark";
+    description = "Gruvbox Material dark theme shared across Stylix and home modules";
 
     ui = {
       rounding = 30;
@@ -16,62 +16,62 @@
       blur = true;
       borderSize = 4;
       animationSpeed = "fast";
-      textColorOnWallpaper = "#1a1b26";
+      textColorOnWallpaper = "#282828";
     };
 
     base16Scheme = {
-      scheme = "Tokyo Night";
+      scheme = "Gruvbox Material Dark";
       author = "Konan";
-      base00 = "1a1b26";
-      base01 = "16161e";
-      base02 = "24283b";
-      base03 = "353d57";
-      base04 = "9aa5ce";
-      base05 = "c0caf5";
-      base06 = "a9b1d6";
-      base07 = "ffffff";
-      base08 = "f7768e";
-      base09 = "e0af68";
-      base0A = "e0af68";
-      base0B = "9ece6a";
-      base0C = "7dcfff";
-      base0D = "7aa2f7";
-      base0E = "bb9af7";
-      base0F = "f7768e";
+      base00 = "282828";
+      base01 = "32302f";
+      base02 = "504945";
+      base03 = "665c54";
+      base04 = "7c6f64";
+      base05 = "ddc7a1";
+      base06 = "ebdbb2";
+      base07 = "fbf1c7";
+      base08 = "ea6962";
+      base09 = "e78a4e";
+      base0A = "d8a657";
+      base0B = "a9b665";
+      base0C = "89b482";
+      base0D = "7daea3";
+      base0E = "d3869b";
+      base0F = "bd6f3e";
     };
 
     colors = {
-      background = "#1a1b26";
-      surface = "#24283b";
-      surfaceVariant = "#414868";
-      text = "#a9b1d6";
-      textMuted = "#565f89";
-      textDisabled = "#414868";
-      primary = "#7aa2f7";
-      secondary = "#bb9af7";
-      accent = "#9ece6a";
-      warning = "#e0af68";
-      error = "#f7768e";
-      info = "#7dcfff";
-      magenta = "#bb9af7";
-      orange = "#ff9e64";
+      background = "#282828";
+      surface = "#32302f";
+      surfaceVariant = "#504945";
+      text = "#ddc7a1";
+      textMuted = "#928374";
+      textDisabled = "#665c54";
+      primary = "#d8a657";
+      secondary = "#d3869b";
+      accent = "#a9b665";
+      warning = "#e78a4e";
+      error = "#ea6962";
+      info = "#7daea3";
+      magenta = "#d3869b";
+      orange = "#e78a4e";
     };
 
     assets = {
       profilePicture = ../assets/pfps/ryo-pfp.jpg;
       wallpaperDir = ../assets/wallpapers;
-      wallpaper = ../assets/wallpapers/ryo-night-looking-cam.jpg;
+      wallpaper = ../assets/wallpapers/asya-1.png;
     };
 
     programs = {
       git = {
-        deltaTheme = "OneHalfDark";
+        deltaTheme = "gruvbox-dark";
       };
 
       nvim = {
-        plugin = "tokyonight";
-        colorscheme = "tokyonight-night";
-        siliconTheme = "Dracula";
+        plugin = "gruvbox-material";
+        colorscheme = "gruvbox-material";
+        siliconTheme = "gruvbox-dark";
       };
 
       spicetify = {
@@ -87,7 +87,7 @@
 
     stylix = {
       enable = true;
-      image = ../assets/wallpapers/ryo-night-looking-cam.jpg;
+      image = ../assets/wallpapers/asya-1.png;
       polarity = "dark";
 
       cursor = {
