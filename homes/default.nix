@@ -6,12 +6,15 @@
   imports = [
     # programs
     ../modules/home/programs/dev
+    ../modules/home/programs/discord
+    ../modules/home/programs/fetch
     ../modules/home/programs/ghostty
     ../modules/home/programs/git
     ../modules/home/programs/git/gh.nix
-    ../modules/home/programs/packages.nix
     ../modules/home/programs/shell
+    ../modules/home/programs/spotify
     ../modules/home/programs/vpn
+    ../modules/home/programs/password-manager
     ../nvim
 
     # system

@@ -23,6 +23,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixcord = {
+      url = "github:FlameFlag/nixcord";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-nixcord.follows = "nixpkgs";
+    };
+
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
     };
@@ -42,6 +48,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    opencode-flake = {
+      url = "github:AodhanHayter/opencode-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Temporarily pin nixpkgs for bitwarden-desktop due to electron 39.8.2 build failure
     # See: https://github.com/NixOS/nixpkgs/issues/500399
     nixpkgs-pinned = {
@@ -54,7 +65,7 @@
     };
 
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell/v4.6.7";
+      url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
