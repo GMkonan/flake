@@ -11,10 +11,6 @@ characters.
 #### Todo
 
 ##### Nix
-- [ ] **Remove pinned nixpkgs input for bitwarden** - Pinned to March 10, 2026 revision (2335b7dfd9a721bcaff65058d6c0a1fabd12e1ac) due to electron 39.8.2 build failure
-  - Error: `39-angle-patchdir.patch` fails to apply to `electron/patches/config.json`
-  - GitHub Issue: https://github.com/NixOS/nixpkgs/issues/500399
-  - Fix: Update nixpkgs after the fix propagates to nixpkgs-unstable, then remove the pin
 - [x] New structure based on https://github.com/anotherhadi/nixy/tree/main
 - [x] delete unused packages/config/files, keep it minimal
 - [x] Lazygit?

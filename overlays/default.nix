@@ -1,7 +1,4 @@
-{nixpkgs-pinned}: let
-  pinned = import ./pinned.nix {inherit nixpkgs-pinned;};
+let
   waylandElectron = import ./wayland-electron.nix;
 in
-  final: prev:
-    (waylandElectron final prev)
-    // (pinned final prev)
+  final: prev: waylandElectron final prev
