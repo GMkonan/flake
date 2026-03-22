@@ -6,6 +6,8 @@
     pnpm
     deno
 
+    python3
+
     # Compiled languages
     go
     rustup

@@ -16,7 +16,6 @@
               id = "ControlCenter";
               colorizeDistroLogo = false;
               colorizeSystemIcon = "primary";
-              customIconPath = "/home/konan/Downloads/my-idle-0-symbolic.svg";
               enableColorization = true;
               icon = "noctalia";
               useDistroLogo = true;
@@ -125,7 +124,7 @@
 
       general = {
         # Use the theme's profile picture
-        avatarImage = "~/flake/${config.theme.active.paths.profilePicture}";
+        avatarImage = toString config.theme.active.paths.profilePicture;
       };
 
       location = {
@@ -138,7 +137,7 @@
 
       wallpaper = {
         # Use the theme's wallpaper directory
-        directory = "~/flake/${config.theme.active.paths.wallpaperDir}";
+        directory = toString config.theme.active.paths.wallpaperDir;
       };
 
       dock = {

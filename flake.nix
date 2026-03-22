@@ -61,16 +61,16 @@
 
   outputs = inputs:
     import ./lib/bootstrap.nix inputs {
-      x86_64-linux = {
-        homes.nixos = ./homes/nixos;
-        hosts.ryo = ./hosts/ryo;
-
-        hosts.server = ./hosts/server;
-        homes.server = ./homes/server;
+      ryo = {
+        system = "x86_64-linux";
+        path = ./hosts/ryo;
+        homes = ["default"];
       };
-      # aarch64-darwin = {
-      # homes.darwin = ./homes/darwin;
-      # hosts.mini = ./hosts/mac;
-      # };
+
+      server = {
+        system = "x86_64-linux";
+        path = ./hosts/server;
+        homes = ["minimal"];
+      };
     };
 }

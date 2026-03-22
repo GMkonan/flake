@@ -52,9 +52,9 @@
       };
 
       paths = {
-        profilePicture = "assets/pfps/ryo-pfp.jpg";
-        wallpaperDir = "assets/wallpapers";
-        defaultWallpaper = "assets/wallpapers/ryo-night-looking-cam.jpg";
+        profilePicture = ../../../assets/pfps/ryo-pfp.jpg;
+        wallpaperDir = ../../../assets/wallpapers;
+        defaultWallpaper = ../../../assets/wallpapers/ryo-night-looking-cam.jpg;
       };
 
       fastfetch = {

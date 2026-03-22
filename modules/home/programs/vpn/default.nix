@@ -3,4 +3,3 @@
     proton-vpn-cli
   ];
 }
-

@@ -1,21 +1,27 @@
-{pkgs, ...}: let
-  secrets = import ../../secrets.nix;
+{
+  host,
+  pkgs,
+  ...
+}: let
+  secretsPath = ../../secrets.nix;
+  secrets =
+    if builtins.pathExists secretsPath
+    then import secretsPath
+    else {
+      address = "0.0.0.0";
+      gateway = "0.0.0.0";
+    };
 in {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware.nix
-
-    ../../nvim
   ];
 
-  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   systemd.enableEmergencyMode = false;
 
-  networking.hostName = "seika"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.hostName = host.hostName;
   networking.interfaces.enp27s0.ipv4.addresses = [
     {
       address = secrets.address;
@@ -24,22 +30,13 @@ in {
   ];
   networking.defaultGateway = secrets.gateway;
   networking.nameservers = ["8.8.8.8"];
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
   networking.networkmanager.enable = true;
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
 
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "pt_BR.UTF-8";
     LC_IDENTIFICATION = "pt_BR.UTF-8";
@@ -52,7 +49,6 @@ in {
     LC_TIME = "pt_BR.UTF-8";
   };
 
-  # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
     variant = "";
@@ -60,40 +56,31 @@ in {
 
   virtualisation.docker.enable = true;
 
+  users.groups.media = {};
   users.users.sonarr.extraGroups = ["media"];
   users.users.immich.extraGroups = ["media"];
-  users = {
-    groups.media = {};
-
-    # defaultUserShell = pkgs.zsh;
-    users.chico = {
-      isNormalUser = true;
-      description = "chico";
-      extraGroups = ["networkmanager" "wheel" "docker" "media"];
-      # shell = pkgs.zsh;
-      packages = with pkgs; [];
-    };
+  users.users.${host.user} = {
+    isNormalUser = true;
+    description = host.user;
+    extraGroups = ["networkmanager" "wheel" "docker" "media"];
+    packages = with pkgs; [];
   };
 
   fileSystems."/media/data" = {
-    device = "/dev/disk/by-uuid/AECEDEC4CEDE83CD"; # specifying by uuid to ensure we are using the correct HD
+    device = "/dev/disk/by-uuid/AECEDEC4CEDE83CD";
     fsType = "ntfs-3g";
     options = ["defaults" "nofail" "uid=1000" "gid=991" "umask=002"];
   };
 
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim
     wget
     ntfs3g
     docker
     git
     gcc
-
     lm_sensors
   ];
 
@@ -128,35 +115,24 @@ in {
     openFirewall = true;
   };
 
-  # systemd.tmpfiles.rules = [
-  #   "d /media/data/share-data 2770 chico media - -"
-  # ];
-
   services.paperless = {
     enable = true;
-    mediaDir = "/home/chico/paperless/data";
-    user = "chico";
-    # put docs here, they will be added and indexed to paperless and later removed from consumptionDir
-    consumptionDir = "/home/chico/paperless/consume";
+    mediaDir = "${host.homeDirectory}/paperless/data";
+    user = host.user;
+    consumptionDir = "${host.homeDirectory}/paperless/consume";
     consumptionDirIsPublic = true;
-    passwordFile = "/home/chico/paperless/password";
+    passwordFile = "${host.homeDirectory}/paperless/password";
     settings.PAPERLESS_OCR_LANGUAGE = "por+eng";
     address = "0.0.0.0";
     port = 28981;
   };
   networking.firewall.allowedTCPPorts = [28981];
 
-  # systemd.services.paperless-scheduler.after = ["var-lib-paperless.mount"];
-  # systemd.services.paperless-consumer.after = ["var-lib-paperless.mount"];
-  # systemd.services.paperless-web.after = ["var-lib-paperless.mount"];
-
-  services.glances = {
-    enable = true;
-  };
+  services.glances.enable = true;
 
   services.immich = {
     enable = true;
-    host = "${secrets.address}";
+    host = secrets.address;
     openFirewall = true;
     mediaLocation = "/media/data/immich/immich/";
     group = "media";
@@ -190,7 +166,6 @@ in {
             columns = 4;
           };
         }
-
         {
           Media = {
             header = true;
@@ -198,7 +173,6 @@ in {
             columns = 4;
           };
         }
-
         {
           Arr = {
             header = true;
@@ -206,7 +180,6 @@ in {
             columns = 4;
           };
         }
-
         {
           Downloads = {
             header = true;
@@ -225,7 +198,7 @@ in {
     };
     services = [
       {
-        "Glances" = [
+        Glances = [
           {
             "CPU/RAM Usage" = {
               widget = {
@@ -248,9 +221,8 @@ in {
               };
             };
           }
-
           {
-            "Network" = {
+            Network = {
               widget = {
                 type = "glances";
                 url = "http://localhost:61208";
@@ -261,7 +233,7 @@ in {
             };
           }
           {
-            "Process" = {
+            Process = {
               widget = {
                 type = "glances";
                 url = "http://localhost:61208";
@@ -274,9 +246,9 @@ in {
         ];
       }
       {
-        "Media" = [
+        Media = [
           {
-            "Kyoo" = {
+            Kyoo = {
               description = "Best media solution";
               href = "http://${secrets.address}:8901";
               icon = "https://github.com/zoriya/Kyoo/blob/master/icons/icon-256x256.png?raw=true";
@@ -286,9 +258,9 @@ in {
         ];
       }
       {
-        "Arr" = [
+        Arr = [
           {
-            "Prowlarr" = {
+            Prowlarr = {
               description = "Indexer";
               href = "http://${secrets.address}:9696";
               icon = "prowlarr";
@@ -296,7 +268,7 @@ in {
             };
           }
           {
-            "Sonarr" = {
+            Sonarr = {
               description = "TV shows";
               href = "http://${secrets.address}:8989";
               icon = "sonarr";
@@ -304,7 +276,7 @@ in {
             };
           }
           {
-            "Radarr" = {
+            Radarr = {
               description = "Movie collection manager";
               href = "http://${secrets.address}:7878";
               icon = "radarr";
@@ -312,7 +284,7 @@ in {
             };
           }
           {
-            "Bazarr" = {
+            Bazarr = {
               description = "Subtitles";
               href = "http://${secrets.address}:6767";
               icon = "bazarr";
@@ -321,11 +293,10 @@ in {
           }
         ];
       }
-
       {
-        "Downloads" = [
+        Downloads = [
           {
-            "Deluge" = {
+            Deluge = {
               description = "Torrent client";
               href = "http://${secrets.address}:8112";
               icon = "deluge";
@@ -335,9 +306,9 @@ in {
         ];
       }
       {
-        "Misc" = [
+        Misc = [
           {
-            "Paperless" = {
+            Paperless = {
               description = "Digital documents";
               href = "http://${secrets.address}:28981";
               icon = "paperless";
@@ -345,7 +316,7 @@ in {
             };
           }
           {
-            "Immich" = {
+            Immich = {
               description = "Photos";
               href = "http://${secrets.address}:2283";
               icon = "immich";
@@ -357,24 +328,14 @@ in {
     ];
   };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
   services.samba = {
     enable = true;
-    securityType = "user";
     openFirewall = true;
-    shares = {
+    settings = {
+      global.security = "user";
+
       chicodata = {
         path = "/media/data/share-data";
         "read only" = "no";
@@ -383,8 +344,8 @@ in {
         "guest ok" = "yes";
         "create mask" = "0644";
         "directory mask" = "0755";
-        "force user" = "chico";
-        comment = "chico share data";
+        "force user" = host.user;
+        comment = "${host.user} share data";
       };
     };
   };
@@ -397,17 +358,5 @@ in {
   networking.firewall.enable = true;
   networking.firewall.allowPing = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = host.stateVersion.system;
 }

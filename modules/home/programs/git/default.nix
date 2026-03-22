@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     graphite-cli
     jujutsu
@@ -42,7 +38,6 @@
         autoupdate = "true";
       };
       branch.sort = "-committerdate";
-      maintenance.repo = "/Users/konan/code/work/zapper-dashboard";
       rebase = {
         updateRefs = "true";
         autoSquash = "true";

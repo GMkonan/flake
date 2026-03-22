@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  host,
+  pkgs,
+  ...
+}: {
   # Define a user account. Don't forget to set a password with ‘passwd’.
 
   # Enabled in whole system but configured via home manager
@@ -6,10 +10,11 @@
   users = {
     defaultUserShell = pkgs.zsh;
 
-    users.konan = {
+    users.${host.user} = {
       isNormalUser = true;
-      description = "konan";
-      extraGroups = ["networkmanager" "wheel" "docker"];
+      description = host.user;
+      extraGroups = ["networkmanager" "wheel" "docker"] ++ (host.extraGroups or []);
+      home = host.homeDirectory;
       shell = pkgs.zsh;
       packages = with pkgs; [];
     };
