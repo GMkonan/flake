@@ -16,7 +16,6 @@
       blur = true;
       borderSize = 4;
       animationSpeed = "fast";
-      fetch = "fastfetch";
       textColorOnWallpaper = "#1a1b26";
     };
 
@@ -62,77 +61,6 @@
       profilePicture = ../assets/pfps/ryo-pfp.jpg;
       wallpaperDir = ../assets/wallpapers;
       wallpaper = ../assets/wallpapers/ryo-night-looking-cam.jpg;
-      fetchLogo = ../assets/fetch/konan.txt;
-    };
-
-    apps = {
-      fetch = {
-        package = ui.fetch;
-        logo = {
-          source = assets.fetchLogo;
-          type = "file-raw";
-          padding = {
-            left = 1;
-            right = 3;
-            top = 0;
-          };
-        };
-        display = {
-          keys = "blue";
-          output = "white";
-          separator = "cyan";
-          title = "magenta";
-        };
-      };
-
-      git = {
-        deltaTheme = "OneHalfDark";
-      };
-
-      nixcord = {
-        quickCss = ''
-          :root {
-            --brand-500: ${colors.primary};
-            --brand-560: ${colors.secondary};
-          }
-
-          .visual-refresh {
-            --background-base-lower: ${colors.background};
-            --background-base-low: ${colors.surface};
-            --background-base-primary: ${colors.background};
-            --background-base-secondary: ${colors.surface};
-            --background-secondary-alt: ${colors.surfaceVariant};
-            --background-floating: ${colors.surface};
-            --background-mentioned: ${colors.surfaceVariant};
-            --channeltextarea-background: ${colors.surfaceVariant};
-            --text-normal: ${colors.text};
-            --text-muted: ${colors.textMuted};
-            --interactive-normal: ${colors.textMuted};
-            --interactive-hover: ${colors.primary};
-            --interactive-active: ${colors.text};
-            --button-danger-background: ${colors.error};
-            --button-positive-background: ${colors.accent};
-            --radius-sm: ${toString ui.rounding}px;
-            --radius-md: ${toString ui.rounding}px;
-            --radius-lg: ${toString ui.rounding}px;
-          }
-        '';
-      };
-
-      nvim = {
-        colorscheme = "tokyonight-night";
-        siliconTheme = "Dracula";
-      };
-
-      spicetify = {
-        colorScheme = "mocha";
-        extensions = [
-          "adblockify"
-          "hidePodcasts"
-          "shuffle"
-        ];
-        theme = "catppuccin";
-      };
     };
 
     stylix = {

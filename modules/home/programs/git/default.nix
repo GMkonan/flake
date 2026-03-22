@@ -3,9 +3,14 @@
   pkgs,
   ...
 }: let
-  deltaTheme =
+  themeName =
     if config ? theme
-    then config.theme.active.apps.git.deltaTheme
+    then config.theme.name
+    else null;
+
+  deltaTheme =
+    if themeName == "tokyo-night"
+    then "OneHalfDark"
     else "OneHalfDark";
 in {
   home.packages = with pkgs; [
