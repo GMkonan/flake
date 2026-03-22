@@ -10,5 +10,6 @@
     ./auto-upgrade.nix
     ./locale.nix
     ./niri.nix
+    ./fonts.nix
   ];
 }
