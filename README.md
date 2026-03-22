@@ -23,9 +23,10 @@ characters.
 - [x] Nixcord
 - [x] Spicetify
 - [x] nerdFetch
-- [ ] make a better theme module thing ala nixy stuff
-- [ ] fetch dot art
+- [x] make a better theme module thing ala nixy stuff
+- [x] fetch dot art
 - [ ] write a good readme
+
 - [ ] nix utilitys script (nixy like)
 - [ ] divide packages on nixos system better
 - [ ] have a affinity module

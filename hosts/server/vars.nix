@@ -2,6 +2,7 @@
   hostName = "seika";
   user = "chico";
   homeDirectory = "/home/chico";
+  theme = "tokyo-night";
 
   paths = {
     flakeDir = "/home/chico/flake";

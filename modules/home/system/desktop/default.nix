@@ -27,7 +27,10 @@
     };
 
     "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
+      color-scheme =
+        if config.theme.active.stylix.polarity == "dark"
+        then "prefer-dark"
+        else "prefer-light";
       enable-hot-corners = true;
       clock-show-weekday = true;
       clock-show-date = true;
@@ -42,7 +45,6 @@
     "org/gnome/desktop/background" = {
       color-shading-type = "solid";
       picture-options = "zoom";
-      picture-uri-dark = "file://${toString config.theme.active.paths.defaultWallpaper}";
     };
 
     "org/gnome/nautilus/preferences" = {

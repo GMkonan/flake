@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ../../modules/home/themes
+    (../../themes + "/${host.theme}.nix")
   ];
 
   home = {
@@ -15,6 +15,9 @@
   };
 
   programs.home-manager.enable = true;
+
+  stylix.targets.spicetify.enable = false;
+  stylix.targets.vscode.enable = false;
 
   home.packages = with pkgs; [
     # brightnessctl

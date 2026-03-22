@@ -124,7 +124,7 @@
 
       general = {
         # Use the theme's profile picture
-        avatarImage = toString config.theme.active.paths.profilePicture;
+        avatarImage = toString config.theme.active.assets.profilePicture;
       };
 
       location = {
@@ -137,7 +137,7 @@
 
       wallpaper = {
         # Use the theme's wallpaper directory
-        directory = toString config.theme.active.paths.wallpaperDir;
+        directory = toString config.theme.active.assets.wallpaperDir;
       };
 
       dock = {

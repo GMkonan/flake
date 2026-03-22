@@ -1,4 +1,23 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: let
+  theme =
+    if config ? theme
+    then config.theme.active
+    else {
+      colors = {
+        accent = "#9ece6a";
+        background = "#1a1b26";
+        primary = "#7aa2f7";
+        surface = "#24283b";
+        text = "#a9b1d6";
+        textMuted = "#565f89";
+        warning = "#e0af68";
+      };
+    };
+in {
   home.packages = [
     (pkgs.writeShellScriptBin "tmux-sesh" (builtins.readFile ./tmux-sesh.sh))
   ];
@@ -22,24 +41,6 @@
     plugins = with pkgs.tmuxPlugins; [
       # vim-tmux-navigator
       fzf-tmux-url
-
-      {
-        # Catppuccin theme config
-        plugin = catppuccin;
-        extraConfig = ''
-          set -g @catppuccin_window_status_style "basic"
-          set -g @catppuccin_status_left_separator "█"
-          set -g @catppuccin_status_right_separator "█"
-          set -g @catppuccin_window_default_background "#{thm_black}"
-          set -g @catppuccin_window_current_background "#{thm_gray}"
-          set -g @catppuccin_window_number_position "left"
-          set -g @catppuccin_window_status_enable "yes"
-          set -g @catppuccin_window_status_icon_enable "no"
-          set -g status-right "#{E:@catppuccin_status_uptime}"
-          set -g status-left "#{E:@catppuccin_status_session}"
-          set -g @catppuccin_window_current_number_color "#{@thm_blue}"
-        '';
-      }
     ];
 
     extraConfig =
@@ -50,42 +51,18 @@
         set -s set-clipboard on
         bind-key b set-option status
 
-        # set -g @catppuccin_flavour 'mocha' # or latte, frappe, macchiato, mocha
-        # set -g @catppuccin_window_status_style "basic"
-        # set -g status-right-length 100
-
-        # set -g status-right "#{E:@catppuccin_status_application}#{E:@catppuccin_status_session}"
-        # set -g status-left ""
-        # set -g status-right-length 100
-        # set -g status-left-length 100
-        # set -g status-left ""
-        # set -ag status-right ""
-        # set -ag status-right "#{E:@catppuccin_status_session}"
-        # set -ag status-right "#{E:@catppuccin_status_uptime}"
-
-        # set -g @catppuccin_window_current_number_color "#{@thm_blue}"
-
-                            # set -g @catppuccin_window_right_separator ""
-                            # # set -g @catppuccin_window_right_separator "█"
-                            # set -g @catppuccin_window_left_separator ""
-                            # # set -g @catppuccin_window_left_separator ""
-                            # set -g @catppuccin_window_number_position "left"
-                            # set -g @catppuccin_window_middle_separator " "
-                            # set -g @catppuccin_window_default_text "#W"
-                            # set -g @catppuccin_window_default_fill "none"
-                            # set -g @catppuccin_window_current_fill "all"
-                            # set -g @catppuccin_window_current_text "#W"
-                            # set -g @catppuccin_status_modules_right "user host session"
-                            # set -g @catppuccin_status_left_separator  " "
-                            # # set -g @catppuccin_status_left_separator "█"
-                            # set -g @catppuccin_status_right_separator ""
-                            # # set -g @catppuccin_status_right_separator "█"
-                            # set -g @catppuccin_status_right_separator_inverse "no"
-                            # set -g @catppuccin_status_fill "all"
-                            # set -g @catppuccin_status_connect_separator "no"
-                            # set -g @catppuccin_directory_text "#{pane_current_path}"
-
-                          # set -g @catppuccin_[module_name]_[option] ""
+        set -g status-style "bg=${theme.colors.surface},fg=${theme.colors.text}"
+        set -g message-style "bg=${theme.colors.primary},fg=${theme.colors.background}"
+        set -g pane-border-style "fg=${theme.colors.textMuted}"
+        set -g pane-active-border-style "fg=${theme.colors.primary}"
+        set -g window-status-style "fg=${theme.colors.textMuted},bg=${theme.colors.surface}"
+        set -g window-status-current-style "fg=${theme.colors.background},bg=${theme.colors.accent},bold"
+        set -g window-status-format " #I:#W "
+        set -g window-status-current-format " #I:#W "
+        set -g status-left-length 32
+        set -g status-right-length 64
+        set -g status-left "#[fg=${theme.colors.background},bg=${theme.colors.primary},bold] #S #[fg=${theme.colors.primary},bg=${theme.colors.surface}]|"
+        set -g status-right "#[fg=${theme.colors.warning},bg=${theme.colors.surface}] %H:%M #[fg=${theme.colors.textMuted},bg=${theme.colors.surface}] #(uptime | sed 's/^.*up //; s/, [0-9]* user.*//') "
       '';
   };
 }

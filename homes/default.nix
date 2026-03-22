@@ -18,6 +18,7 @@
     ../nvim
 
     # system
+    ../modules/home/system/desktop
     ../modules/home/system/wm
     ../modules/home/system/noctalia
     ../modules/home/system/idle

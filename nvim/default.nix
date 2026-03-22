@@ -2,6 +2,7 @@
   config,
   host,
   lib,
+  options,
   pkgs,
   ...
 }: {
@@ -23,4 +24,9 @@
     alejandra
     biome
   ];
+
+  home.sessionVariables = lib.mkIf (options ? theme) {
+    KONAN_NVIM_COLORSCHEME = config.theme.active.apps.nvim.colorscheme;
+    KONAN_NVIM_SILICON_THEME = config.theme.active.apps.nvim.siliconTheme;
+  };
 }

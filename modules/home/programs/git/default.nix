@@ -1,4 +1,13 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: let
+  deltaTheme =
+    if config ? theme
+    then config.theme.active.apps.git.deltaTheme
+    else "OneHalfDark";
+in {
   home.packages = with pkgs; [
     graphite-cli
     jujutsu
@@ -74,7 +83,7 @@
     options = {
       side-by-side = true;
       line-numbers = true;
-      syntax-theme = "OneHalfDark";
+      syntax-theme = deltaTheme;
     };
   };
 
