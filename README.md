@@ -1,16 +1,22 @@
-# N4 Stack
+# N4
 
-Konan's nixos + home-manager flake setup focused on reusability. based on the N4 stack:
-- Nixos as my favorite Operating System
-- Niri as a window manager
-- Noctalia as the desktop shell
-- Neovim as my favorite Editor
+My personal flake, focused on modularity with central pieces around N4:
+- **Nixos** as my favorite Operating System
+- **Niri** as a window manager
+- **Noctalia** as the desktop shell
+- **Neovim** as my favorite Editor
 
 #### Features
 - reusable homes
 - theme-driven
 
 ## Screenshots
+N4 has support for multiple themes, here are some of them:
+
+##### Tokyo night
+- [!Tokyo night screenshot 1](./assets/screenshots/tokyo-night-shot-1.png)
+- [!Tokyo night screenshot 2](./assets/screenshots/tokyo-night-shot-2.png)
+- [!Tokyo night screenshot 3](./assets/screenshots/tokyo-night-shot-3.png)
 
 ## Structure
 
@@ -65,6 +71,8 @@ I inspired myself in lots of configs like
 - [x] fetch dot art
 - [x] write a good readme
 
+###### Post mvp
+- [ ] Fix tmux-sesh script
 - [ ] nix utilitys script (nixy like)
 - [ ] divide packages on nixos system better
 - [ ] have a affinity module

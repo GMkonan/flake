@@ -58,9 +58,9 @@
     };
 
     assets = {
-      profilePicture = ../assets/pfps/ryo-pfp.jpg;
-      wallpaperDir = ../assets/wallpapers;
-      wallpaper = ../assets/wallpapers/asya-1.png;
+      profilePicture = "assets/pfps/ryo-pfp.jpg";
+      wallpaperDir = "assets/wallpapers";
+      wallpaper = "assets/wallpapers/asya-1.png";
     };
 
     programs = {
@@ -75,13 +75,13 @@
       };
 
       spicetify = {
-        colorScheme = "mocha";
+        colorScheme = "dark";
         extensions = [
           "adblockify"
           "hidePodcasts"
           "shuffle"
         ];
-        theme = "catppuccin";
+        theme = "onepunch";
       };
     };
 
