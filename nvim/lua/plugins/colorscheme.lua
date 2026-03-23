@@ -12,21 +12,6 @@ end
 
 return {
   {
-    'catppuccin/nvim',
-    name = 'catppuccin',
-    enabled = use_plugin 'catppuccin',
-    lazy = false,
-    priority = 1000,
-    init = function()
-      require('catppuccin').setup {
-        transparent_background = true,
-      }
-
-      vim.cmd.colorscheme(colorscheme)
-      vim.cmd.hi 'Comment gui=none'
-    end,
-  },
-  {
     'sainnhe/gruvbox-material',
     enabled = use_plugin 'gruvbox-material',
     lazy = false,

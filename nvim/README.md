@@ -3,7 +3,6 @@
 ### Plugins
 - nvim-cmp (autocompletion)
 - conform (autoformat)
-- catppuccin (colorscheme)
 - telescope (fuzzy finder)
 - treesitter (highlight/edit/nav)
 - lspconfig + lazydev.nvim (lsp, completions/annotations etc)

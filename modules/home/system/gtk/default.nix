@@ -1,5 +1,4 @@
 {config, ...}: {
-  # GTK theming with Catppuccin
   gtk = {
     enable = true;
 

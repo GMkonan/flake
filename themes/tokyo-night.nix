@@ -9,12 +9,12 @@
 
     ui = {
       rounding = 30;
-      gapsIn = 12;
+      gapsIn = 16;
       gapsOut = 24;
       activeOpacity = 0.96;
       inactiveOpacity = 0.94;
       blur = true;
-      borderSize = 4;
+      borderSize = 2;
       animationSpeed = "fast";
       textColorOnWallpaper = "#1a1b26";
     };
@@ -58,9 +58,9 @@
     };
 
     assets = {
-      profilePicture = ../assets/pfps/ryo-pfp.jpg;
-      wallpaperDir = ../assets/wallpapers;
-      wallpaper = ../assets/wallpapers/ryo-night-looking-cam.jpg;
+      profilePicture = "assets/pfps/ryo-pfp.jpg";
+      wallpaperDir = "assets/wallpapers";
+      wallpaper = "assets/wallpapers/ryo-night-looking-cam.jpg";
     };
 
     programs = {
@@ -75,13 +75,13 @@
       };
 
       spicetify = {
-        colorScheme = "mocha";
+        colorScheme = "TokyoNight";
         extensions = [
           "adblockify"
           "hidePodcasts"
           "shuffle"
         ];
-        theme = "catppuccin";
+        theme = "sleek";
       };
     };
 

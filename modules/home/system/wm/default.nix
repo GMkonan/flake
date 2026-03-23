@@ -156,6 +156,8 @@ in {
     }
 
     window-rule {
+        // Rounded corners/borders
+        geometry-corner-radius 20
         clip-to-geometry true
     }
 
@@ -317,7 +319,7 @@ in {
         Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
         Mod+Shift+E { quit; }
         Ctrl+Alt+Delete { quit; }
-        Mod+Shift+P { power-off-monitors; }
+        // Mod+Shift+P { power-off-monitors; }
     }
   '';
 }

@@ -1,12 +1,78 @@
-{config, ...}: {
+{
+  config,
+  host,
+  ...
+}: let
+  flakeAsset = path: "${host.paths.flakeDir}/${path}";
+in {
   programs.noctalia-shell = {
     enable = true;
 
     settings = {
+      controlCenter = {
+        position = "close_to_bar_button";
+        diskPath = "/";
+        shortcuts = {
+          left = [
+            {
+              id = "Network";
+            }
+            {
+              id = "Bluetooth";
+            }
+            {
+              id = "WallpaperSelector";
+            }
+            {
+              id = "NoctaliaPerformance";
+            }
+          ];
+          right = [
+            {
+              id = "Notifications";
+            }
+            {
+              id = "PowerProfile";
+            }
+            {
+              id = "KeepAwake";
+            }
+            {
+              id = "NightLight";
+            }
+          ];
+        };
+        cards = [
+          {
+            enabled = true;
+            id = "profile-card";
+          }
+          {
+            enabled = true;
+            id = "shortcuts-card";
+          }
+          {
+            enabled = true;
+            id = "audio-card";
+          }
+          {
+            enabled = false;
+            id = "brightness-card";
+          }
+          {
+            enabled = false;
+            id = "weather-card";
+          }
+          {
+            enabled = true;
+            id = "media-sysmon-card";
+          }
+        ];
+      };
       bar = {
         density = "compact";
         showCapsule = false;
-        outerCorners = false;
+        outerCorners = true;
         marginVertical = 5;
         marginHorizontal = 5;
 
@@ -106,25 +172,25 @@
               showNoctaliaPerformance = false;
               showPowerProfiles = false;
             }
-            {
-              id = "plugin:netbird";
-            }
+            # {
+            #   id = "plugin:netbird";
+            # }
             {
               id = "plugin:tailscale";
             }
             {
               id = "plugin:privacy-indicator";
             }
-            {
-              id = "plugin:keybind-cheatsheet";
-            }
+            # {
+            #   id = "plugin:keybind-cheatsheet";
+            # }
           ];
         };
       };
 
       general = {
         # Use the theme's profile picture
-        avatarImage = toString config.theme.active.assets.profilePicture;
+        avatarImage = flakeAsset config.theme.active.assets.profilePicture;
       };
 
       location = {
@@ -137,7 +203,7 @@
 
       wallpaper = {
         # Use the theme's wallpaper directory
-        directory = toString config.theme.active.assets.wallpaperDir;
+        directory = flakeAsset config.theme.active.assets.wallpaperDir;
       };
 
       dock = {
