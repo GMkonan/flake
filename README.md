@@ -14,9 +14,9 @@ My personal flake, focused on modularity with central pieces around N4:
 N4 has support for multiple themes, here are some of them:
 
 ##### Tokyo night
-- [!Tokyo night screenshot 1](./assets/screenshots/tokyo-night-shot-1.png)
-- [!Tokyo night screenshot 2](./assets/screenshots/tokyo-night-shot-2.png)
-- [!Tokyo night screenshot 3](./assets/screenshots/tokyo-night-shot-3.png)
+- ![Tokyo night screenshot 1](assets/screenshots/tokyo-night-shot-1.png)
+- ![Tokyo night screenshot 2](assets/screenshots/tokyo-night-shot-2.png)
+- ![Tokyo night screenshot 3](assets/screenshots/tokyo-night-shot-3.png)
 
 ## Structure
 
