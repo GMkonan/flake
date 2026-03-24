@@ -77,4 +77,5 @@ I inspired myself in lots of configs like
 - [ ] Add harpoon again
 - [ ] Add svelte support
 - [ ] snacks nvim welcome extension?
-- [ ] Fix the annoying copy command thing
+- [ ] unclash nvim
+- [x] Fix the annoying copy command thing
