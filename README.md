@@ -54,24 +54,12 @@ Theming works in a combination with stylix, wallpaper and custom colors passed t
 
 ### Special thanks
 I inspired myself in lots of configs like
-- `anotherhadi/nixy`
+- [anotherhadi/nixy](https://github.com/anotherhadi/nixy)
+- [zoriya/flake](https://github.com/zoriya/flake)
 
 #### Todo
 
 ##### Nix
-- [x] New structure based on https://github.com/anotherhadi/nixy/tree/main
-- [x] delete unused packages/config/files, keep it minimal
-- [x] Lazygit?
-- [x] Add declarative config for a few packages (noctalia, opencode)
-- [x] Add opencode-flake
-- [x] Nixcord
-- [x] Spicetify
-- [x] nerdFetch
-- [x] make a better theme module thing ala nixy stuff
-- [x] fetch dot art
-- [x] write a good readme
-
-###### Post mvp
 - [ ] Fix tmux-sesh script
 - [ ] nix utilitys script (nixy like)
 - [ ] divide packages on nixos system better
@@ -90,20 +78,3 @@ I inspired myself in lots of configs like
 - [ ] Add svelte support
 - [ ] snacks nvim welcome extension?
 - [ ] Fix the annoying copy command thing
-
-#### Affinity update command
-
-If you use `affinity-nix`, you can run the graphical updater with:
-
-`nix run github:mrshmllow/affinity-nix#{v3,photo,designer,publisher} -- update`
-
-Examples:
-
-- `nix run github:mrshmllow/affinity-nix#v3 -- update`
-- `nix run github:mrshmllow/affinity-nix#photo -- update`
-
-```bash
-nix run github:nix-community/nixos-generators -- --format iso --flake .#ryo
-
-nix run github:nix-community/nixos-generators -- --format iso --flake .#ryo -o ryo-iso
-```
