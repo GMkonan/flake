@@ -4,7 +4,6 @@
 - **Build**: `nix build .#<host>` or `nixos-rebuild build --flake .#<host>`
 - **Switch**: `nixos-rebuild switch --flake .#<host>` (NixOS) / `darwin-rebuild switch --flake .#<host>` (Darwin)
 - **Home**: `home-manager switch --flake .#<home>`
-- **Dev shell**: `nix develop` (provides `os()` and `hm()` helper functions)
 
 ## Lint & Format
 - **Nix**: `nix fmt` (uses alejandra)
@@ -20,8 +19,6 @@
 ## Testing
 - **Nix**: `nix flake check` (validates flake structure)
 - **Config**: `nixos-rebuild test --flake .#<host>` (test without switching)
-- **ISO**: `nix run github:nix-community/nixos-generators -- --format iso --flake .#<host>`
 
 ## Subprojects
-- See `quickshell/AGENTS.md` for QML/quickshell guidelines
 - See `nvim/` for Neovim Lua configuration
