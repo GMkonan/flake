@@ -16,14 +16,14 @@ selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -ds "flake" -c "$HOME/flake" -e "CMD=$EDITOR ."
-    tmux new-window -dt "flake:2" -c "$HOME/flake" -e "CMD="
+    tmux new-session -ds "flake" -c "$HOME/flake" -e "CMD="
+    tmux new-window -dt "flake:2" -c "$HOME/flake" -e "CMD=$EDITOR ."
 
-    tmux new-session -ds "tasks" -c "$HOME" -e "CMD=taskwarrior-tui"
-    tmux new-window -dt "tasks:2" -c "$HOME/notes" -e "CMD=$EDITOR ."
+    # tmux new-session -ds "tasks" -c "$HOME" -e "CMD=taskwarrior-tui"
+    # tmux new-window -dt "tasks:2" -c "$HOME/notes" -e "CMD=$EDITOR ."
 
-    tmux new-session -ds "$selected_name" -c "$selected" -e "CMD=$EDITOR ."
-    tmux new-window -dt "$selected_name:2" -c "$selected" -e "CMD="
+    tmux new-session -ds "$selected_name" -c "$selected" -e "CMD="
+    tmux new-window -dt "$selected_name:2" -c "$selected" -e "CMD=$EDITOR ."
 
     tmux attach-session -t $selected_name:1
     exit 0

@@ -66,6 +66,11 @@ I inspired myself in lots of configs like
 - [ ] have a affinity module
 - [ ] create separate modules for brave and zen
 - [ ] Fix affinity linux
+- [ ] Fix theming
+  - [ ] Theme change should affect zsh theme too (oh my posh)
+  - [ ] nvim colorscheme error
+  - [ ] asya pfp for gruvbox
+  - [ ] Add catppuccin mocha theme
 
 ##### Niri
 - [ ] Add transparency to other windows
@@ -78,4 +83,5 @@ I inspired myself in lots of configs like
 - [ ] Add svelte support
 - [ ] snacks nvim welcome extension?
 - [ ] unclash nvim
+- [ ] Fix dot image ryo nvim
 - [x] Fix the annoying copy command thing
