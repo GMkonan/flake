@@ -105,6 +105,7 @@ return {
         helm_ls = {},
         zls = {},
         gopls = {},
+        svelte = {},
         qmlls = {
           cmd = { "qmlls" }
         }
