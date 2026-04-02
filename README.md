@@ -56,6 +56,7 @@ Theming works in a combination with stylix, wallpaper and custom colors passed t
 I inspired myself in lots of configs like
 - [anotherhadi/nixy](https://github.com/anotherhadi/nixy)
 - [zoriya/flake](https://github.com/zoriya/flake)
+- [gruberdev/nix](https://github.com/gruberdev/nix)
 
 #### Todo
 
@@ -76,12 +77,4 @@ I inspired myself in lots of configs like
 - [ ] Add transparency to other windows
 
 ##### Neovim
-- [ ] Add supermaven?
-- [ ] Config opencode.nvim
-- [ ] Add yazi.nvim
-- [ ] Add harpoon again
-- [ ] Add svelte support
-- [ ] snacks nvim welcome extension?
-- [ ] unclash nvim
-- [ ] Fix dot image ryo nvim
-- [x] Fix the annoying copy command thing
+- [ ] Rewrite it minimalistically with the default plugin manager as of neovim v0.12
