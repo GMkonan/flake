@@ -62,20 +62,23 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    linearis.url = "github:GMkonan/linearis-flake";
   };
 
-  outputs = inputs:
+  outputs =
+    inputs:
     import ./lib/bootstrap.nix inputs {
       ryo = {
         system = "x86_64-linux";
         path = ./hosts/ryo;
-        homes = ["default"];
+        homes = [ "default" ];
       };
 
       server = {
         system = "x86_64-linux";
         path = ./hosts/server;
-        homes = ["minimal"];
+        homes = [ "minimal" ];
       };
     };
 }

@@ -345,6 +345,24 @@
         "type": "github"
       }
     },
+    "linearis": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1775509567,
+        "narHash": "sha256-iZHAkekx5568/i36WKMrkEkFnEGryRSneqRJ+ZWbQ1s=",
+        "owner": "GMkonan",
+        "repo": "linearis-flake",
+        "rev": "fdac61e2bc2fc593a594e8475db6df24e7387422",
+        "type": "github"
+      },
+      "original": {
+        "owner": "GMkonan",
+        "repo": "linearis-flake",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -506,6 +524,20 @@
     },
     "nixpkgs_3": {
       "locked": {
+        "lastModified": 1775095191,
+        "narHash": "sha256-CsqRiYbgQyv01LS0NlC7shwzhDhjNDQSrhBX8VuD3nM=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "106eb93cbb9d4e4726bf6bc367a3114f7ed6b32f",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
         "lastModified": 1774855581,
         "narHash": "sha256-YkreHeMgTCYvJ5fESV0YyqQK49bHGe2B51tH6claUh4=",
         "owner": "NixOS",
@@ -661,11 +693,12 @@
       "inputs": {
         "affinity-nix": "affinity-nix",
         "home-manager": "home-manager",
+        "linearis": "linearis",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixcord": "nixcord",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_4",
         "noctalia": "noctalia",
         "opencode-flake": "opencode-flake",
         "quickshell": "quickshell",

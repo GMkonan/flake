@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ inputs, pkgs, ... }:
+{
   home.packages = with pkgs; [
     # JS/TS ecosystem
     nodejs
@@ -38,5 +39,7 @@
 
     # Screenshot util for code screenshots via nvim
     silicon
+
+    inputs.linearis.packages.${pkgs.stdenv.hostPlatform.system}.linearis
   ];
 }
