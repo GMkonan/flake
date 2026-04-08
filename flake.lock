@@ -350,11 +350,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1775509567,
-        "narHash": "sha256-iZHAkekx5568/i36WKMrkEkFnEGryRSneqRJ+ZWbQ1s=",
+        "lastModified": 1775677838,
+        "narHash": "sha256-AqUpEVvog0urdHtk+egBHRtNLGA80N/4bHRUmDr6R2I=",
         "owner": "GMkonan",
         "repo": "linearis-flake",
-        "rev": "fdac61e2bc2fc593a594e8475db6df24e7387422",
+        "rev": "a5583ae61473c95ee1c04fabe8c4658142268983",
         "type": "github"
       },
       "original": {
