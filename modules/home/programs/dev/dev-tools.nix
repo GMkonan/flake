@@ -1,5 +1,8 @@
-{ inputs, pkgs, ... }:
 {
+  inputs,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     # JS/TS ecosystem
     nodejs
@@ -31,6 +34,7 @@
 
     # editors
     vscode
+    code-cursor
     zed-editor
 
     # db stuff
