@@ -44,5 +44,6 @@
     silicon
 
     # inputs.linearis.packages.${pkgs.stdenv.hostPlatform.system}.linearis
+    inputs.bootdev.packages.${pkgs.stdenv.hostPlatform.system}.bootdev
   ];
 }

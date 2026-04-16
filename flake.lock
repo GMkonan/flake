@@ -96,6 +96,24 @@
         "type": "github"
       }
     },
+    "bootdev": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1776371704,
+        "narHash": "sha256-3zCZa3K0y5kGLpxk9Skd2AW6O3pCfKR6SjbVE9O9h8Y=",
+        "owner": "GMkonan",
+        "repo": "bootdev-cli-flake",
+        "rev": "a2157eaae105ccea3d156c0f6012e2b73c052d1a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "GMkonan",
+        "repo": "bootdev-cli-flake",
+        "type": "github"
+      }
+    },
     "brew-src": {
       "flake": false,
       "locked": {
@@ -345,24 +363,6 @@
         "type": "github"
       }
     },
-    "linearis": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_3"
-      },
-      "locked": {
-        "lastModified": 1775677838,
-        "narHash": "sha256-AqUpEVvog0urdHtk+egBHRtNLGA80N/4bHRUmDr6R2I=",
-        "owner": "GMkonan",
-        "repo": "linearis-flake",
-        "rev": "a5583ae61473c95ee1c04fabe8c4658142268983",
-        "type": "github"
-      },
-      "original": {
-        "owner": "GMkonan",
-        "repo": "linearis-flake",
-        "type": "github"
-      }
-    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -524,11 +524,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1775095191,
-        "narHash": "sha256-CsqRiYbgQyv01LS0NlC7shwzhDhjNDQSrhBX8VuD3nM=",
+        "lastModified": 1776255774,
+        "narHash": "sha256-psVTpH6PK3q1htMJpmdz1hLF5pQgEshu7gQWgKO6t6Y=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "106eb93cbb9d4e4726bf6bc367a3114f7ed6b32f",
+        "rev": "566acc07c54dc807f91625bb286cb9b321b5f42a",
         "type": "github"
       },
       "original": {
@@ -692,8 +692,8 @@
     "root": {
       "inputs": {
         "affinity-nix": "affinity-nix",
+        "bootdev": "bootdev",
         "home-manager": "home-manager",
-        "linearis": "linearis",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixcord": "nixcord",

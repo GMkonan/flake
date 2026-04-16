@@ -64,6 +64,7 @@
     };
 
     # linearis.url = "github:GMkonan/linearis-flake";
+    bootdev.url = "github:GMkonan/bootdev-cli-flake";
   };
 
   outputs = inputs:
