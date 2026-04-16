@@ -26,7 +26,6 @@
     kubectl
     minikube
 
-    bootdev-cli
     azure-cli
     devcontainer
     hugo
