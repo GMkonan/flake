@@ -43,6 +43,6 @@
     # Screenshot util for code screenshots via nvim
     silicon
 
-    inputs.linearis.packages.${pkgs.stdenv.hostPlatform.system}.linearis
+    # inputs.linearis.packages.${pkgs.stdenv.hostPlatform.system}.linearis
   ];
 }
