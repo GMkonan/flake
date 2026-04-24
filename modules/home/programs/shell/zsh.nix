@@ -77,5 +77,6 @@
     btop
     htop
     lsof
+    jq
   ];
 }
