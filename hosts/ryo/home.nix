@@ -1,6 +1,5 @@
 {
   host,
-  inputs,
   pkgs,
   ...
 }: {
@@ -31,7 +30,5 @@
     # figma-linux
     anki
     # davinci-resolve
-
-    inputs.affinity-nix.packages.${pkgs.stdenv.hostPlatform.system}.v3
   ];
 }
