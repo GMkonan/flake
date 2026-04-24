@@ -63,8 +63,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # linearis.url = "github:GMkonan/linearis-flake";
     bootdev.url = "github:GMkonan/bootdev-cli-flake";
+
+    hermes-agent.url = "github:NousResearch/hermes-agent";
   };
 
   outputs = inputs:
