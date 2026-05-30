@@ -23,6 +23,7 @@
     hyprshot
 
     slack
+	aseprite
     obsidian
     ticktick
     mpv

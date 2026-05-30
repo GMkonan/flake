@@ -35,6 +35,8 @@
     vscode
     code-cursor
     zed-editor
+	inputs.antigravity-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
+
 
     # db stuff
     dbeaver-bin

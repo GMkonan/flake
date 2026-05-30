@@ -8,14 +8,14 @@
     ../../modules/nixos
     (../../themes + "/${host.theme}.nix")
     inputs.stylix.nixosModules.stylix
-    inputs.hermes-agent.nixosModules.default
+    # inputs.hermes-agent.nixosModules.default  # disabled: upstream hash mismatch
   ];
 
-  services.hermes-agent = {
-    enable = true;
-    environmentFiles = ["~/.secrets"];
-    addToSystemPackages = true;
-  };
+  # services.hermes-agent = {
+  #   enable = true;
+  #   environmentFiles = ["~/.secrets"];
+  #   addToSystemPackages = true;
+  # };
 
   networking.hostName = host.hostName;
 

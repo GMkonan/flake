@@ -1,141 +1,132 @@
--- [[ Settings options ]]
-require 'general-options'
+vim.o.number = true
+vim.o.relativenumber = true
+vim.g.mapleader = " "
+vim.o.signcolumn = "yes:1"
+-- Ask for confirmation to save file that has changes when trying to :q
+vim.o.confirm = true
+vim.opt.termguicolors = true
+vim.opt.clipboard = 'unnamedplus'
 
--- [[ keymaps ]]
-require 'mappings'
+vim.opt.tabstop = 4      -- Visual spaces per tab
+vim.opt.softtabstop = 4  -- Spaces per tab when editing
+vim.opt.shiftwidth = 4   -- Spaces for auto-indent
 
--- [[ Basic Autocommands ]]
---  See `:help lua-guide-autocommands`
+vim.pack.add {
+	"https://github.com/catppuccin/nvim",
+	"https://github.com/neovim/nvim-lspconfig",
+	"https://github.com/folke/snacks.nvim",
+	-- nvim treesitter
+	"https://github.com/brenoprata10/nvim-highlight-colors",
+	"https://github.com/stevearc/oil.nvim"
+}
+vim.cmd.colorscheme("catppuccin")
 
--- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
---  See `:help vim.highlight.on_yank()`
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+-- LSP stuff
+local servers = {
+  ts_ls = "typescript-language-server",
+  lua_ls = "lua-language-server",
+  pyright = "pyright-langserver",
+  gopls = "gopls",
+  rust_analyzer = "rust-analyzer",
+}
+
+-- Small setting to disable vim undefined global problem cuz I find it annoying
+vim.lsp.config("lua_ls", {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim", "Snacks" },
+      },
+    },
+  },
+})
+
+for server, executable in pairs(servers) do
+  if vim.fn.executable(executable) == 1 then
+    vim.lsp.enable(server)
+  end
+end
+
+-- Auto complete (Via Lsp to have docs)
+vim.o.autocomplete = true
+vim.o.completeopt = "menuone,noselect,popup"
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("my-lsp-completion", { clear = true }),
+  callback = function(ev)
+    local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
+
+    if client:supports_method("textDocument/completion") then
+      vim.lsp.completion.enable(true, client.id, ev.buf, {
+        autotrigger = true,
+      })
+    end
+  end,
+})
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "Highlight when yanking (copying) text",
+  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
   callback = function()
     vim.highlight.on_yank()
   end,
 })
 
--- [[ Install `lazy.nvim` plugin manager ]]
-require 'lazy-bootstrap'
+require("oil").setup()
+require('nvim-highlight-colors').setup({})
 
--- [[ Configure and install plugins ]]
---
---  To check the current status of your plugins, run
---    :Lazy
---
---  You can press `?` in this menu for help. Use `:q` to close the window
---
---  To update plugins you can run
---    :Lazy update
---
--- NOTE: Here is where you install your plugins.
-require('lazy').setup({
-  -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+require("snacks").setup({
+  picker = {
+    enabled = true,
+  },
 
-  -- NOTE: Plugins can also be added by using a table,
-  -- with the first argument being the link and the following
-  -- keys can be used to configure plugin behavior/loading/etc.
-  --
-  -- Use `opts = {}` to force a plugin to be loaded.
-  --
+  -- optional, but useful
+  input = {
+    enabled = true,
+  },
 
-  --
-  -- See `:help gitsigns` to understand what the configuration keys do
+  notifier = {
+    enabled = true,
+  },
 
-  -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
-  --
-  -- This is often very useful to both group configuration, as well as handle
-  -- lazy loading plugins that don't need to be loaded immediately at startup.
-  --
-  -- For example, in the following configuration, we use:
-  --  event = 'VimEnter'
-  --
-  -- which loads which-key before all the UI elements are loaded. Events can be
-  -- normal autocommands events (`:help autocmd-events`).
-  --
-  -- Then, because we use the `config` key, the configuration only runs
-  -- after the plugin has been loaded:
-  --  config = function() ... end
-  -- require 'plugins/which-key',
-  --
-  -- require 'plugins/telescope',
-  --
-  -- -- LSP Plugins
-  -- require 'plugins/lsp',
-  --
-  -- -- autoformat
-  -- require 'plugins/autoformat',
-  --
-  -- -- auto completes (cmp)
-  -- require 'plugins/complete',
-  --
-  -- -- theme
-  -- require 'plugins/colorscheme',
-  --
-  -- -- Highlight todo, notes, etc in comments
-  -- { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
-  --
-  -- -- mini utilities
-  -- require 'plugins/mini',
-  --
-  -- -- highlight/edit/nav code
-  -- require 'plugins/treesitter',
-  --
-  -- -- file explorer buffer like editing with oil
-  -- require 'plugins/oil',
-  --
-  -- -- Tree file explorer
-  -- require 'plugins/neotree',
-  --
-  -- -- comments
-  -- require 'plugins/comment',
-  --
-  -- -- autopairs
-  -- require 'plugins/autopairs',
-  --
-  -- -- render markdown
-  -- require 'plugins/rendermd',
-  --
-  -- -- neovim line config
-  -- require 'plugins/line',
-  --
-  -- -- Add visual color to hex codes
-  -- require 'plugins/colorizer',
-  --
-  -- -- Tab out of parenthesis, curly braces etc
-  -- require 'plugins/tabout',
-  --
-  -- -- surround words/code in () {} "" etc easily
-  -- require 'plugins/surround',
-  --
-  -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/plugins/*.lua`
-  --    This is the easiest way to modularize your config.
-  { import = 'plugins' },
-}, {
-  ui = {
-    -- If you are using a Nerd Font: set icons to an empty table which will use the
-    -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
-    icons = vim.g.have_nerd_font and {} or {
-      cmd = '⌘',
-      config = '🛠',
-      event = '📅',
-      ft = '📂',
-      init = '⚙',
-      keys = '🗝',
-      plugin = '🔌',
-      runtime = '💻',
-      require = '🌙',
-      source = '📄',
-      start = '🚀',
-      task = '📌',
-      lazy = '💤 ',
-    },
+  git = {
+    enabled = true,
+  },
+
+  statuscolumn = {
+    enabled = true
   },
 })
 
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+-- Keymaps
+vim.keymap.set("n", "<leader>sf", function()
+  Snacks.picker.files()
+end, { desc = "Find files" })
+
+-- Toggle live grep <C-g>
+vim.keymap.set("n", "<leader>sg", function()
+  Snacks.picker.grep()
+end, { desc = "Grep" })
+
+-- no idea what is the difference between that and just find files
+vim.keymap.set("n", "<leader>ss", function()
+  Snacks.picker.smart()
+end, { desc = "Smart find files" })
+
+vim.keymap.set("n", "<leader><leader>", function()
+  Snacks.picker.buffers()
+end, { desc = "Buffers" })
+
+vim.keymap.set("n", "gd", function()
+  Snacks.picker.lsp_references()
+end, { desc = "LSP References" })
+
+vim.keymap.set("n", "ghi", function()
+  Snacks.picker.gh_issue()
+end, { desc = "GitHub Issues (open)" })
+
+
+vim.keymap.set("n", "gb", function()
+  Snacks.git.blame_line()
+end, { desc = "Git blame line" })
+

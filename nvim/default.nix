@@ -23,6 +23,7 @@ in {
     typescript
     vtsls
     svelte-language-server
+    typescript-language-server
     lua-language-server
     yaml-language-server
     nil

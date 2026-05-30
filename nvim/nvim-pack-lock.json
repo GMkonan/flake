@@ -1,0 +1,24 @@
+{
+  "plugins": {
+    "nvim": {
+      "rev": "426dbebe06b5c69fd846ceb17b42e12f890aedf1",
+      "src": "https://github.com/catppuccin/nvim"
+    },
+    "nvim-highlight-colors": {
+      "rev": "e2cb22089cc2358b2b995c09578224f142de6039",
+      "src": "https://github.com/brenoprata10/nvim-highlight-colors"
+    },
+    "nvim-lspconfig": {
+      "rev": "81878de76c0de4ce289513734ad80c31ec7871b8",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "oil.nvim": {
+      "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
+      "src": "https://github.com/stevearc/oil.nvim"
+    },
+    "snacks.nvim": {
+      "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
+      "src": "https://github.com/folke/snacks.nvim"
+    }
+  }
+}
