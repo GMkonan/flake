@@ -6,6 +6,7 @@
   imports = [
     ./hardware.nix
     ../../modules/nixos
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-e14-amd
     (../../themes + "/${host.theme}.nix")
     inputs.stylix.nixosModules.stylix
     # inputs.hermes-agent.nixosModules.default  # disabled: upstream hash mismatch
