@@ -98,13 +98,23 @@ in {
         }
     }
 
-    spawn-at-startup "noctalia-shell"
+    spawn-at-startup "env" "QT_IM_MODULE=wayland" "QT_QPA_PLATFORM=wayland" "noctalia-shell"
 
     hotkey-overlay {
         skip-at-startup
     }
 
     prefer-no-csd
+
+    debug {
+        honor-xdg-activation-with-invalid-serial
+    }
+
+    environment {
+        QT_QPA_PLATFORM "wayland"
+        XDG_CURRENT_DESKTOP "niri"
+        XDG_SESSION_TYPE "wayland"
+    }
 
     screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
