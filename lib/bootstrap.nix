@@ -13,7 +13,12 @@ inputs @ {
     import nixpkgs {
       inherit system;
       overlays = [overlay];
-      config.allowUnfree = true;
+      config = {
+        allowUnfree = true;
+        permittedInsecurePackages = [
+          "electron-39.8.10"
+        ];
+      };
     };
 
   mkHost = name: entry: let
