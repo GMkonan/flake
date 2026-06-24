@@ -7,7 +7,7 @@ inputs @ {
 
   inherit (lib) concatStringsSep filterAttrs foldl' hasSuffix mapAttrs' mapAttrsToList nameValuePair recursiveUpdate unique;
 
-  overlay = import ../overlays/default.nix;
+  overlay = import ../overlays/default.nix inputs;
 
   mkPkgs = system:
     import nixpkgs {

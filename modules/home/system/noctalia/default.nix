@@ -1,12 +1,14 @@
 {
   config,
   host,
+  pkgs,
   ...
 }: let
   flakeAsset = path: "${host.paths.flakeDir}/${path}";
 in {
   programs.noctalia-shell = {
     enable = true;
+    package = pkgs.noctalia-shell-patched;
 
     settings = {
       controlCenter = {
