@@ -6,7 +6,7 @@
 }: let
   flakeAsset = path: "${host.paths.flakeDir}/${path}";
 in {
-  programs.noctalia-shell = {
+  programs.noctalia = {
     enable = true;
     package = pkgs.noctalia-shell-patched;
 
