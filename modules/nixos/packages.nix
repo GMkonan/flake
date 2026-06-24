@@ -18,7 +18,7 @@
 
     # Desktop environment
     xwayland-satellite
-    noctalia-shell-patched
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # Browsers (system-level)
     inputs.zen.packages.${pkgs.stdenv.hostPlatform.system}.default

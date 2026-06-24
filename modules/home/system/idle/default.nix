@@ -1,9 +1,10 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
 }: let
-  noctaliaPkg = pkgs.noctalia-shell-patched;
+  noctaliaPkg = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;
   noctaliaExe = lib.getExe noctaliaPkg;
 
   lockCmd = "${pkgs.bash}/bin/bash -lc '${noctaliaExe} ipc call lockScreen lock'";

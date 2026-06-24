@@ -8,7 +8,7 @@
 in {
   programs.noctalia-shell = {
     enable = true;
-    package = pkgs.noctalia-shell-patched;
+    package = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
     settings = {
       controlCenter = {
