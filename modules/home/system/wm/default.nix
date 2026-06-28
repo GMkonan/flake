@@ -178,7 +178,7 @@ in {
         // Applications
         Mod+Return hotkey-overlay-title="Open a Terminal: Ghostyy" { spawn "ghostty"; }
         Mod+Z hotkey-overlay-title="Run an Application: Zen" { spawn "zen"; }
-        Mod+R hotkey-overlay-title="Open List of applications: noctalia launcher" { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+        Mod+R hotkey-overlay-title="Open List of applications: noctalia launcher" { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
         Mod+P hotkey-overlay-title="Screenshot Region" { spawn "hyprshot" "-m" "region" "--clipboard-only"; }
 
         // Dictation

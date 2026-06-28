@@ -190,6 +190,30 @@ in {
         };
       };
 
+      lockscreen = {
+        enabled = true;
+      };
+
+      idle = {
+        behavior = {
+          lock = {
+            enabled = true;
+            timeout = 600;
+            action = "lock";
+          };
+          "screen-off" = {
+            enabled = true;
+            timeout = 660;
+            action = "screen_off";
+          };
+          suspend = {
+            enabled = true;
+            timeout = 900;
+            action = "lock_and_suspend";
+          };
+        };
+      };
+
       general = {
         # Use the theme's profile picture
         avatarImage = flakeAsset config.theme.active.assets.profilePicture;

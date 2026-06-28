@@ -21,7 +21,6 @@
     ../modules/home/system/desktop
     ../modules/home/system/wm
     ../modules/home/system/noctalia
-    ../modules/home/system/idle
     ../modules/home/system/kanshi
     ../modules/home/system/gtk
 
