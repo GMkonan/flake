@@ -31,6 +31,10 @@
 
   fonts.fontconfig.enable = true;
 
+  home.packages = with pkgs; [
+    ytmdesktop
+  ];
+
   home.sessionVariables = {
     EDITOR = "nvim";
   };
