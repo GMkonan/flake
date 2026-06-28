@@ -9,6 +9,7 @@
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-e14-amd
     (../../themes + "/${host.theme}.nix")
     inputs.stylix.nixosModules.stylix
+    inputs.noctalia-greeter.nixosModules.default
     # inputs.hermes-agent.nixosModules.default  # disabled: upstream hash mismatch
   ];
 
@@ -25,8 +26,16 @@
   networking.networkmanager.enable = true;
 
   services.xserver.enable = true;
-  services.desktopManager.gnome.enable = true;
-  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = false;
+  services.displayManager.gdm.enable = false;
+
+  programs.noctalia-greeter = {
+    enable = true;
+    greeter-args = "--session niri";
+    settings = {
+      keyboard.layout = "us";
+    };
+  };
 
   programs.xwayland.enable = true;
   programs.nix-ld.enable = true;
