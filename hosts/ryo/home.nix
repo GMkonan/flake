@@ -1,5 +1,6 @@
 {
   host,
+  inputs,
   pkgs,
   ...
 }: {
@@ -23,7 +24,7 @@
     hyprshot
 
     slack
-	aseprite
+    aseprite
     obsidian
     ticktick
     mpv
@@ -31,5 +32,7 @@
     # figma-linux
     anki
     # davinci-resolve
+
+    inputs.zennotes.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }
