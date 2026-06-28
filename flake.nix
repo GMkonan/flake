@@ -68,6 +68,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    noctalia-greeter = {
+      url = "github:noctalia-dev/noctalia-greeter";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     bootdev.url = "github:GMkonan/bootdev-cli-flake";
 
     hermes-agent.url = "github:NousResearch/hermes-agent";
