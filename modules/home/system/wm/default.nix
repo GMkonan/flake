@@ -98,7 +98,7 @@ in {
         }
     }
 
-    spawn-at-startup "env" "QT_IM_MODULE=wayland" "QT_QPA_PLATFORM=wayland" "noctalia-shell"
+    spawn-at-startup "env" "QT_IM_MODULE=wayland" "QT_QPA_PLATFORM=wayland" "noctalia"
 
     hotkey-overlay {
         skip-at-startup
