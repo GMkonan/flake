@@ -198,17 +198,17 @@ in {
         behavior = {
           lock = {
             enabled = true;
-            timeout = 600;
+            timeout = 1200;
             action = "lock";
           };
           "screen-off" = {
             enabled = true;
-            timeout = 660;
+            timeout = 1320;
             action = "screen_off";
           };
           suspend = {
             enabled = true;
-            timeout = 900;
+            timeout = 1800;
             action = "lock_and_suspend";
           };
         };
