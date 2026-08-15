@@ -24,6 +24,15 @@
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   networking.networkmanager.enable = true;
+  # Disable Wi-Fi power saving so large LAN transfers (e.g. LocalSend)
+  # don't stall or cancel mid-file.
+  networking.networkmanager.wifi.powersave = false;
+  # Belt-and-suspenders: keep docker/tailscale bridges from replying to
+  # LocalSend's multicast discovery (UDP 53317), so discovery resolves
+  # to the real Wi-Fi interface.
+  networking.firewall.extraCommands = ''
+    iptables -I INPUT -i br-+ -p udp --dport 53317 -j DROP
+  '';
 
   services.xserver.enable = true;
   services.desktopManager.gnome.enable = false;

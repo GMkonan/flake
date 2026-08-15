@@ -11,5 +11,6 @@
     ./locale.nix
     ./niri.nix
     ./fonts.nix
+    ./localsend.nix
   ];
 }

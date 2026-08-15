@@ -27,6 +27,7 @@ in {
     lua-language-server
     yaml-language-server
     nil
+    nixd
     kdePackages.qtdeclarative
     alejandra
     biome

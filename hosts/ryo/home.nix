@@ -24,6 +24,7 @@
     hyprshot
 
     slack
+    beeper
     aseprite
     obsidian
     ticktick
