@@ -13,25 +13,16 @@ inputs @ {
     import nixpkgs {
       inherit system;
       overlays = [overlay];
-      config = {
-        allowUnfree = true;
-        permittedInsecurePackages = [
-          "electron-39.8.10"
-        ];
-      };
+      config.allowUnfree = true;
     };
 
   mkHost = name: entry: let
     system = entry.system;
     path = entry.path;
-    homes =
-      if entry ? homes
-      then lib.coerceToList entry.homes
-      else [];
     host =
       (import (path + "/vars.nix"))
       // {
-        inherit homes name path system;
+        inherit name path system;
       };
     isDarwin = hasSuffix "darwin" system;
   in {
@@ -40,7 +31,7 @@ inputs @ {
     homeConfig = inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = mkPkgs system;
       extraSpecialArgs = {inherit host inputs lib self system;};
-      modules = builtins.map (homeName: ../homes/${homeName}.nix) homes ++ [(path + "/home.nix")];
+      modules = [(path + "/home.nix")];
     };
 
     systemConfig =

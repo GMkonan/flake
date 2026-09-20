@@ -1,48 +1,65 @@
 # N4
 
-My personal flake, focused on modularity with central pieces around N4:
-- **Nixos** as my favorite Operating System
-- **Niri** as a window manager
+My personal multi-system Nix flake, centered around:
+
+- **NixOS** as the operating system
+- **Niri** as the window manager
 - **Noctalia** as the desktop shell
-- **Neovim** as my favorite Editor
+- **Neovim** as the editor
 
-#### Features
-- reusable homes
-- theme-driven
+## Hosts
 
-## Screenshots
-N4 has support for multiple themes, here are some of them:
-
-##### Tokyo night
-- ![Tokyo night screenshot 1](assets/screenshots/tokyo-night-shot-1.png)
-- ![Tokyo night screenshot 2](assets/screenshots/tokyo-night-shot-2.png)
-- ![Tokyo night screenshot 3](assets/screenshots/tokyo-night-shot-3.png)
+- `ryo` — main NixOS laptop
+- `server` — home server
 
 ## Structure
 
-- `flake.nix` - inputs and host inventory
-- `lib/` - bootstrap logic and flake helpers
-- `hosts/` - per-machine `configuration.nix`, `home.nix`, and `vars.nix`
-- `homes/` - reusable home-manager bundles like `default` or `minimal`
-- `modules/` - reusable nixos and home-manager modules
-- `themes/` - one file per theme, shared by system and home
-- `overlays/` - package overrides
-- `nvim/` - my neovim config
-- `assets/` - wallpapers, profile pictures, fetch art, and later screenshots
+```text
+flake.nix        host inventory and inputs
+lib/             flake bootstrap and helpers
+hosts/           hardware and machine-specific configuration
+modules/nixos/   reusable NixOS modules grouped by domain
+modules/home/    reusable Home Manager modules grouped by domain
+nvim/            Neovim package and configuration
+overlays/         package overrides
+themes/           shared system and Home Manager themes
+assets/           wallpapers, profile pictures, fetch art, and screenshots
+```
 
-Current hosts:
-- `ryo` - main nixos laptop
+Configuration flows directly from each host to the modules it needs:
 
-Wip hosts:
-- `server` - smaller server-ish setup
-- `desktop` - desktop gaming setup
-- `laptop` - minimal setup for low power laptop
+```text
+flake.nix → hosts/<name> → modules
+```
+
+Host-specific services stay with their host. Shared behavior belongs in
+`modules/nixos/` or `modules/home/`.
+
+## Commands
+
+Build or activate a NixOS host:
+
+```bash
+sudo nixos-rebuild switch --flake .#ryo
+sudo nixos-rebuild switch --flake .#server
+```
+
+Build or activate only Home Manager:
+
+```bash
+home-manager switch --flake .#ryo
+home-manager switch --flake .#server
+```
+
+Format the repository:
+
+```bash
+nix fmt
+```
 
 ## Themes
 
-Themes live in `themes/*.nix`.
-
-Each host picks one in its `vars.nix`:
+Themes live in `themes/*.nix`. Each host selects one in its `vars.nix`:
 
 ```nix
 {
@@ -50,31 +67,19 @@ Each host picks one in its `vars.nix`:
 }
 ```
 
-Theming works in a combination with stylix, wallpaper and custom colors passed through the config.
+The selected theme provides Stylix settings, colors, wallpaper, and profile
+picture information to both NixOS and Home Manager.
 
-### Special thanks
-I inspired myself in lots of configs like
+## Screenshots
+
+### Tokyo Night
+
+- ![Tokyo Night screenshot 1](assets/screenshots/tokyo-night-shot-1.png)
+- ![Tokyo Night screenshot 2](assets/screenshots/tokyo-night-shot-2.png)
+- ![Tokyo Night screenshot 3](assets/screenshots/tokyo-night-shot-3.png)
+
+## Inspiration
+
 - [anotherhadi/nixy](https://github.com/anotherhadi/nixy)
 - [zoriya/flake](https://github.com/zoriya/flake)
 - [gruberdev/nix](https://github.com/gruberdev/nix)
-
-#### Todo
-
-##### Nix
-- [ ] Fix tmux-sesh script
-- [ ] nix utilitys script (nixy like)
-- [ ] divide packages on nixos system better
-- [ ] have a affinity module
-- [ ] create separate modules for brave and zen
-- [ ] Fix affinity linux
-- [ ] Fix theming
-  - [ ] Theme change should affect zsh theme too (oh my posh)
-  - [ ] nvim colorscheme error
-  - [ ] asya pfp for gruvbox
-  - [ ] Add catppuccin mocha theme
-
-##### Niri
-- [ ] Add transparency to other windows
-
-##### Neovim
-- [ ] Rewrite it minimalistically with the default plugin manager as of neovim v0.12

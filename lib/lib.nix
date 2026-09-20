@@ -1,10 +1,5 @@
 inputs: lib: _:
 {
-  coerceToList = value:
-    if builtins.isList value
-    then value
-    else [value];
-
   # Helper to easily import modules in home/system configs
   imports = let
     modulePath = path:

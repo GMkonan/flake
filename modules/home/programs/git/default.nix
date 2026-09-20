@@ -6,6 +6,10 @@
 }: let
   deltaTheme = lib.attrByPath ["programs" "git" "deltaTheme"] "OneHalfDark" (config.theme.active or {});
 in {
+  imports = [
+    ./gh.nix
+  ];
+
   home.packages = with pkgs; [
     graphite-cli
     jujutsu

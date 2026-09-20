@@ -5,19 +5,15 @@
 }: {
   imports = [
     ./hardware.nix
-    ../../modules/nixos
+    ./bootloader.nix
+    ../../modules/nixos/core
+    ../../modules/nixos/desktop
+    ../../modules/nixos/networking
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-e14-amd
     (../../themes + "/${host.theme}.nix")
     inputs.stylix.nixosModules.stylix
     inputs.noctalia-greeter.nixosModules.default
-    # inputs.hermes-agent.nixosModules.default  # disabled: upstream hash mismatch
   ];
-
-  # services.hermes-agent = {
-  #   enable = true;
-  #   environmentFiles = ["~/.secrets"];
-  #   addToSystemPackages = true;
-  # };
 
   networking.hostName = host.hostName;
 
@@ -38,7 +34,7 @@
   services.desktopManager.gnome.enable = false;
   services.displayManager.gdm.enable = false;
 
-  programs.noctalia-greeter = {
+  services.displayManager.noctalia-greeter = {
     enable = true;
     greeter-args = "--session niri";
     settings = {
@@ -63,14 +59,27 @@
   services.printing.enable = true;
   services.upower.enable = true;
 
-  services.logind.settings.Login.HandleLidSwitch = "lock";
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend-then-hibernate";
+    HandleLidSwitchDocked = "ignore";
+  };
+
+  systemd.sleep.settings.Sleep.HibernateDelaySec = "1h";
 
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings = {
+    experimental-features = ["nix-command" "flakes"];
+
+    # Binary cache for affinity-nix (avoids building patched Wine locally)
+    extra-substituters = ["https://cache.forall.systems"];
+    extra-trusted-public-keys = [
+      "cache.forall.systems:5PmD7QO4MSF8YgyRZtkSGXRDo96H3bybIf2SsQh8ScI="
+    ];
+  };
 
   system.stateVersion = host.stateVersion.system;
 }

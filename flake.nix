@@ -1,6 +1,13 @@
 {
   description = "Konan nix multi-system flake";
 
+  nixConfig = {
+    extra-substituters = ["https://cache.forall.systems"];
+    extra-trusted-public-keys = [
+      "cache.forall.systems:5PmD7QO4MSF8YgyRZtkSGXRDo96H3bybIf2SsQh8ScI="
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
@@ -33,10 +40,9 @@
       url = "github:NixOS/nixos-hardware/master";
     };
 
-    # affinity-nix = {
-    #   url = "github:mrshmllow/affinity-nix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    affinity-nix = {
+      url = "github:mrshmllow/affinity-nix";
+    };
 
     stylix = {
       url = "github:danth/stylix/master";
@@ -45,16 +51,6 @@
 
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    opencode-flake = {
-      url = "github:AodhanHayter/opencode-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    quickshell = {
-      url = "github:outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -75,8 +71,6 @@
 
     bootdev.url = "github:GMkonan/bootdev-cli-flake";
 
-    hermes-agent.url = "github:NousResearch/hermes-agent";
-
     antigravity-nix = {
       url = "github:jacopone/antigravity-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -88,13 +82,11 @@
       ryo = {
         system = "x86_64-linux";
         path = ./hosts/ryo;
-        homes = ["default"];
       };
 
       server = {
         system = "x86_64-linux";
         path = ./hosts/server;
-        homes = ["minimal"];
       };
     };
 }

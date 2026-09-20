@@ -40,6 +40,7 @@ in {
     enable = true;
     inherit quickCss;
     config.useQuickCss = quickCss != "";
+    discord.silenceNoModClientWarning = true;
     vesktop.enable = true;
   };
 }

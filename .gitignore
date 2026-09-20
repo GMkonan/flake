@@ -1,2 +1,8 @@
 secrets.nix
 services/.env
+
+# Local tools and generated artifacts
+.codebase-memory/
+.opencode/
+/result
+/package-lock.json
