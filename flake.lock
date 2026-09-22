@@ -658,6 +658,22 @@
         "type": "github"
       }
     },
+    "noctalia-protonvpn": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1790034257,
+        "narHash": "sha256-qqopV1m7FKGEAb4leWmOZB81sb2/1M0zVPX6NlJFIk8=",
+        "owner": "GMkonan",
+        "repo": "noctalia-protonvpn",
+        "rev": "5c3cb07c137feb6be58e52608360247556da92cc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "GMkonan",
+        "repo": "noctalia-protonvpn",
+        "type": "github"
+      }
+    },
     "nur": {
       "inputs": {
         "flake-parts": [
@@ -729,6 +745,7 @@
         "nixpkgs": "nixpkgs_6",
         "noctalia": "noctalia",
         "noctalia-greeter": "noctalia-greeter",
+        "noctalia-protonvpn": "noctalia-protonvpn",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "zen": "zen",
@@ -982,16 +999,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1781291743,
-        "narHash": "sha256-JckPhOMHMoz1JjVWekQ+hRfS9Glc5jMbDhkmGORzLJQ=",
-        "owner": "Nuhddy",
-        "repo": "zennotes-flake",
-        "rev": "b8021f8da4241689e43cd5a4a97c39b7ba77d6c9",
+        "lastModified": 1789784860,
+        "narHash": "sha256-wwSmOk5V7t6hM27SiBNgwTzuQI/2MDvIyGzMEo8iERQ=",
+        "owner": "ZenNotes",
+        "repo": "zennotes",
+        "rev": "cfff7df11fe55c26af843b6c8a4a81f6242cb9dd",
         "type": "github"
       },
       "original": {
-        "owner": "Nuhddy",
-        "repo": "zennotes-flake",
+        "owner": "ZenNotes",
+        "repo": "zennotes",
         "type": "github"
       }
     }

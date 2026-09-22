@@ -55,13 +55,18 @@
     };
 
     zennotes = {
-      url = "github:Nuhddy/zennotes-flake";
+      url = "github:ZenNotes/zennotes";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    noctalia-protonvpn = {
+      url = "github:GMkonan/noctalia-protonvpn";
+      flake = false;
     };
 
     noctalia-greeter = {

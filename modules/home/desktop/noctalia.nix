@@ -7,245 +7,109 @@
 }: let
   flakeAsset = path: "${host.paths.flakeDir}/${path}";
 in {
+  # Pin the separately maintained plugin through flake.lock and expose it as a
+  # local Noctalia V5 plugin.
+  xdg.dataFile."noctalia/plugins/protonvpn".source = "${inputs.noctalia-protonvpn}/protonvpn";
+
   programs.noctalia = {
     enable = true;
     package = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
     settings = {
-      controlCenter = {
-        position = "close_to_bar_button";
-        diskPath = "/";
-        shortcuts = {
-          left = [
-            {
-              id = "Network";
-            }
-            {
-              id = "Bluetooth";
-            }
-            {
-              id = "WallpaperSelector";
-            }
-            {
-              id = "NoctaliaPerformance";
-            }
-          ];
-          right = [
-            {
-              id = "Notifications";
-            }
-            {
-              id = "PowerProfile";
-            }
-            {
-              id = "KeepAwake";
-            }
-            {
-              id = "NightLight";
-            }
-          ];
-        };
-        cards = [
-          {
-            enabled = true;
-            id = "profile-card";
-          }
-          {
-            enabled = true;
-            id = "shortcuts-card";
-          }
-          {
-            enabled = true;
-            id = "audio-card";
-          }
-          {
-            enabled = false;
-            id = "brightness-card";
-          }
-          {
-            enabled = false;
-            id = "weather-card";
-          }
-          {
-            enabled = true;
-            id = "media-sysmon-card";
-          }
-        ];
-      };
       bar = {
-        density = "compact";
-        showCapsule = false;
-        outerCorners = true;
-        marginVertical = 5;
-        marginHorizontal = 5;
-
+        order = ["widgets"];
         widgets = {
-          left = [
-            {
-              id = "ControlCenter";
-              colorizeDistroLogo = false;
-              colorizeSystemIcon = "primary";
-              enableColorization = true;
-              icon = "noctalia";
-              useDistroLogo = true;
-            }
-            {
-              id = "Workspace";
-              characterCount = 2;
-              colorizeIcons = true;
-              emptyColor = "none";
-              enableScrollWheel = true;
-              focusedColor = "primary";
-              followFocusedScreen = false;
-              fontWeight = "bold";
-              groupedBorderOpacity = 1;
-              hideUnoccupied = false;
-              iconScale = 0.8;
-              labelMode = "index";
-              occupiedColor = "none";
-              pillSize = 0.7;
-              showApplications = false;
-              showApplicationsHover = false;
-              showBadge = true;
-              showLabelsOnlyWhenOccupied = false;
-              unfocusedIconsOpacity = 1;
-            }
+          start = [
+            "control-center"
+            "workspaces"
+            "media"
           ];
           center = [
-            {
-              id = "plugin:catwalk";
-            }
-            {
-              id = "Clock";
-              clockColor = "primary";
-              customFont = "";
-              formatHorizontal = "HH:mm ddd, MMM dd";
-              formatVertical = "HH mm - dd MM";
-              tooltipFormat = "HH:mm ddd, MMM dd";
-              useCustomFont = false;
-            }
+            "date"
+            "clock"
           ];
-          right = [
+          end = [
+            "tray"
+            "notifications"
+            "group:g1"
+            "protonvpn"
+            "session"
+          ];
+          margin_edge = 0;
+          margin_ends = 0;
+          radius = 0;
+          capsule_group = [
             {
-              id = "MediaMini";
-              compactMode = false;
-              hideMode = "hidden";
-              hideWhenIdle = false;
-              maxWidth = 145;
-              panelShowAlbumArt = true;
-              scrollingMode = "hover";
-              showAlbumArt = true;
-              showArtistFirst = true;
-              showProgressRing = true;
-              showVisualizer = false;
-              textColor = "none";
-              useFixedWidth = false;
-              visualizerType = "linear";
+              id = "g1";
+              members = [
+                "bluetooth"
+                "network"
+                "volume"
+                "battery"
+              ];
+              fill = "surface_variant";
+              opacity = 1.0;
+              padding = 6.0;
             }
-            {
-              id = "Tray";
-              drawerEnabled = true;
-              blacklist = [];
-              chevronColor = "none";
-              colorizeIcons = false;
-              hidePassive = false;
-              pinned = [];
-            }
-            {
-              id = "Volume";
-              displayMode = "onhover";
-              iconColor = "none";
-              middleClickCommand = "pwvucontrol || pavucontrol";
-              textColor = "none";
-            }
-            {
-              id = "NotificationHistory";
-              hideWhenZero = false;
-              hideWhenZeroUnread = false;
-              iconColor = "none";
-              showUnreadBadge = true;
-              unreadBadgeColor = "primary";
-            }
-            {
-              id = "Battery";
-              deviceNativePath = "__default__";
-              displayMode = "graphic";
-              hideIfIdle = false;
-              hideIfNotDetected = true;
-              showNoctaliaPerformance = false;
-              showPowerProfiles = false;
-            }
-            # {
-            #   id = "plugin:netbird";
-            # }
-            {
-              id = "plugin:tailscale";
-            }
-            {
-              id = "plugin:privacy-indicator";
-            }
-            # {
-            #   id = "plugin:keybind-cheatsheet";
-            # }
           ];
         };
       };
 
-      lockscreen = {
-        enabled = true;
-      };
+      control_center.shortcuts = [
+        {type = "wifi";}
+        {type = "bluetooth";}
+        {type = "caffeine";}
+        {type = "notification";}
+        {type = "power_profile";}
+        {type = "wallpaper";}
+      ];
 
-      idle = {
-        behavior = {
-          lock = {
-            enabled = true;
-            timeout = 1200;
-            action = "lock";
-          };
-          "screen-off" = {
-            enabled = true;
-            timeout = 1320;
-            action = "screen_off";
-          };
-          suspend = {
-            enabled = true;
-            timeout = 1800;
-            action = "lock_and_suspend";
-          };
+      dock.enabled = false;
+
+      idle.behavior = {
+        lock = {
+          enabled = true;
+          timeout = 1200;
+          action = "lock";
+        };
+        "screen-off" = {
+          enabled = true;
+          timeout = 1320;
+          action = "screen_off";
+        };
+        suspend = {
+          enabled = true;
+          timeout = 1800;
+          action = "lock_and_suspend";
         };
       };
 
-      general = {
-        # Use the theme's profile picture
-        avatarImage = flakeAsset config.theme.active.assets.profilePicture;
+      location.address = "Vitoria, ES, Brazil";
+      lockscreen.enabled = true;
+
+      plugins.enabled = ["gmkonan/protonvpn"];
+
+      shell = {
+        avatar_path = flakeAsset config.theme.active.assets.profilePicture;
+        panel = {
+          control_center_placement = "attached";
+          open_near_click_control_center = true;
+        };
       };
 
-      location = {
-        name = "Vitoria, ES, Brazil";
+      theme = {
+        mode = "dark";
+        shell_mode = "follow";
+        source = "builtin";
+        builtin = "Catppuccin";
       };
 
-      notifications = {
-        density = "compact";
-      };
+      wallpaper.directory = flakeAsset config.theme.active.assets.wallpaperDir;
 
-      wallpaper = {
-        # Use the theme's wallpaper directory
-        directory = flakeAsset config.theme.active.assets.wallpaperDir;
-      };
-
-      dock = {
-        enabled = false;
-      };
-
-      colorSchemes = {
-        useWallpaperColors = false;
-        # predefinedScheme = "Noctalia (default)";
-        darkMode = true;
-        # schedulingMode = "off";
-        # manualSunrise = "06:30";
-        # manualSunset = "18:30";
-        # generationMethod = "tonal-spot";
-        # monitorForColors = "";
+      widget = {
+        battery.show_label = false;
+        network.show_label = false;
+        protonvpn.type = "gmkonan/protonvpn:bar";
       };
     };
   };
