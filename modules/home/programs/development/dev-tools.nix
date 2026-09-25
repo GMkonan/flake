@@ -50,5 +50,6 @@
     inputs.bootdev.packages.${pkgs.stdenv.hostPlatform.system}.bootdev
 
     pi-coding-agent
+    inputs.codebase-memory-mcp.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

@@ -152,6 +152,26 @@
         "type": "github"
       }
     },
+    "codebase-memory-mcp": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1787777107,
+        "narHash": "sha256-CKzLpMS8Ke05/l6FNxuyVAnr4ECAiONw9dlCMGGjTNY=",
+        "owner": "DeusData",
+        "repo": "codebase-memory-mcp",
+        "rev": "909051ccee2d070f33e15fda71bfe61c9076eea6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DeusData",
+        "repo": "codebase-memory-mcp",
+        "type": "github"
+      }
+    },
     "corefonts": {
       "flake": false,
       "locked": {
@@ -737,6 +757,7 @@
         "affinity-nix": "affinity-nix",
         "antigravity-nix": "antigravity-nix",
         "bootdev": "bootdev",
+        "codebase-memory-mcp": "codebase-memory-mcp",
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
