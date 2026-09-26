@@ -50,6 +50,7 @@
     inputs.bootdev.packages.${pkgs.stdenv.hostPlatform.system}.bootdev
 
     pi-coding-agent
+    patchelf
     inputs.codebase-memory-mcp.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

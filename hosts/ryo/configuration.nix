@@ -1,6 +1,7 @@
 {
   host,
   inputs,
+  pkgs,
   ...
 }: {
   imports = [
@@ -43,7 +44,10 @@
   };
 
   programs.xwayland.enable = true;
-  programs.nix-ld.enable = true;
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [alsa-lib];
+  };
 
   hardware.bluetooth = {
     enable = true;
